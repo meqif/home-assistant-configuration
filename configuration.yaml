@@ -82,13 +82,7 @@ sensor:
       - 23
       - 24
 
-device_tracker:
-  - platform: unifi
-    host: 192.168.2.11
-    port: 8443
-    verify_ssl: false
-    username: !secret unifi_username
-    password: !secret unifi_password
+device_tracker: !include device_tracker.yaml
 
 person:
   - name: Ricardo

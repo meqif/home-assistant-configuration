@@ -1,0 +1,31 @@
+- id: indoor_lights_at_sunset
+  alias: Indoor lights at sunset
+  trigger:
+  - event: sunset
+    platform: sun
+    offset: "-01:00:00"
+  action:
+  - data:
+      entity_id:
+        - light.hall
+        - light.living_room
+    entity_id:
+      - light.hall
+      - light.living_room
+    service: light.turn_on
+
+- id: turn_off_lights_when_off_to_work
+  alias: Turn off lights when off to work
+  trigger:
+    - platform: state
+      entity_id: person.ricardo
+      from: 'home'
+      to: 'not_home'
+  condition:
+    - condition: time
+      after: '08:00'
+      before: '18:00'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.all

@@ -1,0 +1,116 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret home_elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Lisbon
+  # Customization file
+  customize: !include customize.yaml
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Show the introduction message on startup.
+# introduction:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  base_url: !secret http_base_url
+  use_x_forwarded_for: true
+  # Trust the Docker container host
+  trusted_proxies: !secret http_trusted_proxies
+
+# Discover some devices automatically
+discovery:
+
+lovelace:
+  mode: yaml
+
+# Sensors
+sensor:
+  - platform: waze_travel_time
+    origin: !secret home_gps_coords
+    destination: !secret work_gps_coords
+    region: EU
+    name: Work commute
+  - platform: waze_travel_time
+    origin: !secret work_gps_coords
+    destination: !secret home_gps_coords
+    region: EU
+    name: Home commute
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    scan_interval: '00:05:00'
+    monitored_conditions:
+      - temperature
+      - precip_probability
+      - precip_type
+      - humidity
+      - cloud_cover
+      - nearest_storm_distance
+      - precip_intensity
+      - wind_speed
+    hourly_forecast:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+
+device_tracker:
+  - platform: unifi
+    host: 192.168.2.11
+    port: 8443
+    verify_ssl: false
+    username: !secret unifi_username
+    password: !secret unifi_password
+
+person:
+  - name: Ricardo
+    id: ab9ea2abf06e46eb8ce169784ccdefa2
+    user_id: f9054ef8dbf6487dae10d4f703695118
+    device_trackers:
+      - device_tracker.ricardo_s_google_pixel
+
+# Text to speech
+tts:
+  - platform: google
+
+# Devices
+hue:
+  bridges:
+    - host: 192.168.2.7
+      allow_unreachable: true
+
+neato:
+  username: !secret neato_username
+  password: !secret neato_password
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml

@@ -1,0 +1,36 @@
+title: Home
+views:
+  - cards:
+      - type: vertical-stack
+        cards:
+        - entity: weather.home
+          type: weather-forecast
+        - type: iframe
+          aspectratio: 100%
+          url: !secret windy_embed_url
+      - type: vertical-stack
+        cards:
+          - entities:
+              - entity: light.living_room
+              - entity: light.hall
+            title: Light
+            type: entities
+          - type: entities
+            title: Power plugs
+            entities:
+              - entity: light.smartplug_quarto
+              - entity: light.smartplug_sala
+      - type: picture-entity
+        entity: vacuum.neato
+        camera_image: camera.neato_cleaning_map
+      - type: vertical-stack
+        cards:
+        - type: entities
+          entities:
+            - sensor.work_commute
+        - type: entities
+          entities:
+            - sensor.home_commute
+    path: default_view
+    title: Home
+    icon: 'mdi:home'

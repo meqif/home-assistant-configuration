@@ -1,0 +1,7 @@
+secrets.yaml
+*.log
+*.db
+entity_registry.yaml
+known_devices.yaml
+custom_components
+www

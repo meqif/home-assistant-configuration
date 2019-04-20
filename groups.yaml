@@ -1,16 +1,19 @@
 living_room_lights:
   icon: mdi:lightbulb
+  name: Living Room Lights
   entities:
     - light.hue_white_lamp_sala_pc
     - light.hue_white_lamp_sala_janela
 
 hall_lights:
   icon: mdi:lightbulb
+  name: Hall Lights
   entities:
     - light.hue_white_lamp_corredor
 
 all_lights:
   icon: mdi:lightbulb
+  name: All Lights
   entities:
     - light.hue_white_lamp_sala_pc
     - light.hue_white_lamp_sala_janela
@@ -18,6 +21,7 @@ all_lights:
 
 all_power_switches:
   icon: mdi:power-socket-eu
+  name: All Power Switches
   entities:
     - light.smartplug_quarto
     - light.smartplug_sala

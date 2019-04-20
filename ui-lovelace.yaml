@@ -17,11 +17,11 @@ views:
               - entity: group.hall_lights
             title: Light
             type: entities
-          - type: entities
-            title: Power plugs
-            entities:
-              - entity: light.smartplug_quarto
-              - entity: light.smartplug_sala
+          - type: custom:group-card
+            card:
+              title: Power plugs
+              type: entities
+            group: group.all_power_switches
       - type: picture-entity
         entity: vacuum.neato
         camera_image: camera.neato_cleaning_map

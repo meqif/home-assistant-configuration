@@ -1,13 +1,12 @@
 title: Home
 views:
   - cards:
-      - type: vertical-stack
-        cards:
-        - entity: weather.home
-          type: weather-forecast
-        - type: iframe
-          aspectratio: 100%
-          url: !secret windy_embed_url
+      - type: entities
+        title: Information
+        show_header_toggle: false
+        entities:
+          - sensor.work_commute
+          - sensor.home_commute
       - type: vertical-stack
         cards:
           - entities:
@@ -23,14 +22,18 @@ views:
       - type: picture-entity
         entity: vacuum.neato
         camera_image: camera.neato_cleaning_map
-      - type: vertical-stack
-        cards:
-        - type: entities
-          entities:
-            - sensor.work_commute
-        - type: entities
-          entities:
-            - sensor.home_commute
     path: default_view
     title: Home
-    icon: 'mdi:home'
+    icon: 'mdi:home-assistant'
+
+  - icon: mdi:weather-cloudy
+    id: weather
+    title: Weather
+    cards:
+      - type: vertical-stack
+        cards:
+        - entity: weather.home
+          type: weather-forecast
+        - type: iframe
+          aspectratio: 100%
+          url: !secret windy_embed_url

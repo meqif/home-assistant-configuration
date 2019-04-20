@@ -11,8 +11,8 @@ views:
       - type: vertical-stack
         cards:
           - entities:
-              - entity: light.living_room
-              - entity: light.hall
+              - entity: group.living_room_lights
+              - entity: group.hall_lights
             title: Light
             type: entities
           - type: entities

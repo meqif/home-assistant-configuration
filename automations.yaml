@@ -7,11 +7,8 @@
   action:
   - data:
       entity_id:
-        - light.hall
-        - light.living_room
-    entity_id:
-      - light.hall
-      - light.living_room
+        - group.living_room_lights
+        - group.hall_lights
     service: light.turn_on
 
 - id: turn_off_lights_when_off_to_work
@@ -28,4 +25,4 @@
   action:
     - service: light.turn_off
       data:
-        entity_id: light.all
+        entity_id: group.all_lights

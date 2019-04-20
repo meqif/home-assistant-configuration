@@ -1,4 +1,7 @@
 title: Home
+resources:
+  - url: /local/group-card.js?v=0
+    type: module
 views:
   - cards:
       - type: entities
@@ -37,3 +40,38 @@ views:
         - type: iframe
           aspectratio: 100%
           url: !secret windy_embed_url
+
+  - icon: mdi:door
+    id: hall
+    title: Hall
+    cards:
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - light.hue_white_lamp_corredor
+
+  - icon: mdi:sofa
+    id: living-room
+    title: Living Room
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: custom:group-card
+          card:
+            type: entities
+            show_header_toggle: false
+          group: group.living_room_lights
+        - type: entities
+          show_header_toggle: false
+          entities:
+            - light.smartplug_sala
+
+  - icon: mdi:bed-empty
+    id: bedroom
+    title: Bedroom
+    cards:
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - light.smartplug_quarto
+

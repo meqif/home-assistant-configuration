@@ -1,0 +1,19 @@
+living_room_lights:
+  entities:
+    - light.hue_white_lamp_sala_pc
+    - light.hue_white_lamp_sala_janela
+
+hall_lights:
+  entities:
+    - light.hue_white_lamp_corredor
+
+all_lights:
+  entities:
+    - light.hue_white_lamp_sala_pc
+    - light.hue_white_lamp_sala_janela
+    - light.hue_white_lamp_corredor
+
+all_power_switches:
+  entities:
+    - light.smartplug_quarto
+    - light.smartplug_sala

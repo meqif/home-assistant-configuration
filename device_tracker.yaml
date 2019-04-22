@@ -4,5 +4,3 @@
   verify_ssl: false
   username: !secret unifi_username
   password: !secret unifi_password
-  monitored_conditions:
-    - rssi

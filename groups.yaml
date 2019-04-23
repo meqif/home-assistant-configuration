@@ -11,6 +11,12 @@ hall_lights:
   entities:
     - light.hue_white_lamp_corredor
 
+bedroom_lights:
+  icon: mdi:lightbulb
+  name: Bedroom Lights
+  entities:
+    - light.on_off_plug_1
+
 all_lights:
   icon: mdi:lightbulb
   name: All Lights
@@ -18,6 +24,7 @@ all_lights:
     - light.hue_white_lamp_sala_pc
     - light.hue_white_lamp_sala_janela
     - light.hue_white_lamp_corredor
+    - light.on_off_plug_1
 
 all_power_switches:
   icon: mdi:power-socket-eu

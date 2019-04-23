@@ -15,6 +15,7 @@ views:
           - entities:
               - entity: group.living_room_lights
               - entity: group.hall_lights
+              - entity: group.bedroom_lights
             title: Light
             type: entities
           - type: custom:group-card
@@ -73,5 +74,8 @@ views:
       - type: entities
         show_header_toggle: false
         entities:
+          - light.on_off_plug_1
+      - type: entities
+        show_header_toggle: false
+        entities:
           - light.smartplug_quarto
-

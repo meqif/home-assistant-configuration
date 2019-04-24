@@ -54,10 +54,6 @@ person:
     device_trackers:
       - device_tracker.ricardo_s_google_pixel
 
-# Text to speech
-tts:
-  - platform: google
-
 # Devices
 hue:
   bridges:

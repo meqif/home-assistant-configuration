@@ -26,3 +26,19 @@
     - service: light.turn_off
       data:
         entity_id: group.all_lights
+
+- id: turn_off_lights_before_sleep
+  alias: Turn off lights before sleep
+  trigger:
+    - platform: state
+      entity_id: sensor.room_presence
+      to: 'bedroom'
+      for: '00:05:00'
+  condition:
+    - condition: time
+      after: '21:00'
+      before: '06:00'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: group.living_room_lights

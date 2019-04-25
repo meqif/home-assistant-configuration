@@ -64,6 +64,10 @@ neato:
   username: !secret neato_username
   password: !secret neato_password
 
+geo_location:
+  - platform: ign_sismologia
+    radius: 500
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml

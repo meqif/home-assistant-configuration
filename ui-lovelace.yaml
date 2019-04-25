@@ -41,6 +41,12 @@ views:
         - type: iframe
           aspectratio: 100%
           url: !secret windy_embed_url
+        - type: map
+          title: Nearby earthquakes
+          entities:
+            - zone.home
+          geo_location_sources:
+            - ign_sismologia
 
   - icon: mdi:door
     id: hall

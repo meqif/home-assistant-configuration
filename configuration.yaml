@@ -44,6 +44,16 @@ sensor:
     destination: !secret home_gps_coords
     region: EU
     name: Home commute
+  - platform: mqtt_room
+    device_id: !secret phone_beacon
+    name: 'Room Presence'
+    state_topic: 'room_presence'
+    timeout: 5
+    away_timeout: 10
+
+mqtt:
+  broker: !secret mqtt_broker
+  client_id: "home-assistant"
 
 device_tracker: !include device_tracker.yaml
 

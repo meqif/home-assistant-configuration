@@ -25,6 +25,7 @@ all_lights:
     - light.hue_white_lamp_sala_janela
     - light.hue_white_lamp_corredor
     - light.on_off_plug_1
+    - switch.living_room_corner_light
 
 all_power_switches:
   icon: mdi:power-socket-eu

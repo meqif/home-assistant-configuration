@@ -1,0 +1,6 @@
+- name: Relax
+  entities:
+    group.living_room_lights:
+      state: false
+    switch.living_room_corner_light:
+      state: true

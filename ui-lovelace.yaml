@@ -2,6 +2,8 @@ title: Home
 resources:
   - url: /local/group-card.js?v=0
     type: module
+  - url: /local/mini-graph-card-bundle.js?v=0.3.3
+    type: module
 views:
   - cards:
       - type: entities
@@ -47,6 +49,44 @@ views:
             - zone.home
           geo_location_sources:
             - ign_sismologia
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-graph-card
+            hour24: true
+            points_per_hour: 12
+            hours_to_show: 3
+            name: Room Temperature
+            align_icon: left
+            align_header: left
+            entities:
+              - entity: sensor.bedroom_th_sensor_3
+                name: Bedroom
+              - entity: sensor.living_room_th_sensor
+                name: Living Room
+          - type: custom:mini-graph-card
+            hour24: true
+            points_per_hour: 12
+            hours_to_show: 3
+            name: Room Humidity
+            align_icon: left
+            align_header: left
+            entities:
+              - entity: sensor.bedroom_th_sensor_2
+                name: Bedroom
+              - entity: sensor.living_room_th_sensor_3
+                name: Living Room
+          - type: custom:mini-graph-card
+            hour24: true
+            points_per_hour: 12
+            hours_to_show: 3
+            name: Room Air Pressure
+            align_icon: left
+            align_header: left
+            entities:
+              - entity: sensor.bedroom_th_sensor
+                name: Bedroom
+              - entity: sensor.living_room_th_sensor_2
+                name: Living Room
 
   - icon: mdi:door
     id: hall

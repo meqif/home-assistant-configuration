@@ -4,3 +4,9 @@
       state: false
     switch.living_room_corner_light:
       state: true
+- name: Regular lights
+  entities:
+    group.living_room_lights:
+      state: true
+    switch.living_room_corner_light:
+      state: false

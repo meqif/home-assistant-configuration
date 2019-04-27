@@ -116,13 +116,22 @@ views:
           show_header_toggle: false
           entities:
             - light.smartplug_sala
-      - type: entity-button
-        entity: scene.relax
-        tap_action:
-          action: call-service
-          service: scene.turn_on
-          service_data:
-            entity_id: scene.relax
+      - type: horizontal-stack
+        cards:
+        - type: entity-button
+          entity: scene.relax
+          tap_action:
+            action: call-service
+            service: scene.turn_on
+            service_data:
+              entity_id: scene.relax
+        - type: entity-button
+          entity: scene.regular_lights
+          tap_action:
+            action: call-service
+            service: scene.turn_on
+            service_data:
+              entity_id: scene.regular_lights
 
 
   - icon: mdi:bed-empty

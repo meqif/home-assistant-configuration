@@ -1,4 +1,4 @@
-light.smartplug_quarto:
+switch.smartplug_quarto:
   icon: mdi:power-socket-eu
-light.smartplug_sala:
+switch.smartplug_sala:
   icon: mdi:power-socket-eu

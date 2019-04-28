@@ -15,7 +15,7 @@ bedroom_lights:
   icon: mdi:lightbulb
   name: Bedroom Lights
   entities:
-    - light.on_off_plug_1
+    - switch.bedroom_lamp
 
 all_lights:
   icon: mdi:lightbulb
@@ -24,12 +24,12 @@ all_lights:
     - light.hue_white_lamp_sala_pc
     - light.hue_white_lamp_sala_janela
     - light.hue_white_lamp_corredor
-    - light.on_off_plug_1
+    - switch.bedroom_lamp
     - switch.living_room_corner_light
 
 all_power_switches:
   icon: mdi:power-socket-eu
   name: All Power Switches
   entities:
-    - light.smartplug_quarto
-    - light.smartplug_sala
+    - switch.smartplug_quarto
+    - switch.smartplug_sala

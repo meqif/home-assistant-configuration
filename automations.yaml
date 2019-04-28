@@ -80,8 +80,8 @@
       id: dimmer_switch
       event: 3002
   action:
-    service: light.toggle
-    entity_id: light.smartplug_quarto
+    service: switch.toggle
+    entity_id: switch.smartplug_quarto
 
 - alias: 'Dimmer 4th button'
   initial_state: 'on'
@@ -92,5 +92,5 @@
       id: dimmer_switch
       event: 4002
   action:
-    service: light.toggle
-    entity_id: group.bedroom_lights
+    service: switch.toggle
+    entity_id: switch.bedroom_lamp

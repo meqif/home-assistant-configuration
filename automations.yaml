@@ -42,3 +42,55 @@
     - service: light.turn_off
       data:
         entity_id: group.living_room_lights
+
+#####################
+# Hue Dimmer Switch #
+#####################
+
+- alias: 'Dimmer 1st button'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: dimmer_switch
+      event: 1002
+  action:
+    service: light.toggle
+    entity_id: group.living_room_lights
+
+- alias: 'Dimmer 2nd button'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: dimmer_switch
+      event: 2002
+  action:
+    service: light.toggle
+    entity_id: group.hall_lights
+
+- alias: 'Dimmer 3rd button'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: dimmer_switch
+      event: 3002
+  action:
+    service: light.toggle
+    entity_id: light.smartplug_quarto
+
+- alias: 'Dimmer 4th button'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: dimmer_switch
+      event: 4002
+  action:
+    service: light.toggle
+    entity_id: group.bedroom_lights

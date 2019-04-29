@@ -76,7 +76,7 @@ neato:
 
 geo_location:
   - platform: ign_sismologia
-    radius: 500
+    radius: 300
 
 group: !include groups.yaml
 automation: !include automations.yaml

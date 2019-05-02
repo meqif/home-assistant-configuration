@@ -70,7 +70,9 @@ neato:
   password: !secret neato_password
 
 geo_location:
-  - platform: ign_sismologia
+  - platform: geo_json_events
+    url: 'http://ipma-data:8080/seismic_activity'
+    entity_namespace: ipma_seismic
     radius: 300
 
 group: !include groups.yaml

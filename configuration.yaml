@@ -85,6 +85,33 @@ geo_location:
     entity_namespace: ipma_seismic
     radius: 300
 
+input_boolean:
+  relaxing:
+    name: "Relax scene is on"
+    initial: false
+
+switch:
+  - platform: template
+    switches:
+      relax_scene:
+        friendly_name: "Relax scene"
+        icon_template: 'mdi:headphones'
+        value_template: "{{ is_state('input_boolean.relaxing', 'on') }}"
+        turn_on:
+          - service: input_boolean.turn_on
+            data:
+              entity_id: input_boolean.relaxing
+          - service: scene.turn_on
+            data:
+              entity_id: scene.relax
+        turn_off:
+          - service: input_boolean.turn_off
+            data:
+              entity_id: input_boolean.relaxing
+          - service: scene.turn_on
+            data:
+              entity_id: scene.regular_lights
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml

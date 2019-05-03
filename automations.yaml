@@ -15,8 +15,7 @@
   alias: Turn off lights when off to work
   trigger:
     - platform: state
-      entity_id: person.ricardo
-      from: 'home'
+      entity_id: sensor.ricardo_presence
       to: 'not_home'
   condition:
     - condition: time

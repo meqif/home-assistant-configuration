@@ -2,3 +2,9 @@ switch.smartplug_quarto:
   icon: mdi:power-socket-eu
 switch.smartplug_sala:
   icon: mdi:power-socket-eu
+switch.living_room_corner_light:
+  icon: mdi:floor-lamp
+input_boolean.relaxing:
+  hidden: true
+switch.bedroom_lamp:
+  icon: mdi:lamp

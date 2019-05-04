@@ -1,9 +1,9 @@
 - id: indoor_lights_at_sunset
   alias: Indoor lights at sunset
   trigger:
-  - event: sunset
-    platform: sun
-    offset: "-01:00:00"
+  - platform: state
+    entity_id: sensor.daylight
+    to: 'golden_hour_2'
   action:
   - data:
       entity_id:

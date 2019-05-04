@@ -126,7 +126,18 @@ views:
             service: scene.turn_on
             service_data:
               entity_id: scene.regular_lights
-
+      - type: custom:mini-graph-card
+        show:
+          extrema: true
+          fill: false
+          labels: true
+        animate: true
+        hours_to_show: 6
+        points_per_hour: 4
+        hour24: true
+        name: Temperature
+        entities:
+          - sensor.living_room_th_sensor
 
   - icon: mdi:bed-empty
     id: bedroom
@@ -140,3 +151,14 @@ views:
         show_header_toggle: false
         entities:
           - switch.smartplug_quarto
+      - type: custom:mini-graph-card
+        show:
+          extrema: true
+          fill: false
+        animate: true
+        hours_to_show: 6
+        points_per_hour: 4
+        hour24: true
+        name: Temperature
+        entities:
+          - sensor.bedroom_th_sensor_3

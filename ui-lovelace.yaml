@@ -4,27 +4,51 @@ resources:
     type: module
   - url: /local/mini-graph-card-bundle.js?v=0.3.3
     type: module
+  - url: /local/button-card.js
+    type: module
 views:
   - cards:
+      - type: horizontal-stack
+        cards:
+        - type: 'custom:button-card'
+          icon: mdi:sofa
+          entity: light.living_room
+          show_name: false
+          hold_action:
+            action: more-info
+          state:
+            - value: "on"
+              color: 'var(--primary-color)'
+            - value: "off"
+              color: 'var(--light-primary-color)'
+        - type: 'custom:button-card'
+          icon: mdi:bed-empty
+          entity: switch.bedroom_lamp
+          show_name: false
+          hold_action:
+            action: more-info
+          state:
+            - value: "on"
+              color: 'var(--primary-color)'
+            - value: "off"
+              color: 'var(--light-primary-color)'
+        - type: 'custom:button-card'
+          icon: mdi:door
+          entity: light.hue_white_lamp_corredor
+          show_name: false
+          hold_action:
+            action: more-info
+          state:
+            - value: "on"
+              color: 'var(--primary-color)'
+            - value: "off"
+              color: 'var(--light-primary-color)'
       - type: entities
         title: Information
         show_header_toggle: false
         entities:
           - sensor.work_commute
           - sensor.home_commute
-      - type: vertical-stack
-        cards:
-          - entities:
-              - entity: group.living_room_lights
-              - entity: group.hall_lights
-              - entity: group.bedroom_lights
-            title: Light
-            type: entities
-          - type: custom:group-card
-            card:
-              title: Power plugs
-              type: entities
-            group: group.all_power_switches
       - type: picture-entity
         entity: vacuum.neato
         camera_image: camera.neato_cleaning_map

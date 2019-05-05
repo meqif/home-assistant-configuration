@@ -47,9 +47,9 @@
   trigger:
     platform: event
     event_type: deconz_event
-    event_data:
-      id: dimmer_switch
   condition:
+    - condition: template
+      value_template: "{{ trigger.event.data.id in ['dimmer_switch', 'dimmer_switch_living_room'] }}"
     - condition: template
       value_template: "{{ trigger.event.data.event|int in [1002, 2002, 3002, 4002] }}"
   action:

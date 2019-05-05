@@ -8,3 +8,7 @@ input_boolean.relaxing:
   hidden: true
 switch.bedroom_lamp:
   icon: mdi:lamp
+scene.relax:
+  icon: mdi:weather-night
+scene.regular_lights:
+  icon: mdi:weather-sunny

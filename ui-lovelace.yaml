@@ -150,18 +150,48 @@ views:
             service: scene.turn_on
             service_data:
               entity_id: scene.regular_lights
-      - type: custom:mini-graph-card
-        show:
-          extrema: true
-          fill: false
-          labels: true
-        animate: true
-        hours_to_show: 6
-        points_per_hour: 4
-        hour24: true
-        name: Temperature
-        entities:
-          - sensor.living_room_th_sensor
+      - type: vertical-stack
+        cards:
+        - type: custom:mini-graph-card
+          show:
+            extrema: true
+            fill: false
+            labels: true
+          animate: true
+          hours_to_show: 6
+          points_per_hour: 4
+          hour24: true
+          name: Temperature
+          entities:
+            - sensor.living_room_th_sensor
+        - type: horizontal-stack
+          cards:
+          - type: custom:mini-graph-card
+            font_size: 75
+            line_width: 8
+            show:
+              fill: false
+              labels: false
+            animate: true
+            hours_to_show: 6
+            points_per_hour: 4
+            hour24: true
+            name: Humidity
+            entities:
+              - sensor.living_room_th_sensor_3
+          - type: custom:mini-graph-card
+            font_size: 75
+            line_width: 8
+            show:
+              fill: false
+              labels: false
+            animate: true
+            hours_to_show: 6
+            points_per_hour: 4
+            hour24: true
+            name: Pressure
+            entities:
+              - sensor.living_room_th_sensor_2
 
   - icon: mdi:bed-empty
     id: bedroom
@@ -175,14 +205,44 @@ views:
         show_header_toggle: false
         entities:
           - switch.smartplug_quarto
-      - type: custom:mini-graph-card
-        show:
-          extrema: true
-          fill: false
-        animate: true
-        hours_to_show: 6
-        points_per_hour: 4
-        hour24: true
-        name: Temperature
-        entities:
-          - sensor.bedroom_th_sensor_3
+      - type: vertical-stack
+        cards:
+        - type: custom:mini-graph-card
+          show:
+            extrema: true
+            fill: false
+          animate: true
+          hours_to_show: 6
+          points_per_hour: 4
+          hour24: true
+          name: Temperature
+          entities:
+            - sensor.bedroom_th_sensor_3
+        - type: horizontal-stack
+          cards:
+          - type: custom:mini-graph-card
+            font_size: 75
+            line_width: 8
+            show:
+              fill: false
+              labels: false
+            animate: true
+            hours_to_show: 6
+            points_per_hour: 4
+            hour24: true
+            name: Humidity
+            entities:
+              - sensor.bedroom_th_sensor_2
+          - type: custom:mini-graph-card
+            font_size: 75
+            line_width: 8
+            show:
+              fill: false
+              labels: false
+            animate: true
+            hours_to_show: 6
+            points_per_hour: 4
+            hour24: true
+            name: Pressure
+            entities:
+              - sensor.bedroom_th_sensor

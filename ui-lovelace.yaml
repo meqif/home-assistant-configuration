@@ -6,6 +6,10 @@ resources:
     type: module
   - url: /local/button-card.js
     type: module
+  - url: /local/card-tools.js
+    type: module
+  - url: /local/useful-markdown-card.js
+    type: module
 views:
   - cards:
       - type: horizontal-stack
@@ -64,6 +68,21 @@ views:
         cards:
         - entity: weather.home
           type: weather-forecast
+        - type: conditional
+          conditions:
+            - entity: binary_sensor.meteoalarm
+              state: 'on'
+          card:
+            type: custom:useful-markdown-card
+            content: >
+              ## [[ binary_sensor.meteoalarm.attributes.event ]]
+
+              *Severity*: [[ binary_sensor.meteoalarm.attributes.severity ]]
+              <br>
+
+              [[ binary_sensor.meteoalarm.attributes.description ]]
+
+              [[ binary_sensor.meteoalarm.attributes.instruction ]]
         - type: iframe
           aspectratio: 100%
           url: !secret windy_embed_url

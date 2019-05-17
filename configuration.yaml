@@ -61,6 +61,11 @@ sensor:
             {{ states('device_tracker.ricardo_s_google_pixel') }}
           {% endif %}
 
+binary_sensor:
+  - platform: meteoalarm
+    country: 'PT'
+    province: 'SETÚBAL'
+
 mqtt:
   broker: !secret mqtt_broker
   client_id: "home-assistant"

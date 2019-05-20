@@ -265,3 +265,10 @@ views:
             name: Pressure
             entities:
               - sensor.bedroom_th_sensor
+
+  - icon: mdi:shower
+    id: bathroom
+    title: Bathroom
+    cards:
+      - type: entity-button
+        entity: switch.towel_heater

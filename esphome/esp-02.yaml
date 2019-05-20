@@ -1,0 +1,55 @@
+esphome:
+  name: esp02
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  power_save_mode: high
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+globals:
+  - id: towel_heater_status
+    type: bool
+    initial_value: 'false'
+
+switch:
+  - platform: gpio
+    pin: D8
+    id: towel_heater_internal_switch
+
+  - platform: template
+    name: "Towel Heater"
+    icon: mdi:car-defrost-rear
+    lambda: 'return id(towel_heater_status);'
+    turn_on_action:
+      - lambda: 'id(towel_heater_status) = true;'
+      - switch.turn_on: towel_heater_internal_switch
+      - delay: 10ms
+      - switch.turn_off: towel_heater_internal_switch
+    turn_off_action:
+      - lambda: 'id(towel_heater_status) = false;'
+      - switch.turn_on: towel_heater_internal_switch
+      - delay: 10ms
+      - switch.turn_off: towel_heater_internal_switch
+
+output:
+  - platform: esp8266_pwm
+    id: onboard_led
+    pin:
+      number: D4
+      inverted: true
+
+light:
+  - platform: monochromatic
+    name: "Onboard LED ESP-02"
+    output: onboard_led
+    id: led_1

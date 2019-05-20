@@ -64,3 +64,13 @@
                                 3002: 'switch.smartplug_quarto',
                                 4002: 'switch.bedroom_lamp'} %}
         {{ event_mapping[trigger.event.data.event|int] }}
+
+- id: turn_on_towel_heater
+  alias: Turn on towel heater
+  trigger:
+    - platform: time
+      at: '19:30:00'
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.towel_heater

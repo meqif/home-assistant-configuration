@@ -74,3 +74,12 @@
     - service: switch.turn_on
       data:
         entity_id: switch.towel_heater
+
+- alias: Turn off extended away when back home
+  trigger:
+    - platform: state
+      entity_id: sensor.ricardo_presence
+      from: 'not_home'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.extended_away

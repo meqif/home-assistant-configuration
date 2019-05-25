@@ -94,6 +94,10 @@ input_boolean:
   relaxing:
     name: "Relax scene is on"
     initial: false
+  extended_away:
+    name: "Extended Away"
+    initial: false
+    icon: mdi:beach
 
 switch:
   - platform: template

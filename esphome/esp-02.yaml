@@ -16,6 +16,20 @@ api:
 
 ota:
 
+deep_sleep:
+  sleep_duration: 19h
+  id: deep_sleep_1
+
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+    on_time:
+      - seconds: 0
+        minutes: 0
+        hours: 0
+        then:
+          - deep_sleep.enter: deep_sleep_1
+
 sensor:
   - platform: uptime
     name: "ESP-02 Uptime"

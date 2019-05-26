@@ -16,6 +16,14 @@ api:
 
 ota:
 
+sensor:
+  - platform: uptime
+    name: "ESP-02 Uptime"
+
+  - platform: wifi_signal
+    name: "ESP-02 RSSI"
+    update_interval: 60s
+
 globals:
   - id: towel_heater_status
     type: bool

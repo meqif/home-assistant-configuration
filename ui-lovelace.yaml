@@ -96,9 +96,9 @@ views:
             align_icon: left
             align_header: left
             entities:
-              - entity: sensor.bedroom_th_sensor_3
+              - entity: sensor.bedroom_temperature
                 name: Bedroom
-              - entity: sensor.living_room_th_sensor
+              - entity: sensor.bedroom_temperature
                 name: Living Room
           - type: custom:mini-graph-card
             hour24: true
@@ -108,9 +108,9 @@ views:
             align_icon: left
             align_header: left
             entities:
-              - entity: sensor.bedroom_th_sensor_2
+              - entity: sensor.bedroom_humidity
                 name: Bedroom
-              - entity: sensor.living_room_th_sensor_3
+              - entity: sensor.bedroom_humidity
                 name: Living Room
           - type: custom:mini-graph-card
             hour24: true
@@ -120,9 +120,9 @@ views:
             align_icon: left
             align_header: left
             entities:
-              - entity: sensor.bedroom_th_sensor
+              - entity: sensor.bedroom_pressure
                 name: Bedroom
-              - entity: sensor.living_room_th_sensor_2
+              - entity: sensor.bedroom_pressure
                 name: Living Room
 
   - icon: mdi:door
@@ -182,7 +182,7 @@ views:
           hour24: true
           name: Temperature
           entities:
-            - sensor.living_room_th_sensor
+            - sensor.bedroom_temperature
         - type: horizontal-stack
           cards:
           - type: custom:mini-graph-card
@@ -197,7 +197,7 @@ views:
             hour24: true
             name: Humidity
             entities:
-              - sensor.living_room_th_sensor_3
+              - sensor.bedroom_humidity
           - type: custom:mini-graph-card
             font_size: 75
             line_width: 8
@@ -210,7 +210,7 @@ views:
             hour24: true
             name: Pressure
             entities:
-              - sensor.living_room_th_sensor_2
+              - sensor.bedroom_pressure
 
   - icon: mdi:bed-empty
     id: bedroom
@@ -236,7 +236,7 @@ views:
           hour24: true
           name: Temperature
           entities:
-            - sensor.bedroom_th_sensor_3
+            - sensor.bedroom_temperature
         - type: horizontal-stack
           cards:
           - type: custom:mini-graph-card
@@ -251,7 +251,7 @@ views:
             hour24: true
             name: Humidity
             entities:
-              - sensor.bedroom_th_sensor_2
+              - sensor.bedroom_humidity
           - type: custom:mini-graph-card
             font_size: 75
             line_width: 8
@@ -264,7 +264,7 @@ views:
             hour24: true
             name: Pressure
             entities:
-              - sensor.bedroom_th_sensor
+              - sensor.bedroom_pressure
 
   - icon: mdi:shower
     id: bathroom

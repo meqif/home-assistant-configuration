@@ -98,7 +98,7 @@ views:
             entities:
               - entity: sensor.bedroom_temperature
                 name: Bedroom
-              - entity: sensor.bedroom_temperature
+              - entity: sensor.living_room_temperature
                 name: Living Room
           - type: custom:mini-graph-card
             hour24: true
@@ -110,7 +110,7 @@ views:
             entities:
               - entity: sensor.bedroom_humidity
                 name: Bedroom
-              - entity: sensor.bedroom_humidity
+              - entity: sensor.living_room_humidity
                 name: Living Room
           - type: custom:mini-graph-card
             hour24: true
@@ -122,7 +122,7 @@ views:
             entities:
               - entity: sensor.bedroom_pressure
                 name: Bedroom
-              - entity: sensor.bedroom_pressure
+              - entity: sensor.living_room_pressure
                 name: Living Room
 
   - icon: mdi:door

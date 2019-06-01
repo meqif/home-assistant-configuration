@@ -38,6 +38,13 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   power_save_mode: high
+  fast_connect: true
+  manual_ip:
+    static_ip: !secret esp_02_ip
+    gateway: !secret gateway
+    subnet: 255.255.255.0
+    dns1: !secret dns_server
+    dns2: 0.0.0.0
 
 # Enable logging
 logger:

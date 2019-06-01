@@ -2,6 +2,37 @@ esphome:
   name: esp02
   platform: ESP8266
   board: d1_mini
+  on_loop:
+    then:
+      - lambda: |
+          // Make absolutely certain we're not checking before we have one minute of uptime, otherwise we risk
+          // completly bogus time readings and getting into a boot loop!
+          if (id(esp_02_uptime).state < 60.0f) {
+              return;
+          }
+
+          // The loop runs about every 16 ms (~60 Hz).
+          // That's overkill, so check only once per minute.
+          static auto loop_count = 0;
+
+          if (loop_count++ < 60 * 60) {
+              return;
+          }
+
+          loop_count = 0;
+
+          auto time = id(homeassistant_time).now();
+          auto distance_to_waking_time = (19 - time.hour - 1) * 3600 + (60 - time.minute) * 60;
+
+          ESP_LOGD("main_loop", "Distance to waking time: %d", distance_to_waking_time);
+
+          if (distance_to_waking_time < 1800) {
+              return;
+          }
+
+          ESP_LOGD("main_loop", "Outside waking time, sleeping for 30 minutes");
+
+          ESP.deepSleep(uint64_t(1800) * 1000000);
 
 wifi:
   ssid: !secret wifi_ssid
@@ -16,23 +47,14 @@ api:
 
 ota:
 
-deep_sleep:
-  sleep_duration: 19h
-  id: deep_sleep_1
-
 time:
   - platform: homeassistant
     id: homeassistant_time
-    on_time:
-      - seconds: 0
-        minutes: 0
-        hours: 0
-        then:
-          - deep_sleep.enter: deep_sleep_1
 
 sensor:
   - platform: uptime
     name: "ESP-02 Uptime"
+    id: esp_02_uptime
 
   - platform: wifi_signal
     name: "ESP-02 RSSI"

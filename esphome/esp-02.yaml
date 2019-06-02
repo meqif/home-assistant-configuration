@@ -5,6 +5,11 @@ esphome:
   on_loop:
     then:
       - lambda: |
+          // According to https://thingpulse.com/max-deep-sleep-for-esp8266/
+          // the maximum sleep duration is a bit over 3 hours, with some variance due to the RTC clock period,
+          // which changes according to the temperature. For safety, assume 3 hours.
+          const auto maximum_sleep_duration = 3 * 3600;
+
           // Make absolutely certain we're not checking before we have one minute of uptime, otherwise we risk
           // completly bogus time readings and getting into a boot loop!
           if (id(esp_02_uptime).state < 60.0f) {
@@ -26,13 +31,14 @@ esphome:
 
           ESP_LOGD("main_loop", "Distance to waking time: %d", distance_to_waking_time);
 
-          if (distance_to_waking_time < 1800) {
+          auto sleepable_time = distance_to_waking_time < maximum_sleep_duration ? distance_to_waking_time : maximum_sleep_duration;
+          if (sleepable_time <= 0) {
               return;
           }
 
-          ESP_LOGD("main_loop", "Outside waking time, sleeping for 30 minutes");
+          ESP_LOGD("main_loop", "Outside waking time, sleeping for %d s", sleepable_time);
 
-          ESP.deepSleep(uint64_t(1800) * 1000000);
+          ESP.deepSleep(uint64_t(sleepable_time) * 1000000);
 
 wifi:
   ssid: !secret wifi_ssid

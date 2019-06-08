@@ -12,6 +12,8 @@ resources:
     type: module
   - url: /local/banner-card.js?v=0.5.0
     type: module
+  - url: /local/simple-weather-card.bundle.js?v=0.3.0
+    type: module
 views:
   - cards:
       - type: vertical-stack
@@ -57,8 +59,11 @@ views:
     cards:
       - type: vertical-stack
         cards:
-        - entity: weather.home
-          type: weather-forecast
+        - type: custom:simple-weather-card
+          entity: weather.home
+          name: ' '
+          backdrop:
+            night: "var(--dark-primary-color)"
         - type: conditional
           conditions:
             - entity: binary_sensor.meteoalarm

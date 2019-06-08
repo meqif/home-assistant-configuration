@@ -82,13 +82,6 @@ mqtt:
 
 device_tracker: !include device_tracker.yaml
 
-person:
-  - name: Ricardo
-    id: ab9ea2abf06e46eb8ce169784ccdefa2
-    user_id: f9054ef8dbf6487dae10d4f703695118
-    device_trackers:
-      - device_tracker.ricardo_s_google_pixel
-
 # Devices
 neato:
   username: !secret neato_username

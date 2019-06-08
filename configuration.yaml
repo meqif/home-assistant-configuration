@@ -60,6 +60,16 @@ sensor:
           {% else %}
             {{ states('device_tracker.ricardo_s_google_pixel') }}
           {% endif %}
+      bedroom_multi_sensor_battery_level:
+        friendly_name: "Bedroom Multi-Sensor Battery Level"
+        value_template: "{{ state_attr('sensor.bedroom_temperature', 'battery_level') }}"
+        unit_of_measurement: '%'
+        device_class: 'battery'
+      living_room_multi_sensor_battery_level:
+        friendly_name: "Living Room Multi-Sensor Battery Level"
+        value_template: "{{ state_attr('sensor.living_room_temperature', 'battery_level') }}"
+        unit_of_measurement: '%'
+        device_class: 'battery'
 
 binary_sensor:
   - platform: meteoalarm

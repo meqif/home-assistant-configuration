@@ -10,43 +10,34 @@ resources:
     type: module
   - url: /local/useful-markdown-card.js
     type: module
+  - url: /local/banner-card.js?v=0.5.0
+    type: module
 views:
   - cards:
-      - type: horizontal-stack
+      - type: vertical-stack
         cards:
-        - type: 'custom:button-card'
-          icon: mdi:sofa
-          entity: light.living_room
-          show_name: false
-          hold_action:
-            action: more-info
-          state:
-            - value: "on"
-              color: 'var(--primary-color)'
-            - value: "off"
-              color: 'var(--light-primary-color)'
-        - type: 'custom:button-card'
-          icon: mdi:bed-empty
-          entity: switch.bedroom_lamp
-          show_name: false
-          hold_action:
-            action: more-info
-          state:
-            - value: "on"
-              color: 'var(--primary-color)'
-            - value: "off"
-              color: 'var(--light-primary-color)'
-        - type: 'custom:button-card'
-          icon: mdi:door
-          entity: light.hue_white_lamp_corredor
-          show_name: false
-          hold_action:
-            action: more-info
-          state:
-            - value: "on"
-              color: 'var(--primary-color)'
-            - value: "off"
-              color: 'var(--light-primary-color)'
+        - type: custom:banner-card
+          background: "#EDE7B0"
+          heading: "\U0001F6CB Living room"
+          link: /lovelace/living_room
+          entities:
+            - entity: light.living_room
+              name: Light
+            - entity: sensor.living_room_temperature
+              name: Temperature
+            - entity: sensor.living_room_humidity
+              name: Humidity
+        - type: custom:banner-card
+          background: "#91CCEC"
+          heading: "\U0001F6CF Bedroom"
+          link: /lovelace/bedroom
+          entities:
+            - entity: switch.bedroom_lamp
+              name: Lamp
+            - entity: sensor.bedroom_temperature
+              name: Temperature
+            - entity: sensor.bedroom_humidity
+              name: Humidity
       - type: entities
         title: Information
         show_header_toggle: false
@@ -135,6 +126,7 @@ views:
           - light.hue_white_lamp_corredor
 
   - icon: mdi:sofa
+    path: living_room
     id: living-room
     title: Living Room
     cards:
@@ -213,6 +205,7 @@ views:
               - sensor.living_room_pressure
 
   - icon: mdi:bed-empty
+    path: bedroom
     id: bedroom
     title: Bedroom
     cards:

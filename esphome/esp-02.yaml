@@ -27,7 +27,13 @@ esphome:
           loop_count = 0;
 
           auto time = id(homeassistant_time).now();
-          auto distance_to_waking_time = (19 - time.hour - 1) * 3600 + (60 - time.minute) * 60;
+          auto distance_to_waking_time = 0;
+
+          if (time.hour < 19) {
+              distance_to_waking_time = (19 - time.hour - 1) * 3600 + (60 - time.minute) * 60;
+          } else if (time.hour >= 23) {
+              distance_to_waking_time = maximum_sleep_duration;
+          }
 
           ESP_LOGD("main_loop", "Distance to waking time: %d", distance_to_waking_time);
 

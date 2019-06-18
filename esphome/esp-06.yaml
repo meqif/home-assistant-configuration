@@ -1,0 +1,40 @@
+esphome:
+  name: esp06
+  platform: ESP32
+  board: lolin_d32_pro
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  power_save_mode: light
+  fast_connect: true
+  manual_ip:
+    static_ip: !secret esp_06_ip
+    gateway: !secret gateway
+    subnet: 255.255.255.0
+    dns1: !secret dns_server
+    dns2: 0.0.0.0
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+mqtt:
+  broker: !secret mqtt_broker
+  topic_prefix: esp06
+
+sensor:
+  - platform: adc
+    pin: 34
+    name: "Bed Pressure"
+    update_interval: 2s
+    attenuation: 11db
+    filters:
+      - sliding_window_moving_average:
+          window_size: 3
+          send_every: 3
+      - lambda: 'return std::max(x, 0.0f);'

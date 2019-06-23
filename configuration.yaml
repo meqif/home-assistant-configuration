@@ -76,6 +76,13 @@ binary_sensor:
     country: 'PT'
     province: 'SETÚBAL'
 
+  - platform: trend
+    sensors:
+      humidity_increasing:
+        friendly_name: "Humidity Increasing"
+        entity_id: sensor.bedroom_humidity
+        min_gradient: 0.001
+
 mqtt:
   broker: !secret mqtt_broker
   client_id: "home-assistant"

@@ -22,6 +22,12 @@ default_config:
 recorder:
   db_url: !secret postgres_url
 
+influxdb:
+  host: !secret influxdb_host
+  username: !secret influxdb_username
+  password: !secret influxdb_password
+  database: !secret influxdb_database
+
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
   base_url: !secret http_base_url

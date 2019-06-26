@@ -1,0 +1,15 @@
+---
+id: turn_off_lights_when_off_to_work
+alias: Turn off lights when off to work
+trigger:
+  - platform: state
+    entity_id: sensor.ricardo_presence
+    to: 'not_home'
+condition:
+  - condition: time
+    after: '08:00'
+    before: '18:00'
+action:
+  - service: light.turn_off
+    data:
+      entity_id: group.all_lights

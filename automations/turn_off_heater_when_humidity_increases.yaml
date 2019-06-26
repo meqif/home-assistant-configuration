@@ -1,0 +1,14 @@
+---
+alias: Turn off heater after humidity increases
+trigger:
+  - platform: state
+    entity_id: binary_sensor.humidity_increasing
+    to: 'on'
+condition:
+  - condition: state
+    entity_id: switch.towel_heater
+    state: 'on'
+action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.towel_heater

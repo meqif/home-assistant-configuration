@@ -1,0 +1,13 @@
+---
+id: indoor_lights_at_sunset
+alias: Indoor lights at sunset
+trigger:
+  - platform: state
+    entity_id: sensor.daylight
+    to: 'golden_hour_2'
+action:
+  - service: light.turn_on
+    data:
+      entity_id:
+        - group.living_room_lights
+        - group.hall_lights

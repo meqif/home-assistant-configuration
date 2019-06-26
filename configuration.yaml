@@ -126,7 +126,7 @@ switch:
               entity_id: scene.regular_lights
 
 group: !include groups.yaml
-automation: !include automations.yaml
+automation: !include_dir_list automations
 script: !include scripts.yaml
 frontend: !include frontend.yaml
 scene: !include scene.yaml

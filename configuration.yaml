@@ -136,6 +136,12 @@ switch:
             data:
               entity_id: scene.regular_lights
 
+notify:
+  - name: slack
+    platform: slack
+    api_key: !secret slack_api_key
+    default_channel: !secret slack_default_channel
+
 group: !include groups.yaml
 automation: !include_dir_list automations
 script: !include scripts.yaml

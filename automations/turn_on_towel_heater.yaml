@@ -4,6 +4,10 @@ alias: Turn on towel heater
 trigger:
   - platform: time
     at: '19:30:00'
+condition:
+  - condition: state
+    entity_id: input_boolean.extended_away
+    state: 'off'
 action:
   - service: switch.turn_on
     data:

@@ -5,6 +5,10 @@ trigger:
   - platform: state
     entity_id: sensor.daylight
     to: 'golden_hour_2'
+condition:
+  - condition: state
+    entity_id: input_boolean.extended_away
+    state: 'off'
 action:
   - service: light.turn_on
     data:

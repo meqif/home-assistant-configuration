@@ -55,7 +55,9 @@ sensor:
       ricardo_presence:
         friendly_name: "Ricardo's Presence"
         value_template: >-
-          {% if not is_state('sensor.room_presence', 'not_home') %}
+          {% if is_state('binary_sensor.bed_presence', 'on') %}
+            bedroom
+          {% elif not is_state('sensor.room_presence', 'not_home') %}
             {{ states('sensor.room_presence') }}
           {% else %}
             {{ states('device_tracker.ricardo_s_google_pixel') }}
@@ -75,6 +77,12 @@ binary_sensor:
   - platform: meteoalarm
     country: 'PT'
     province: 'SETÚBAL'
+
+  - platform: template
+    sensors:
+      bed_presence:
+        friendly_name: "Bed presence"
+        value_template: '{{ states("sensor.bed_pressure") | float >= 1.00 }}'
 
   - platform: trend
     sensors:

@@ -84,6 +84,9 @@ binary_sensor:
         friendly_name: "Bed presence"
         value_template: '{{ states("sensor.bed_pressure") | float >= 1.00 }}'
 
+  - platform: workday
+    country: PTE
+
   - platform: trend
     sensors:
       humidity_increasing:

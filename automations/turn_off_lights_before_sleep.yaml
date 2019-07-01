@@ -3,7 +3,7 @@ id: turn_off_lights_before_sleep
 alias: Turn off lights before sleep
 trigger:
   - platform: state
-    entity_id: sensor.room_presence
+    entity_id: sensor.ricardo_presence
     to: 'bedroom'
     for: '00:05:00'
 condition:

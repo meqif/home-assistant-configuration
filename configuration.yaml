@@ -156,3 +156,6 @@ automation: !include_dir_list automations
 script: !include scripts.yaml
 frontend: !include frontend.yaml
 scene: !include scene.yaml
+
+hacs:
+  token: !secret github_token

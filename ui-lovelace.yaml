@@ -1,18 +1,16 @@
 title: Home
 resources:
-  - url: /local/group-card.js?v=0
+  - url: /community_plugin/group-card/group-card.js
     type: module
-  - url: /local/mini-graph-card-bundle.js?v=0.3.3
+  - url: /community_plugin/mini-graph-card/mini-graph-card.js
     type: module
-  - url: /local/button-card.js
+  - url: /community_plugin/banner-card/banner-card.js
     type: module
-  - url: /local/card-tools.js
+  - url: /community_plugin/simple-weather-card/simple-weather-card.js
     type: module
-  - url: /local/useful-markdown-card.js
-    type: module
-  - url: /local/banner-card.js?v=0.5.0
-    type: module
-  - url: /local/simple-weather-card.bundle.js?v=0.3.0
+  - url: /community_plugin/lovelace-card-templater/card-templater.js
+    type: js
+  - url: /community_plugin/weather-card/weather-card.js
     type: module
 views:
   - cards:
@@ -41,6 +39,9 @@ views:
             - entity: sensor.bedroom_humidity
               name: Humidity
       - type: entities
+        entities:
+          - sensor.hacs
+      - type: entities
         title: Information
         show_header_toggle: false
         entities:
@@ -59,26 +60,8 @@ views:
     cards:
       - type: vertical-stack
         cards:
-        - type: custom:simple-weather-card
+        - type: custom:weather-card
           entity: weather.home
-          name: ' '
-          backdrop:
-            night: "var(--dark-primary-color)"
-        - type: conditional
-          conditions:
-            - entity: binary_sensor.meteoalarm
-              state: 'on'
-          card:
-            type: custom:useful-markdown-card
-            content: >
-              ## [[ binary_sensor.meteoalarm.attributes.event ]]
-
-              *Severity*: [[ binary_sensor.meteoalarm.attributes.severity ]]
-              <br>
-
-              [[ binary_sensor.meteoalarm.attributes.description ]]
-
-              [[ binary_sensor.meteoalarm.attributes.instruction ]]
         - type: iframe
           aspectratio: 100%
           url: !secret windy_embed_url
@@ -263,6 +246,10 @@ views:
             name: Pressure
             entities:
               - sensor.bedroom_pressure
+        - type: glance
+          entities:
+            - binary_sensor.bed_presence
+            - sensor.bed_pressure
 
   - icon: mdi:shower
     id: bathroom

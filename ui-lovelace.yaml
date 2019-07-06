@@ -12,6 +12,16 @@ resources:
     type: js
   - url: /community_plugin/weather-card/weather-card.js
     type: module
+  - url: /community_plugin/compact-custom-header/compact-custom-header.js
+    type: module
+cch:
+  swipe: 'true'
+  exceptions:
+    - conditions:
+        media_query: '(max-width: 600px)'
+      config:
+        notifications: 'overflow'
+        voice: 'hide'
 views:
   - cards:
       - type: vertical-stack

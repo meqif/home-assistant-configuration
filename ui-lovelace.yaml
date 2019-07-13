@@ -48,6 +48,15 @@ views:
               name: Temperature
             - entity: sensor.bedroom_humidity
               name: Humidity
+        - type: custom:banner-card
+          heading: "\U0001F6C1 Bathroom"
+          entities:
+            - entity: switch.towel_heater
+              name: Towel Heater
+            - entity: sensor.bathroom_temperature
+              name: Temperature
+            - entity: sensor.bathroom_relative_humidity
+              name: Humidity
       - type: entities
         entities:
           - sensor.hacs

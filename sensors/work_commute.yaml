@@ -1,0 +1,6 @@
+---
+platform: waze_travel_time
+origin: !secret home_gps_coords
+destination: !secret work_gps_coords
+region: EU
+name: Work commute

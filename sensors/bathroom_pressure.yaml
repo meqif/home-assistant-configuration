@@ -1,0 +1,6 @@
+---
+platform: mqtt
+name: 'Bathroom Pressure'
+state_topic: 'esp02/sensor/bme280_bathroom_pressure/state'
+device_class: 'pressure'
+unit_of_measurement: 'hPa'

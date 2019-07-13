@@ -27,6 +27,11 @@ mqtt:
   broker: !secret mqtt_broker
   topic_prefix: esp06
 
+i2c:
+  sda: 21
+  scl: 22
+  scan: True
+
 sensor:
   - platform: adc
     pin: 34
@@ -38,3 +43,26 @@ sensor:
           window_size: 3
           send_every: 3
       - lambda: 'return std::max(x, 0.0f);'
+
+  - platform: bme280
+    temperature:
+      name: "BME280 Bedroom Temperature"
+      id: bme280_bedroom_temperature
+    pressure:
+      name: "BME280 Bedroom Pressure"
+      id: bme280_bedroom_pressure
+    humidity:
+      name: "BME280 Bedroom Relative Humidity"
+      id: bme280_bedroom_humidity
+    address: 0x76
+    update_interval: 15s
+
+  - platform: template
+    name: "BME280 Bedroom Absolute Humidity"
+    lambda: |-
+      const float mw = 18.01534;    // molar mass of water g/mol
+      const float r = 8.31447215;   // Universal gas constant J/mol/K
+      return (6.112 * powf(2.718281828, (17.67 * id(bme280_bedroom_temperature).state) /
+        (id(bme280_bedroom_temperature).state + 243.5)) * id(bme280_bedroom_humidity).state * mw) /
+        ((273.15 + id(bme280_bedroom_temperature).state) * r); // in grams/m^3
+    accuracy_decimals: 2

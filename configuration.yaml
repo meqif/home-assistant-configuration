@@ -51,6 +51,8 @@ binary_sensor:
       bed_presence:
         friendly_name: "Bed presence"
         value_template: '{{ states("sensor.bed_pressure") | float >= 1.00 }}'
+        delay_off:
+          minutes: 2
 
   - platform: workday
     country: PTE

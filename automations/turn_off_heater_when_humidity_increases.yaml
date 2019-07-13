@@ -1,8 +1,8 @@
 ---
-alias: Turn off heater after humidity increases
+alias: Turn off towel heater after shower ends
 trigger:
   - platform: state
-    entity_id: binary_sensor.humidity_increasing
+    entity_id: binary_sensor.shower_ended
     to: 'on'
 condition:
   - condition: state

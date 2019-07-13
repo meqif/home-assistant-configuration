@@ -12,3 +12,6 @@ action:
   - service: switch.turn_off
     data:
       entity_id: switch.towel_heater
+  - service: switch.turn_on
+    data:
+      entity_id: switch.towel_heater_deep_sleep

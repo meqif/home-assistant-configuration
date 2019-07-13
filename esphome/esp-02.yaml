@@ -136,6 +136,12 @@ switch:
       - delay: 10ms
       - switch.turn_off: towel_heater_internal_switch
 
+  - platform: template
+    name: "Deep Sleep"
+    turn_on_action:
+      - lambda: |-
+          ESP.deepSleep(uint64_t(3600) * 1000000);
+
 output:
   - platform: esp8266_pwm
     id: onboard_led

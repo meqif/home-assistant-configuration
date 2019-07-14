@@ -1,19 +1,14 @@
 esphome:
-  name: esp06
+  name: bedroom
   platform: ESP32
   board: lolin_d32_pro
 
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
+  domain: !secret wifi_domain
   power_save_mode: light
   fast_connect: true
-  manual_ip:
-    static_ip: !secret esp_06_ip
-    gateway: !secret gateway
-    subnet: 255.255.255.0
-    dns1: !secret dns_server
-    dns2: 0.0.0.0
 
 # Enable logging
 logger:
@@ -25,7 +20,7 @@ ota:
 
 mqtt:
   broker: !secret mqtt_broker
-  topic_prefix: esp06
+  topic_prefix: bedroom
 
 i2c:
   sda: 21

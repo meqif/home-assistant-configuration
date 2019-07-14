@@ -1,6 +1,6 @@
 ---
 platform: mqtt
 name: 'Bathroom Relative Humidity'
-state_topic: 'esp02/sensor/bme280_bathroom_relative_humidity/state'
+state_topic: 'towelheater/sensor/bme280_bathroom_relative_humidity/state'
 device_class: 'humidity'
 unit_of_measurement: '%'

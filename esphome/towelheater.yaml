@@ -1,5 +1,5 @@
 esphome:
-  name: esp02
+  name: towelheater
   platform: ESP8266
   board: d1_mini
   on_loop:
@@ -12,7 +12,7 @@ esphome:
 
           // Make absolutely certain we're not checking before we have one minute of uptime, otherwise we risk
           // completly bogus time readings and getting into a boot loop!
-          if (id(esp_02_uptime).state < 60.0f) {
+          if (id(towel_heater_uptime).state < 60.0f) {
               return;
           }
 
@@ -50,13 +50,8 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   power_save_mode: high
+  domain: !secret wifi_domain
   fast_connect: true
-  manual_ip:
-    static_ip: !secret esp_02_ip
-    gateway: !secret gateway
-    subnet: 255.255.255.0
-    dns1: !secret dns_server
-    dns2: 0.0.0.0
 
 # Enable logging
 logger:
@@ -72,7 +67,7 @@ time:
 
 mqtt:
   broker: !secret mqtt_broker
-  topic_prefix: esp02
+  topic_prefix: towelheater
 
 i2c:
   sda: D2
@@ -81,11 +76,11 @@ i2c:
 
 sensor:
   - platform: uptime
-    name: "ESP-02 Uptime"
-    id: esp_02_uptime
+    name: "Towel Heater Uptime"
+    id: towel_heater_uptime
 
   - platform: wifi_signal
-    name: "ESP-02 RSSI"
+    name: "Towel Heater RSSI"
     update_interval: 60s
 
   - platform: bme280
@@ -141,16 +136,3 @@ switch:
     turn_on_action:
       - lambda: |-
           ESP.deepSleep(uint64_t(3600) * 1000000);
-
-output:
-  - platform: esp8266_pwm
-    id: onboard_led
-    pin:
-      number: D4
-      inverted: true
-
-light:
-  - platform: monochromatic
-    name: "Onboard LED ESP-02"
-    output: onboard_led
-    id: led_1

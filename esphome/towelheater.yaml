@@ -121,15 +121,23 @@ switch:
     icon: mdi:car-defrost-rear
     lambda: 'return id(towel_heater_status);'
     turn_on_action:
-      - lambda: 'id(towel_heater_status) = true;'
-      - switch.turn_on: towel_heater_internal_switch
-      - delay: 10ms
-      - switch.turn_off: towel_heater_internal_switch
+      - if:
+          condition:
+            lambda: 'return id(towel_heater_status) == false;'
+          then:
+            - lambda: 'id(towel_heater_status) = true;'
+            - switch.turn_on: towel_heater_internal_switch
+            - delay: 10ms
+            - switch.turn_off: towel_heater_internal_switch
     turn_off_action:
-      - lambda: 'id(towel_heater_status) = false;'
-      - switch.turn_on: towel_heater_internal_switch
-      - delay: 10ms
-      - switch.turn_off: towel_heater_internal_switch
+      - if:
+          condition:
+            lambda: 'return id(towel_heater_status) == true;'
+          then:
+            - lambda: 'id(towel_heater_status) = false;'
+            - switch.turn_on: towel_heater_internal_switch
+            - delay: 10ms
+            - switch.turn_off: towel_heater_internal_switch
 
   - platform: template
     name: "Deep Sleep"

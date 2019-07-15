@@ -50,6 +50,7 @@ views:
               name: Humidity
         - type: custom:banner-card
           heading: "\U0001F6C1 Bathroom"
+          link: /lovelace/bathroom
           entities:
             - entity: switch.towel_heater
               name: Towel Heater
@@ -271,6 +272,7 @@ views:
             - sensor.bed_pressure
 
   - icon: mdi:shower
+    path: bathroom
     id: bathroom
     title: Bathroom
     cards:

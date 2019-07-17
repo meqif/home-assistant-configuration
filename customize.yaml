@@ -14,3 +14,17 @@ scene.relax:
   icon: mdi:weather-night
 scene.regular_lights:
   icon: mdi:weather-sunny
+sensor.zero_rssi:
+  icon: mdi:wifi
+sensor.bed_pressure:
+  icon: mdi:bed-empty
+sensor.cpu_temperature:
+  icon: mdi:chip
+sensor.living_room_big_corner_light_consumption:
+  unit_of_measurement: kWh
+sensor.bme280_bathroom_absolute_humidity:
+  unit_of_measurement: g/m^3
+sensor.bme280_bedroom_absolute_humidity:
+  unit_of_measurement: g/m^3
+sensor.living_room_absolute_humidity:
+  unit_of_measurement: g/m^3

@@ -4,6 +4,8 @@ switch.smartplug_sala:
   icon: mdi:power-socket-eu
 switch.living_room_corner_light:
   icon: mdi:floor-lamp
+switch.living_room_big_corner_light:
+  icon: mdi:floor-lamp
 input_boolean.relaxing:
   hidden: true
 switch.bedroom_lamp:

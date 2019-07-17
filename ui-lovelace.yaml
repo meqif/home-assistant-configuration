@@ -149,6 +149,7 @@ views:
           show_header_toggle: false
           entities:
             - switch.living_room_corner_light
+            - switch.living_room_big_corner_light
         - type: entities
           show_header_toggle: false
           entities:

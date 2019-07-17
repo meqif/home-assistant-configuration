@@ -26,6 +26,7 @@ all_lights:
     - light.hue_white_lamp_corredor
     - switch.bedroom_lamp
     - switch.living_room_corner_light
+    - switch.living_room_big_corner_light
 
 all_power_switches:
   icon: mdi:power-socket-eu

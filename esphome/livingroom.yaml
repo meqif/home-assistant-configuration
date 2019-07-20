@@ -1,0 +1,80 @@
+esphome:
+  name: livingroom
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  domain: !secret wifi_domain
+  fast_connect: true
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+deep_sleep:
+  id: deep_sleep_1
+  sleep_duration: 1min
+
+switch:
+  - platform: template
+    name: "Short sleep"
+    turn_on_action:
+      - deep_sleep.enter: deep_sleep_1
+
+i2c:
+  sda: D2
+  scl: D1
+  scan: True
+
+sensor:
+  - platform: adc
+    pin: A0
+    name: "Living Room Brightness"
+    update_interval: 60s
+
+  - platform: bme280
+    temperature:
+      name: "BME280 Temperature"
+      id: bme280_temperature
+    pressure:
+      name: "BME280 Pressure"
+      id: bme280_pressure
+    humidity:
+      name: "BME280 Relative Humidity"
+      id: bme280_humidity
+    address: 0x76
+    update_interval: 15s
+
+  - platform: template
+    name: "BME280 Absolute Humidity"
+    lambda: |-
+      const float mw = 18.01534;    // molar mass of water g/mol
+      const float r = 8.31447215;   // Universal gas constant J/mol/K
+      return (6.112 * powf(2.718281828, (17.67 * id(bme280_temperature).state) /
+        (id(bme280_temperature).state + 243.5)) * id(bme280_humidity).state * mw) /
+        ((273.15 + id(bme280_temperature).state) * r); // in grams/m^3
+    accuracy_decimals: 2
+
+binary_sensor:
+  - platform: gpio
+    pin: D5
+    name: "Push button"
+
+output:
+  - platform: esp8266_pwm
+    id: onboard_led
+    pin:
+      number: D4
+      inverted: true
+
+light:
+  - platform: monochromatic
+    name: "Onboard LED"
+    output: onboard_led
+    id: led_1

@@ -14,3 +14,12 @@ action:
   - service: light.turn_off
     data:
       entity_id: group.living_room_lights
+  - service: switch.turn_off
+    data:
+      entity_id: switch.living_room_corner_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.living_room_big_corner_light
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.relaxing

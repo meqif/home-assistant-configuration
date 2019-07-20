@@ -146,19 +146,15 @@ views:
     cards:
       - type: vertical-stack
         cards:
-        - type: custom:group-card
-          card:
-            type: entities
-            show_header_toggle: false
-          group: group.living_room_lights
         - type: entities
           show_header_toggle: false
           entities:
+            - light.hue_white_lamp_sala_pc
+            - light.hue_white_lamp_sala_janela
+            - type: divider
             - switch.living_room_corner_light
             - switch.living_room_big_corner_light
-        - type: entities
-          show_header_toggle: false
-          entities:
+            - type: divider
             - switch.smartplug_sala
       - type: horizontal-stack
         cards:
@@ -228,9 +224,7 @@ views:
         show_header_toggle: false
         entities:
           - switch.bedroom_lamp
-      - type: entities
-        show_header_toggle: false
-        entities:
+          - type: divider
           - switch.smartplug_quarto
       - type: vertical-stack
         cards:

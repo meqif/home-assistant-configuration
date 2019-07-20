@@ -175,6 +175,7 @@ views:
       - type: vertical-stack
         cards:
         - type: custom:mini-graph-card
+          line_color: '#f1c40f'
           show:
             extrema: true
             fill: false
@@ -191,6 +192,7 @@ views:
           - type: custom:mini-graph-card
             font_size: 75
             line_width: 8
+            line_color: '#3498db'
             show:
               fill: false
               labels: false
@@ -204,6 +206,7 @@ views:
           - type: custom:mini-graph-card
             font_size: 75
             line_width: 8
+            line_color: '#9b59b6'
             show:
               fill: false
               labels: false
@@ -229,6 +232,7 @@ views:
       - type: vertical-stack
         cards:
         - type: custom:mini-graph-card
+          line_color: '#f1c40f'
           show:
             extrema: true
             fill: false
@@ -244,6 +248,7 @@ views:
           - type: custom:mini-graph-card
             font_size: 75
             line_width: 8
+            line_color: '#3498db'
             show:
               fill: false
               labels: false
@@ -257,6 +262,7 @@ views:
           - type: custom:mini-graph-card
             font_size: 75
             line_width: 8
+            line_color: '#9b59b6'
             show:
               fill: false
               labels: false

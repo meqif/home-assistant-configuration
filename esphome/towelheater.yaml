@@ -113,7 +113,7 @@ globals:
 
 switch:
   - platform: gpio
-    pin: D8
+    pin: D6
     id: towel_heater_internal_switch
 
   - platform: template

@@ -70,8 +70,6 @@ mqtt:
   broker: !secret mqtt_broker
   client_id: "home-assistant"
 
-device_tracker: !include device_tracker.yaml
-
 # Devices
 neato:
   username: !secret neato_username

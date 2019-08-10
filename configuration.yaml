@@ -62,7 +62,7 @@ binary_sensor:
       shower_ended:
         friendly_name: "Shower Ended"
         entity_id: sensor.bathroom_relative_humidity
-        min_gradient: 0.01
+        min_gradient: 0.007
         max_samples: 40
         sample_duration: 300
 

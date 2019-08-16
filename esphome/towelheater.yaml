@@ -105,6 +105,7 @@ sensor:
         (id(bme280_bathroom_temperature).state + 243.5)) * id(bme280_bathroom_humidity).state * mw) /
         ((273.15 + id(bme280_bathroom_temperature).state) * r); // in grams/m^3
     accuracy_decimals: 2
+    update_interval: 15s
 
 globals:
   - id: towel_heater_status

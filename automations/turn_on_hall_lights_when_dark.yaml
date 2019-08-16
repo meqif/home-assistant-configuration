@@ -1,0 +1,11 @@
+---
+alias: Turn on hall lights when dark
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.hall_brightness
+    above: 13000
+    for: '00:05:00'
+action:
+  - service: light.turn_on
+    data:
+      entity_id: group.hall_lights

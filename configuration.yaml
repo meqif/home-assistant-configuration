@@ -61,10 +61,10 @@ binary_sensor:
     sensors:
       shower_ended:
         friendly_name: "Shower Ended"
-        entity_id: sensor.bathroom_relative_humidity
-        min_gradient: 0.007
-        max_samples: 40
-        sample_duration: 300
+        entity_id: sensor.bme280_bathroom_absolute_humidity
+        min_gradient: 0.003
+        max_samples: 8
+        sample_duration: 120
 
 mqtt:
   broker: !secret mqtt_broker

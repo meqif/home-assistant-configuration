@@ -23,8 +23,8 @@ sensor.cpu_temperature:
 sensor.living_room_big_corner_light_consumption:
   unit_of_measurement: kWh
 sensor.bme280_bathroom_absolute_humidity:
-  unit_of_measurement: g/m^3
+  unit_of_measurement: g/m³
 sensor.bme280_bedroom_absolute_humidity:
-  unit_of_measurement: g/m^3
+  unit_of_measurement: g/m³
 sensor.living_room_absolute_humidity:
-  unit_of_measurement: g/m^3
+  unit_of_measurement: g/m³

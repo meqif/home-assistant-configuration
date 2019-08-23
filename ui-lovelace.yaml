@@ -44,8 +44,10 @@ views:
           background: "#91CCEC"
           heading: "\U0001F6CF Bedroom"
           link: /lovelace/bedroom
-          row_size: 4
+          row_size: 5
           entities:
+            - entity: light.bedroom_light
+              name: Light
             - entity: switch.bedroom_lamp
               name: Lamp
             - entity: switch.smartplug_quarto
@@ -226,6 +228,7 @@ views:
       - type: entities
         show_header_toggle: false
         entities:
+          - light.bedroom_light
           - switch.bedroom_lamp
           - type: divider
           - switch.smartplug_quarto
@@ -308,3 +311,12 @@ views:
           - sensor.bathroom_relative_humidity
       - type: entity-button
         entity: switch.towel_heater
+
+  - icon: mdi:silverware-fork-knife
+    id: kitchen
+    title: Kitchen
+    cards:
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - light.kitchen_light

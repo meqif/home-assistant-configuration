@@ -16,6 +16,13 @@ bedroom_lights:
   name: Bedroom Lights
   entities:
     - switch.bedroom_lamp
+    - light.bedroom_light
+
+kitchen_lights:
+  icon: mdi:lightbulb
+  name: Kitchen Lights
+  entities:
+    - light.kitchen_light
 
 all_lights:
   icon: mdi:lightbulb

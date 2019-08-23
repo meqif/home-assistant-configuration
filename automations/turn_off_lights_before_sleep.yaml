@@ -13,7 +13,9 @@ condition:
 action:
   - service: light.turn_off
     data:
-      entity_id: group.living_room_lights
+      entity_id:
+        - group.living_room_lights
+        - light.kitchen_light
   - service: switch.turn_off
     data:
       entity_id: switch.living_room_corner_light

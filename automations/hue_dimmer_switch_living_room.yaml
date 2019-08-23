@@ -6,17 +6,17 @@ trigger:
   event_type: deconz_event
 condition:
   - condition: template
-    value_template: "{{ trigger.event.data.id in ['dimmer_switch'] }}"
+    value_template: "{{ trigger.event.data.id in ['dimmer_switch_living_room'] }}"
   - condition: template
     value_template: "{{ trigger.event.data.event|int in [1002, 2002, 3002, 4002] }}"
 action:
   service_template: >
     {% set service_mapping = {1002: 'light.toggle',  2002: 'light.toggle',
-                              3002: 'switch.toggle', 4002: 'switch.toggle'} %}
+                              3002: 'switch.toggle', 4002: 'light.toggle'} %}
     {{ service_mapping[trigger.event.data.event|int] }}
   data_template:
     entity_id: >
-      {% set event_mapping = {1002: 'light.bedroom_light',
-                              3002: 'switch.smartplug_quarto',
-                              4002: 'switch.bedroom_lamp'} %}
+      {% set event_mapping = {1002: 'group.living_room_lights',
+                              2002: 'group.hall_lights',
+                              4002: 'light.kitchen_light'} %}
       {{ event_mapping[trigger.event.data.event|int] }}

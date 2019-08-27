@@ -2,9 +2,11 @@
 alias: 'Bedroom Light Switch'
 initial_state: 'on'
 trigger:
-  platform: state
-  entity_id: binary_sensor.bedroom_light_push_button
-  to: 'on'
+  platform: event
+  event_type: deconz_event
+  event_data:
+    id: 'bedroom_switch'
+    event: 1002
 action:
   service: light.toggle
   data:

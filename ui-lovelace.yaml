@@ -6,9 +6,9 @@ resources:
     type: module
   - url: /community_plugin/banner-card/banner-card.js
     type: module
-  - url: /community_plugin/simple-weather-card/simple-weather-card.js
+  - url: /community_plugin/simple-weather-card/simple-weather-card-bundle.js
     type: module
-  - url: /community_plugin/lovelace-card-templater/card-templater.js
+  - url: /community_plugin/lovelace-card-templater/lovelace-card-templater.js
     type: js
   - url: /community_plugin/weather-card/weather-card.js
     type: module

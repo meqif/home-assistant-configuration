@@ -6,8 +6,11 @@ trigger:
   event_type: deconz_event
   event_data:
     id: 'bedroom_switch'
-    event: 1002
 action:
-  service: light.toggle
-  data:
-    entity_id: light.bedroom_light
+  service_template: >
+    {% set service_mapping = {1001: 'switch.toggle',  1002: 'light.toggle'} %}
+    {{ service_mapping[trigger.event.data.event|int] }}
+  data_template:
+    entity_id: >
+      {% set event_mapping = {1001: 'switch.bedroom_lamp', 1002: 'light.bedroom_light'} %}
+      {{ event_mapping[trigger.event.data.event|int] }}

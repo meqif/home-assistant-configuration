@@ -8,9 +8,9 @@ trigger:
     id: 'bedroom_switch'
 action:
   service_template: >
-    {% set service_mapping = {1001: 'switch.toggle',  1002: 'light.toggle'} %}
+    {% set service_mapping = {1001: 'switch.toggle',  1002: 'light.toggle', 1004: 'switch.toggle'} %}
     {{ service_mapping[trigger.event.data.event|int] }}
   data_template:
     entity_id: >
-      {% set event_mapping = {1001: 'switch.bedroom_lamp', 1002: 'light.bedroom_light'} %}
+      {% set event_mapping = {1001: 'switch.smartplug_quarto', 1002: 'light.bedroom_light', 1004: 'switch.bedroom_lamp'} %}
       {{ event_mapping[trigger.event.data.event|int] }}

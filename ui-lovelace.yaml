@@ -30,12 +30,14 @@ views:
           background: "#EDE7B0"
           heading: "\U0001F6CB Living room"
           link: /lovelace/living_room
-          row_size: 4
+          row_size: 5
           entities:
             - entity: light.living_room
               name: Light
             - entity: switch.smartplug_sala
               name: Heater / Fan
+            - entity: switch.desk_lamp
+              name: Desk Lamp
             - entity: sensor.living_room_temperature
               name: Temperature
             - entity: sensor.living_room_humidity
@@ -156,6 +158,7 @@ views:
             - type: divider
             - switch.living_room_corner_light
             - switch.living_room_big_corner_light
+            - switch.desk_lamp
             - type: divider
             - switch.smartplug_sala
       - type: horizontal-stack

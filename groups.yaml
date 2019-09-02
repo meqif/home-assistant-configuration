@@ -24,6 +24,16 @@ kitchen_lights:
   entities:
     - light.kitchen_light
 
+all_living_room_devices:
+  name: All Living Room Devices
+  entities:
+    - light.hue_white_lamp_sala_pc
+    - light.hue_white_lamp_sala_janela
+    - switch.living_room_corner_light
+    - switch.living_room_big_corner_light
+    - switch.desk_lamp
+    - switch.smartplug_sala
+
 all_lights:
   icon: mdi:lightbulb
   name: All Lights

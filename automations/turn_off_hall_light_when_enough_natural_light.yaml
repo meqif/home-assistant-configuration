@@ -3,8 +3,8 @@ alias: Turn off hall light when there's enough natural light
 trigger:
   - platform: numeric_state
     entity_id: sensor.hall_brightness
-    below: 4500
-    for: '00:01:00'
+    below: 6000
+    for: '00:00:30'
 action:
   - service: light.turn_off
     data:

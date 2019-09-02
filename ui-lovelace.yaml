@@ -134,14 +134,20 @@ views:
               - entity: sensor.living_room_pressure
                 name: Living Room
 
-  - icon: mdi:door
-    id: hall
-    title: Hall
+  - icon: mdi:puzzle
+    id: misc
+    title: Misc
     cards:
       - type: entities
+        title: Hall
         show_header_toggle: false
         entities:
           - light.hue_white_lamp_corredor
+      - type: entities
+        title: Kitchen
+        show_header_toggle: false
+        entities:
+          - light.kitchen_light
 
   - icon: mdi:sofa
     path: living_room
@@ -314,12 +320,3 @@ views:
           - sensor.bathroom_relative_humidity
       - type: entity-button
         entity: switch.towel_heater
-
-  - icon: mdi:silverware-fork-knife
-    id: kitchen
-    title: Kitchen
-    cards:
-      - type: entities
-        show_header_toggle: false
-        entities:
-          - light.kitchen_light

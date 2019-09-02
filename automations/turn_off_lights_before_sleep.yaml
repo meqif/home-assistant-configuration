@@ -18,10 +18,11 @@ action:
         - light.kitchen_light
   - service: switch.turn_off
     data:
-      entity_id: switch.living_room_corner_light
-  - service: switch.turn_off
-    data:
-      entity_id: switch.living_room_big_corner_light
+      entity_id:
+        - switch.living_room_corner_light
+        - switch.living_room_big_corner_light
+        - switch.desk_lamp
+        - switch.smartplug_sala
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.relaxing

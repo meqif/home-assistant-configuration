@@ -17,6 +17,10 @@ api:
 
 ota:
 
+mqtt:
+  broker: !secret mqtt_broker
+  topic_prefix: livingroom
+
 deep_sleep:
   id: deep_sleep_1
   sleep_duration: 1min

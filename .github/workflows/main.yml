@@ -1,15 +1,20 @@
+---
 name: CI
-
 on: [push]
-
 jobs:
   build:
-
+    container:
+      image: homeassistant/home-assistant:latest
+      volumes:
+        - "$GITHUB_WORKSPACE:/config"
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: docker://python:3.7
-    - name: Install Home Assistant CLI
-      run: python3 -m pip install homeassistant
-    - name: Check Home Assistant Configuration
-      run: hass --script check_config
+      - uses: actions/checkout@v1
+      - name: Set up stubs
+        run: |
+          cp -R .stubs/* .
+      - run: |
+          cat configuration.yaml | awk '/^hacs:/ {needle=$0; next} /^\w+:/ {needle=false} {if (needle) next} 1' > configuration.yaml
+      - name: Check Home Assistant Configuration
+        run: |
+          python -m homeassistant --config . --script check_config --info all

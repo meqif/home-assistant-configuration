@@ -17,3 +17,5 @@ action:
     data:
       entity_id:
         - group.all_living_room_devices
+        - switch.smartplug_quarto
+        - switch.bedroom_lamp

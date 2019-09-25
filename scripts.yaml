@@ -1,0 +1,8 @@
+---
+living_room_corner:
+  sequence:
+    - service: switch.toggle
+      data:
+        entity_id:
+          - switch.living_room_big_corner_light
+          - switch.desk_lamp

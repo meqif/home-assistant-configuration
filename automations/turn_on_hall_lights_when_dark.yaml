@@ -5,6 +5,13 @@ trigger:
     entity_id: sensor.hall_brightness
     above: 13000
     for: '00:05:00'
+  - platform: state
+    entity_id: sensor.ricardo_presence
+    from: 'not_home'
+condition:
+  - condition: numeric_state
+    entity_id: sensor.hall_brightness
+    above: 13000
 action:
   - service: light.turn_on
     data:

@@ -1,0 +1,13 @@
+---
+alias: Turn on kitchen light when back home after dark
+trigger:
+  - platform: state
+    entity_id: person.ricardo
+    to: 'home'
+condition:
+  - condition: template
+    value_template: "{{ is_state_attr('sensor.daylight', 'daylight', false) }}"
+action:
+  service: light.turn_on
+  data:
+    entity_id: light.kitchen_light

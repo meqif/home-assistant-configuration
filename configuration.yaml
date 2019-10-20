@@ -27,6 +27,8 @@ influxdb:
   username: !secret influxdb_username
   password: !secret influxdb_password
   database: !secret influxdb_database
+  tags_attributes:
+    - 'friendly_name'
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:

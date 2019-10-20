@@ -150,6 +150,9 @@ views:
         show_header_toggle: false
         entities:
           - light.kitchen_light
+          - type: divider
+          - sensor.aqara_kitchen_temperature
+          - sensor.aqara_kitchen_humidity
       - type: custom:monster-card
         card:
           type: entities

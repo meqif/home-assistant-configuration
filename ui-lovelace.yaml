@@ -158,7 +158,7 @@ views:
           type: entities
         filter:
           include:
-            - entity_id: 'sensor.*_battery_level'
+            - entity_id: 'sensor.*_battery*'
 
   - icon: mdi:sofa
     path: living_room

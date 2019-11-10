@@ -111,6 +111,10 @@ views:
                 name: Bedroom
               - entity: sensor.living_room_temperature
                 name: Living Room
+              - entity: sensor.aqara_kitchen_temperature
+                name: Kitchen
+              - entity: sensor.bathroom_temperature
+                name: Bathroom
           - type: custom:mini-graph-card
             hour24: true
             points_per_hour: 12
@@ -123,6 +127,10 @@ views:
                 name: Bedroom
               - entity: sensor.living_room_humidity
                 name: Living Room
+              - entity: sensor.aqara_kitchen_humidity
+                name: Kitchen
+              - entity: sensor.bathroom_relative_humidity
+                name: Bathroom
           - type: custom:mini-graph-card
             hour24: true
             points_per_hour: 12
@@ -135,6 +143,10 @@ views:
                 name: Bedroom
               - entity: sensor.living_room_pressure
                 name: Living Room
+              - entity: sensor.aqara_kitchen_pressure
+                name: Kitchen
+              - entity: sensor.bme280_bathroom_pressure
+                name: Bathroom
 
   - icon: mdi:puzzle
     id: misc

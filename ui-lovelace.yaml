@@ -14,7 +14,7 @@ resources:
     type: module
   - url: /community_plugin/compact-custom-header/compact-custom-header.js
     type: module
-  - url: /community_plugin/monster-card/monster-card.js
+  - url: /community_plugin/lovelace-auto-entities/auto-entities.js
     type: module
 cch:
   swipe: 'true'
@@ -165,12 +165,14 @@ views:
           - type: divider
           - sensor.aqara_kitchen_temperature
           - sensor.aqara_kitchen_humidity
-      - type: custom:monster-card
+      - type: custom:auto-entities
         card:
           type: entities
         filter:
           include:
             - entity_id: 'sensor.*_battery*'
+        sort:
+          method: 'state'
 
   - icon: mdi:sofa
     path: living_room

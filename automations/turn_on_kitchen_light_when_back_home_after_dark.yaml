@@ -2,8 +2,8 @@
 alias: Turn on kitchen light when back home after dark
 trigger:
   - platform: state
-    entity_id: person.ricardo
-    to: 'home'
+    entity_id: sensor.ricardo_presence
+    from: 'not_home'
 condition:
   - condition: template
     value_template: "{{ is_state_attr('sensor.daylight', 'daylight', false) }}"

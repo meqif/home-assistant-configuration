@@ -173,6 +173,7 @@ views:
             - entity_id: 'sensor.*_battery*'
         sort:
           method: 'state'
+          numeric: true
 
   - icon: mdi:sofa
     path: living_room

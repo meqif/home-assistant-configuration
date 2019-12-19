@@ -5,6 +5,7 @@ trigger:
   - platform: state
     entity_id: sensor.ricardo_presence
     to: 'not_home'
+    for: '00:05:00'
 condition:
   - condition: time
     after: '08:00'

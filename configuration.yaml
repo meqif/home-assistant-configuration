@@ -125,4 +125,3 @@ frontend:
 
 hacs:
   token: !secret github_token
-  theme: true

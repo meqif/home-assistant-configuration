@@ -94,19 +94,6 @@
   - service: switch.turn_on
     data:
       entity_id: switch.towel_heater
-- alias: Turn on kitchen light when back home after dark
-  trigger:
-  - platform: state
-    entity_id: sensor.ricardo_presence
-    from: not_home
-  condition:
-  - condition: template
-    value_template: "{{ is_state_attr('sensor.daylight', 'daylight', false) }}"
-  action:
-    service: light.turn_on
-    data:
-      entity_id: light.kitchen_light
-  id: 33a6dbc258ce47ac944f673227085335
 - alias: Bedroom Light Switch
   initial_state: 'on'
   trigger:
@@ -274,7 +261,7 @@
     - service: notify.slack
       data:
         message: "The commute back home is expected to take over 30 minutes! \U0001F697\U0001F68C\U0001F68C\U0001F699\U0001F695\U0001F699\U0001F699\U0001F648"
-- alias: Turn on living room lights when back home
+- alias: Turn on lights when back home
   id: 2d528fae402341958576c04cef434dfa
   trigger:
     - platform: state
@@ -287,7 +274,9 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: group.living_room_lights
+        entity_id:
+          - group.living_room_lights
+          - light.kitchen_light
     - service: switch.turn_on
       data:
         entity_id:

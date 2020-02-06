@@ -250,3 +250,46 @@
                                 1004: 'switch.bedroom_lamp'} %}
         {{ event_mapping[trigger.event.data.event|int] }}
   id: f6d705ea4db14d47bb54cbd26330cf1a
+- alias: Long commute back home
+  id: 82d71b591a5b4869b3af469c7a000930
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.home_commute
+      value_template: '{{ state.attributes.duration }}'
+      above: 30
+  condition:
+    - condition: state
+      entity_id: input_boolean.extended_away
+      state: 'off'
+    - condition: state
+      entity_id: 'sensor.ricardo_presence'
+      state: 'not_home'
+    - condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
+    - condition: time
+      after: '16:30:00'
+      before: '19:00:00'
+  action:
+    - service: notify.slack
+      data:
+        message: "The commute back home is expected to take over 30 minutes! \U0001F697\U0001F68C\U0001F68C\U0001F699\U0001F695\U0001F699\U0001F699\U0001F648"
+- alias: Turn on living room lights when back home
+  id: 2d528fae402341958576c04cef434dfa
+  trigger:
+    - platform: state
+      entity_id: sensor.ricardo_presence
+      from: 'not_home'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.living_room_brightness
+      below: 0.5
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: group.living_room_lights
+    - service: switch.turn_on
+      data:
+        entity_id:
+          - switch.living_room_big_corner_light
+          - switch.desk_lamp

@@ -1,0 +1,252 @@
+---
+- alias: Turn off hall light when there's enough natural light
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.hall_brightness
+    below: 6000
+    for: '00:00:30'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: group.hall_lights
+  id: 1b32a2aa85cf43678fa8b948900974ea
+- alias: Update Available Notifications
+  trigger:
+    platform: state
+    entity_id: updater.updater
+  action:
+    service: notify.slack
+    data:
+      message: Update for Home Assistant is available.
+  id: 919f3cfb90a6400c9cc224021c6fcf53
+- alias: Hue Dimmer Switch
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+  condition:
+  - condition: template
+    value_template: "{{ trigger.event.data.id in ['dimmer_switch_living_room'] }}\n"
+  - condition: template
+    value_template: "{{ trigger.event.data.event|int in [1002, 2002, 3002, 4002] }}\n"
+  action:
+    service_template: |
+      {% set service_mapping = {1002: 'light.toggle',  2002: 'light.toggle',
+                                3002: 'switch.toggle', 4002: 'light.toggle'} %}
+      {{ service_mapping[trigger.event.data.event|int] }}
+    data_template:
+      entity_id: |
+        {% set event_mapping = {1002: 'group.living_room_lights',
+                                2002: 'group.hall_lights',
+                                4002: 'light.kitchen_light'} %}
+        {{ event_mapping[trigger.event.data.event|int] }}
+  id: c515b0c653ed444a929abb64c0a10b75
+- alias: Kitchen Light Switch
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: kitchen_switch
+      event: 1002
+  action:
+    service: light.toggle
+    data:
+      entity_id: light.kitchen_light
+  id: d010cbde411a42c7a8fca11e9be51020
+- alias: Turn off extended away when back home
+  trigger:
+  - platform: state
+    entity_id: sensor.ricardo_presence
+    from: not_home
+  action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.extended_away
+  id: b5043617e7b8469d94fc02fe14c29611
+- alias: Turn off towel heater after shower ends
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.shower_ended
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.towel_heater
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.towel_heater
+  - delay: '00:10:00'
+  - service: switch.turn_on
+    data:
+      entity_id: switch.towel_heater_deep_sleep
+  id: a6f67f86a5074938b921eca67d07e1ba
+- id: turn_on_towel_heater
+  alias: Turn on towel heater
+  trigger:
+  - platform: time
+    at: '19:30:00'
+  condition:
+  - condition: state
+    entity_id: input_boolean.extended_away
+    state: 'off'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.towel_heater
+- alias: Turn on kitchen light when back home after dark
+  trigger:
+  - platform: state
+    entity_id: sensor.ricardo_presence
+    from: not_home
+  condition:
+  - condition: template
+    value_template: "{{ is_state_attr('sensor.daylight', 'daylight', false) }}"
+  action:
+    service: light.turn_on
+    data:
+      entity_id: light.kitchen_light
+  id: 33a6dbc258ce47ac944f673227085335
+- alias: Bedroom Light Switch
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: living_room_switch
+  action:
+    service_template: |
+      {% set service_mapping = {1002: 'light.toggle',
+                                2002: 'script.turn_on',
+                                2004: 'switch.toggle',
+                                3002: 'switch.toggle'} %}
+      {{ service_mapping[trigger.event.data.event|int] }}
+    data_template:
+      entity_id: |
+        {% set event_mapping = {1002: 'group.living_room_lights',
+                                2002: 'script.living_room_corner',
+                                2004: 'switch.desk_lamp',
+                                3002: 'switch.relax_scene'} %}
+        {{ event_mapping[trigger.event.data.event|int] }}
+  id: ba62983b42e24ac8ab1ba70a4f33bea1
+- alias: Hue Dimmer Switch
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+  condition:
+  - condition: template
+    value_template: "{{ trigger.event.data.id in ['dimmer_switch'] }}\n"
+  - condition: template
+    value_template: "{{ trigger.event.data.event|int in [1002, 2002, 3002, 4002] }}\n"
+  action:
+    service_template: |
+      {% set service_mapping = {1002: 'light.toggle',  2002: 'light.toggle',
+                                3002: 'switch.toggle', 4002: 'switch.toggle'} %}
+      {{ service_mapping[trigger.event.data.event|int] }}
+    data_template:
+      entity_id: |
+        {% set event_mapping = {1002: 'light.bedroom_light',
+                                3002: 'switch.smartplug_quarto',
+                                4002: 'switch.bedroom_lamp'} %}
+        {{ event_mapping[trigger.event.data.event|int] }}
+  id: 835ab46162ce45b1a0c613af59609bb5
+- alias: Turn on hall lights when dark
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.hall_brightness
+    above: 13000
+    for: '00:05:00'
+  - platform: state
+    entity_id: sensor.ricardo_presence
+    from: not_home
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.hall_brightness
+    above: 13000
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: group.hall_lights
+  id: 7779780311564f0c965958a0dd474923
+- id: turn_off_lights_when_off_to_work
+  alias: Turn off lights when off to work
+  trigger:
+  - platform: state
+    entity_id: sensor.ricardo_presence
+    to: not_home
+    for: '00:05:00'
+  condition:
+  - condition: time
+    after: '08:00'
+    before: '18:00'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: all
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - group.all_living_room_devices
+      - switch.smartplug_quarto
+      - switch.bedroom_lamp
+- id: turn_off_lights_before_sleep
+  alias: Turn off lights before sleep
+  trigger:
+  - platform: state
+    entity_id: sensor.ricardo_presence
+    to: bedroom
+    for: '00:05:00'
+  condition:
+  - condition: time
+    after: '21:00'
+    before: '06:00'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id:
+      - group.all_living_room_devices
+      - light.kitchen_light
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - group.all_living_room_devices
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.relaxing
+- id: indoor_lights_at_sunset
+  alias: Indoor lights at sunset
+  trigger:
+  - platform: state
+    entity_id: sensor.daylight
+    to: golden_hour_2
+  condition:
+  - condition: state
+    entity_id: input_boolean.extended_away
+    state: 'off'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id:
+      - group.living_room_lights
+      - group.hall_lights
+- alias: Bedroom Light Switch
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_switch
+  action:
+    service_template: |
+      {% set service_mapping = {1001: 'switch.toggle',
+                                1002: 'light.toggle',
+                                1004: 'switch.toggle'} %}
+      {{ service_mapping[trigger.event.data.event|int] }}
+    data_template:
+      entity_id: |
+        {% set event_mapping = {1001: 'switch.smartplug_quarto',
+                                1002: 'light.bedroom_light',
+                                1004: 'switch.bedroom_lamp'} %}
+        {{ event_mapping[trigger.event.data.event|int] }}
+  id: f6d705ea4db14d47bb54cbd26330cf1a

@@ -116,7 +116,7 @@ notify:
 
 group: !include groups.yaml
 sensor: !include_dir_list sensors
-automation: !include_dir_list automations
+automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scene.yaml
 

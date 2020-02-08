@@ -282,3 +282,12 @@
         entity_id:
           - switch.living_room_big_corner_light
           - switch.desk_lamp
+- id: '1581175320226'
+  alias: Pull updated configuration
+  trigger:
+    - platform: webhook
+      webhook_id: update_configuration
+  action:
+    - service: shell_command.git_pull
+    - service: homeassistant.check_config
+    - service: homeassistant.restart

@@ -125,3 +125,6 @@ frontend:
 
 hacs:
   token: !secret github_token
+
+shell_command:
+  git_pull: git pull --autostash --rebase origin master

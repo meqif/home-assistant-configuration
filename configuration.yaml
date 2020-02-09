@@ -19,6 +19,12 @@ default_config:
 # Show the introduction message on startup.
 # introduction:
 
+logger:
+  default: info
+  logs:
+    homeassistant.components.esphome: warning
+    WazeRouteCalculator.WazeRouteCalculator: warning
+
 recorder:
   db_url: !secret postgres_url
 

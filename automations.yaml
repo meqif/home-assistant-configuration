@@ -183,7 +183,7 @@
   - platform: state
     entity_id: sensor.ricardo_presence
     to: bedroom
-    for: '00:05:00'
+    for: '00:02:00'
   condition:
   - condition: time
     after: '21:00'

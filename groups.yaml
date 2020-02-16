@@ -5,9 +5,26 @@ living_room_lights:
     - light.hue_white_lamp_sala_pc
     - light.hue_white_lamp_sala_janela
 
+living_room:
+  icon: mdi:sofa
+  name: Living Room
+  entities:
+    - light.hue_white_lamp_sala_pc
+    - light.hue_white_lamp_sala_janela
+    - switch.living_room_corner_light
+    - switch.living_room_big_corner_light
+    - switch.desk_lamp
+    - switch.smartplug_sala
+
 hall_lights:
   icon: mdi:lightbulb
   name: Hall Lights
+  entities:
+    - light.hue_white_lamp_corredor
+
+hall:
+  icon: mdi:door
+  name: Hall
   entities:
     - light.hue_white_lamp_corredor
 
@@ -18,9 +35,23 @@ bedroom_lights:
     - switch.bedroom_lamp
     - light.bedroom_light
 
+bedroom:
+  icon: mdi:bed-empty
+  name: Bedroom
+  entities:
+    - light.bedroom_light
+    - switch.bedroom_lamp
+    - switch.smartplug_quarto
+
 kitchen_lights:
   icon: mdi:lightbulb
   name: Kitchen Lights
+  entities:
+    - light.kitchen_light
+
+kitchen:
+  icon: mdi:silverware-variant
+  name: Kitchen
   entities:
     - light.kitchen_light
 

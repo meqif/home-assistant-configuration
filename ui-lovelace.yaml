@@ -145,6 +145,10 @@ views:
         show_header_toggle: false
         entities:
           - light.hue_white_lamp_corredor
+          - type: divider
+          - sensor.lightlevel_19
+          - sensor.hall_brightness
+          - binary_sensor.presence_18
       - type: entities
         title: Kitchen
         show_header_toggle: false

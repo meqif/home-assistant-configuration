@@ -2,7 +2,7 @@ title: Home
 resources:
   - url: /community_plugin/group-card/group-card.js
     type: module
-  - url: /community_plugin/mini-graph-card/mini-graph-card.js
+  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
     type: module
   - url: /community_plugin/banner-card/banner-card.js
     type: module

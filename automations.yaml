@@ -291,3 +291,45 @@
     - service: shell_command.git_pull
     - service: homeassistant.check_config
     - service: homeassistant.restart
+- id: '1582987916387'
+  alias: Turn on bedroom light when motion is detected
+  description: ''
+  trigger:
+    - device_id: bf75c9dd00f94977878c77a7e252f3eb
+      domain: binary_sensor
+      entity_id: binary_sensor.presence_20
+      platform: device
+      type: motion
+  condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: binary_sensor.bed_presence
+          state: 'off'
+        - condition: state
+          entity_id: switch.bedroom_lamp
+          state: 'off'
+  action:
+    - device_id: f448181608e34d7aa55e6f7aa1ccea9b
+      domain: light
+      entity_id: light.bedroom_light
+      type: turn_on
+- id: '1582988715081'
+  alias: Turn off bedroom light if no motion
+  description: ''
+  trigger:
+    - device_id: bf75c9dd00f94977878c77a7e252f3eb
+      domain: binary_sensor
+      entity_id: binary_sensor.presence_20
+      for:
+        hours: 0
+        minutes: 5
+        seconds: 0
+      platform: device
+      type: no_motion
+  condition: []
+  action:
+    - device_id: f448181608e34d7aa55e6f7aa1ccea9b
+      domain: light
+      entity_id: light.bedroom_light
+      type: turn_off

@@ -58,7 +58,7 @@ binary_sensor:
     sensors:
       bed_presence:
         friendly_name: "Bed presence"
-        value_template: '{{ states("sensor.bed_pressure") | float >= 0.60 }}'
+        value_template: '{{ states("sensor.average_bed_pressure") | float >= 0.25 }}'
         delay_off:
           minutes: 2
 

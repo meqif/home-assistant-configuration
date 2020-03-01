@@ -307,6 +307,7 @@ views:
           entities:
             - binary_sensor.bed_presence
             - sensor.bed_pressure
+            - sensor.average_bed_pressure
         - type: entity-button
           entity: automation.turn_off_lights_before_sleep
           tap_action:

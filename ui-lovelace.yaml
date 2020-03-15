@@ -1,20 +1,20 @@
 title: Home
 resources:
-  - url: /community_plugin/group-card/group-card.js
+  - url: /hacsfiles/group-card/group-card.js
     type: module
-  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+  - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
     type: module
-  - url: /community_plugin/banner-card/banner-card.js
+  - url: /hacsfiles/banner-card/banner-card.js
     type: module
-  - url: /community_plugin/simple-weather-card/simple-weather-card-bundle.js
+  - url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
     type: module
-  - url: /community_plugin/lovelace-card-templater/lovelace-card-templater.js
+  - url: /hacsfiles/lovelace-card-templater/lovelace-card-templater.js
     type: js
-  - url: /community_plugin/weather-card/weather-card.js
+  - url: /hacsfiles/weather-card/weather-card.js
     type: module
-  - url: /community_plugin/compact-custom-header/compact-custom-header.js
+  - url: /hacsfiles/compact-custom-header/compact-custom-header.js
     type: module
-  - url: /community_plugin/lovelace-auto-entities/auto-entities.js
+  - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
     type: module
 cch:
   swipe: 'true'

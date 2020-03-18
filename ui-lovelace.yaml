@@ -1,4 +1,5 @@
 title: Home
+# Deprecated, primary is now in configuration.yaml
 resources:
   - url: /hacsfiles/group-card/group-card.js
     type: module

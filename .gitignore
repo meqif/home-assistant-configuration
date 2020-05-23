@@ -1,3 +1,4 @@
+.HA_VERSION
 secrets.yaml
 *.log
 *.db

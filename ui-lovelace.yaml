@@ -143,9 +143,8 @@ views:
         entities:
           - light.hue_white_lamp_corredor
           - type: divider
-          - sensor.lightlevel_19
           - sensor.hall_brightness
-          - binary_sensor.presence_18
+          - binary_sensor.presence_21
       - type: entities
         title: Kitchen
         show_header_toggle: false
@@ -154,6 +153,8 @@ views:
           - type: divider
           - sensor.aqara_kitchen_temperature
           - sensor.aqara_kitchen_humidity
+          - sensor.lightlevel_19
+          - binary_sensor.presence_18
       - type: custom:auto-entities
         card:
           type: entities

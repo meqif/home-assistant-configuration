@@ -1,12 +1,6 @@
 title: Home
-cch:
-  swipe: 'true'
-  exceptions:
-    - conditions:
-        media_query: '(max-width: 600px)'
-      config:
-        notifications: 'overflow'
-        voice: 'hide'
+custom_header:
+  compact_mode: true
 views:
   - cards:
       - type: vertical-stack

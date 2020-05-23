@@ -96,6 +96,7 @@ binary_sensor:
 mqtt:
   broker: !secret mqtt_broker
   client_id: "home-assistant"
+  discovery: true
 
 # Devices
 neato:

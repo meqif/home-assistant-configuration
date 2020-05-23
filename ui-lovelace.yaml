@@ -6,7 +6,6 @@ views:
       - type: vertical-stack
         cards:
         - type: custom:banner-card
-          background: "#EDE7B0"
           heading: "\U0001F6CB Living room"
           link: /lovelace/living_room
           row_size: 5
@@ -22,7 +21,6 @@ views:
             - entity: sensor.living_room_humidity
               name: Humidity
         - type: custom:banner-card
-          background: "#91CCEC"
           heading: "\U0001F6CF Bedroom"
           link: /lovelace/bedroom
           row_size: 5

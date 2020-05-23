@@ -184,6 +184,33 @@ views:
             - switch.desk_lamp
             - type: divider
             - switch.smartplug_sala
+            - type: divider
+            - type: buttons
+              entities:
+                - entity: light.antares_screen
+                  icon: mdi:brightness-2
+                  tap_action:
+                    action: call-service
+                    service: light.turn_on
+                    service_data:
+                      entity_id: light.antares_screen
+                      brightness: 1
+                - entity: light.antares_screen
+                  icon: mdi:brightness-4
+                  tap_action:
+                    action: call-service
+                    service: light.turn_on
+                    service_data:
+                      entity_id: light.antares_screen
+                      brightness: 20
+                - entity: light.antares_screen
+                  icon: mdi:brightness-5
+                  tap_action:
+                    action: call-service
+                    service: light.turn_on
+                    service_data:
+                      entity_id: light.antares_screen
+                      brightness_pct: 50
       - type: horizontal-stack
         cards:
         - type: entity-button

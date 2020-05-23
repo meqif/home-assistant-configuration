@@ -18,10 +18,6 @@ api:
 
 ota:
 
-mqtt:
-  broker: !secret mqtt_broker
-  topic_prefix: esp05
-
 sensor:
   - platform: adc
     pin: 34

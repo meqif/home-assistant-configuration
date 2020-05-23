@@ -6,6 +6,19 @@
       state: true
     switch.living_room_big_corner_light:
       state: true
+- name: Late night relax
+  entities:
+    group.living_room_lights:
+      state: false
+    switch.living_room_corner_light:
+      state: false
+    switch.desk_lamp:
+      state: false
+    switch.living_room_big_corner_light:
+      state: true
+    light.antares_screen:
+      state: true
+      brightness: 1
 - name: Regular lights
   entities:
     group.living_room_lights:

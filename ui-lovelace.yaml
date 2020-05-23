@@ -213,6 +213,13 @@ views:
       - type: horizontal-stack
         cards:
         - type: entity-button
+          entity: scene.late_night_relax
+          tap_action:
+            action: call-service
+            service: scene.turn_on
+            service_data:
+              entity_id: scene.late_night_relax
+        - type: entity-button
           entity: scene.relax
           tap_action:
             action: call-service

@@ -65,6 +65,8 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
       type: module
+    - url: /hacsfiles/vacuum-card/vacuum-card.js
+      type: module
 
 binary_sensor:
   - platform: meteoalarm

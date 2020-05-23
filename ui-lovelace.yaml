@@ -58,7 +58,29 @@ views:
           - sensor.home_commute
       - type: picture-entity
         entity: vacuum.neato
+        show_name: false
+        show_state: false
         camera_image: camera.neato_cleaning_map
+      - type: 'custom:vacuum-card'
+        entity: vacuum.neato
+        image: '/local/images/neato-botvac-d5.svg'
+        actions:
+          - name: Eco
+            service: neato.custom_cleaning
+            icon: 'mdi:leaf'
+            service_data:
+              entity_id: vacuum.neato
+              mode: 1
+              navigation: 2
+              category: 4
+          - name: Turbo
+            service: neato.custom_cleaning
+            icon: 'mdi:clock-fast'
+            service_data:
+              entity_id: vacuum.neato
+              mode: 2
+              navigation: 2
+              category: 4
     path: default_view
     title: Home
     icon: 'mdi:home-assistant'

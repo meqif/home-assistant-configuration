@@ -84,14 +84,16 @@ binary_sensor:
   - platform: workday
     country: PTE
 
-  - platform: trend
+  - platform: template
     sensors:
       shower_ended:
-        friendly_name: "Shower Ended"
-        entity_id: sensor.bme280_bathroom_absolute_humidity
-        min_gradient: 0.003
-        max_samples: 8
-        sample_duration: 120
+        friendly_name: "Shower ended"
+        value_template: >-
+          {%-if states('sensor.last_bathroom_absolute_humidity') == "unknown" or states('sensor.historical_bathroom_absolute_humidity') == "unknown" %}
+          unknown
+          {%- else %}
+          {{ (states('sensor.last_bathroom_absolute_humidity') | float) / (states('sensor.historical_bathroom_absolute_humidity') | float) > 1.10 }}
+          {% endif %}
 
 mqtt:
   broker: !secret mqtt_broker

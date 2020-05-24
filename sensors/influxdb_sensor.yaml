@@ -20,10 +20,18 @@ queries:
     unit_of_measurement: 'g/m³'
     field: value
     database: !secret influxdb_database
-  - name: Average Bed Pressure
+  - name: Historical Max Bed Pressure
     value_template: '{{ value | round(2) }}'
-    group_function: mean
-    where: '"entity_id" = ''bed_pressure'' AND time > now() - 1m'
+    group_function: max
+    where: '"entity_id" = ''bed_pressure'' AND time > now() - 24h'
+    measurement: '"V"'
+    unit_of_measurement: 'V'
+    field: value
+    database: !secret influxdb_database
+  - name: Historical Min Bed Pressure
+    value_template: '{{ value | round(2) }}'
+    group_function: min
+    where: '"entity_id" = ''bed_pressure'' AND time > now() - 24h'
     measurement: '"V"'
     unit_of_measurement: 'V'
     field: value

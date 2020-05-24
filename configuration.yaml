@@ -77,9 +77,20 @@ binary_sensor:
     sensors:
       bed_presence:
         friendly_name: "Bed presence"
-        value_template: '{{ states("sensor.average_bed_pressure") | float >= 0.40 }}'
-        delay_off:
-          minutes: 2
+        value_template: >-
+          {%- with %}
+            {% set current = (states("sensor.bed_pressure") | float) %}
+            {% set floor = states("sensor.historical_min_bed_pressure") | float %}
+            {% set ceiling = states("sensor.historical_max_bed_pressure") | float %}
+            {% set tolerance = (ceiling - floor) / 3 %}
+            {%- if current <= floor + tolerance %}
+            false
+            {%- elif current >= ceiling - tolerance %}
+            true
+            {%- else %}
+            unknown
+            {% endif %}
+          {% endwith %}
 
   - platform: workday
     country: PTE

@@ -134,6 +134,16 @@ switch:
             data:
               entity_id: scene.regular_lights
 
+  - platform: mqtt
+    icon: 'mdi:car-defrost-rear'
+    name: 'Towel Heater'
+    state_topic: 'towelheater/switch/towel_heater/state'
+    command_topic: 'towelheater/switch/towel_heater/command'
+    # availability_topic: 'towelheater/status'
+    qos: 1
+    retain: true
+    optimistic: true
+
 notify:
   - name: slack
     platform: slack

@@ -2,49 +2,28 @@ esphome:
   name: towelheater
   platform: ESP8266
   board: d1_mini
-  on_loop:
+  on_boot:
+    priority: -100
     then:
-      - lambda: |
-          // According to https://thingpulse.com/max-deep-sleep-for-esp8266/
-          // the maximum sleep duration is a bit over 3 hours, with some variance due to the RTC clock period,
-          // which changes according to the temperature. For safety, assume 3 hours.
-          const auto maximum_sleep_duration = 3 * 3600;
+      - logger.log: "Done booting, running other code"
+      - mqtt.publish:
+          topic: towelheater/angery
+          payload: 'very angery, rawr'
+      - delay: 10s
+      - if:
+          condition:
+            text_sensor.state:
+              id: caffeine
+              state: 'off'
+          then:
+            # - mqtt.publish:
+            #     topic: towelheater/status
+            #     payload: offline
+            #     retain: true
+            - delay: 500ms
+            - lambda: |-
+                ESP.deepSleep(uint64_t(60) * 1000000);
 
-          // Make absolutely certain we're not checking before we have one minute of uptime, otherwise we risk
-          // completly bogus time readings and getting into a boot loop!
-          if (id(towel_heater_uptime).state < 60.0f) {
-              return;
-          }
-
-          // The loop runs about every 16 ms (~60 Hz).
-          // That's overkill, so check only once per minute.
-          static auto loop_count = 0;
-
-          if (loop_count++ < 60 * 60) {
-              return;
-          }
-
-          loop_count = 0;
-
-          auto time = id(homeassistant_time).now();
-          auto distance_to_waking_time = 0;
-
-          if (time.hour < 19) {
-              distance_to_waking_time = (19 - time.hour - 1) * 3600 + (60 - time.minute) * 60;
-          } else if (time.hour >= 23) {
-              distance_to_waking_time = maximum_sleep_duration;
-          }
-
-          ESP_LOGD("main_loop", "Distance to waking time: %d", distance_to_waking_time);
-
-          auto sleepable_time = distance_to_waking_time < maximum_sleep_duration ? distance_to_waking_time : maximum_sleep_duration;
-          if (sleepable_time <= 0) {
-              return;
-          }
-
-          ESP_LOGD("main_loop", "Outside waking time, sleeping for %d s", sleepable_time);
-
-          ESP.deepSleep(uint64_t(sleepable_time) * 1000000);
 
 wifi:
   ssid: !secret wifi_ssid
@@ -60,25 +39,47 @@ logger:
 api:
 
 ota:
+  safe_mode: false
 
 time:
   - platform: homeassistant
     id: homeassistant_time
+    on_time:
+      - seconds: 0,30
+        minutes: '*'
+        then:
+          - if:
+              condition:
+                text_sensor.state:
+                  id: caffeine
+                  state: 'off'
+              then:
+                # - mqtt.publish:
+                #     topic: towelheater/status
+                #     payload: offline
+                #     retain: true
+                - delay: 500ms
+                - lambda: |-
+                    ESP.deepSleep(uint64_t(60) * 1000000);
 
 mqtt:
   broker: !secret mqtt_broker
   topic_prefix: towelheater
+  keepalive: 5s
 
 i2c:
   sda: D2
   scl: D1
   scan: True
 
-sensor:
-  - platform: uptime
-    name: "Towel Heater Uptime"
-    id: towel_heater_uptime
+text_sensor:
+  - platform: mqtt_subscribe
+    name: "Caffeine"
+    internal: true
+    id: caffeine
+    topic: towelheater/caffeine
 
+sensor:
   - platform: wifi_signal
     name: "Towel Heater RSSI"
     update_interval: 60s
@@ -98,12 +99,19 @@ sensor:
 
   - platform: template
     name: "BME280 Bathroom Absolute Humidity"
+    unit_of_measurement: "g/m³"
     lambda: |-
       const float mw = 18.01534;    // molar mass of water g/mol
       const float r = 8.31447215;   // Universal gas constant J/mol/K
-      return (6.112 * powf(2.718281828, (17.67 * id(bme280_bathroom_temperature).state) /
+      auto new_value = (6.112 * powf(2.718281828, (17.67 * id(bme280_bathroom_temperature).state) /
         (id(bme280_bathroom_temperature).state + 243.5)) * id(bme280_bathroom_humidity).state * mw) /
         ((273.15 + id(bme280_bathroom_temperature).state) * r); // in grams/m^3
+
+      if (isnan(new_value)) {
+          return {};
+      } else {
+          return new_value;
+      }
     accuracy_decimals: 2
     update_interval: 15s
 
@@ -111,6 +119,7 @@ globals:
   - id: towel_heater_status
     type: bool
     initial_value: 'false'
+    restore_value: true
 
 switch:
   - platform: gpio
@@ -120,6 +129,7 @@ switch:
   - platform: template
     name: "Towel Heater"
     icon: mdi:car-defrost-rear
+    discovery: false
     lambda: 'return id(towel_heater_status);'
     turn_on_action:
       - if:
@@ -130,6 +140,10 @@ switch:
             - switch.turn_on: towel_heater_internal_switch
             - delay: 10ms
             - switch.turn_off: towel_heater_internal_switch
+            - mqtt.publish:
+                topic: towelheater/switch/towel_heater/command
+                payload: ''
+                retain: true
     turn_off_action:
       - if:
           condition:
@@ -139,9 +153,7 @@ switch:
             - switch.turn_on: towel_heater_internal_switch
             - delay: 10ms
             - switch.turn_off: towel_heater_internal_switch
-
-  - platform: template
-    name: "Deep Sleep"
-    turn_on_action:
-      - lambda: |-
-          ESP.deepSleep(uint64_t(3600) * 1000000);
+            - mqtt.publish:
+                topic: towelheater/switch/towel_heater/command
+                payload: ''
+                retain: true

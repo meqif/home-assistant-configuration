@@ -20,3 +20,11 @@ queries:
     unit_of_measurement: 'g/m³'
     field: value
     database: !secret influxdb_database
+  - name: Average Bed Pressure
+    value_template: '{{ value | round(2) }}'
+    group_function: mean
+    where: '"entity_id" = ''bed_pressure'' AND time > now() - 1m'
+    measurement: '"V"'
+    unit_of_measurement: 'V'
+    field: value
+    database: !secret influxdb_database

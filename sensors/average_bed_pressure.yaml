@@ -1,6 +1,0 @@
----
-platform: average
-name: 'Average Bed Pressure'
-entities:
-  - sensor.bed_pressure
-duration: 60

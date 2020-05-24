@@ -7,7 +7,7 @@ queries:
   - name: Last Bathroom Absolute Humidity
     value_template: '{{ value | round(2) }}'
     group_function: last
-    where: '"entity_id" = ''bme280_bathroom_absolute_humidity'' AND time < now() - 1h AND time > now() - 2h'
+    where: '"entity_id" = ''bme280_bathroom_absolute_humidity'''
     measurement: '"g/m³"'
     unit_of_measurement: 'g/m³'
     field: value

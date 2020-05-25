@@ -22,17 +22,17 @@ queries:
     database: !secret influxdb_database
   - name: Historical Max Bed Pressure
     value_template: '{{ value | round(2) }}'
-    group_function: max
+    group_function: percentile
     where: '"entity_id" = ''bed_pressure'' AND time > now() - 24h'
     measurement: '"V"'
     unit_of_measurement: 'V'
-    field: value
+    field: '"value", 99'
     database: !secret influxdb_database
   - name: Historical Min Bed Pressure
     value_template: '{{ value | round(2) }}'
-    group_function: min
+    group_function: percentile
     where: '"entity_id" = ''bed_pressure'' AND time > now() - 24h'
     measurement: '"V"'
     unit_of_measurement: 'V'
-    field: value
+    field: '"value", 10'
     database: !secret influxdb_database

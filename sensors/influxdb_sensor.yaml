@@ -14,8 +14,8 @@ queries:
     database: !secret influxdb_database
   - name: Historical Bathroom Absolute Humidity
     value_template: '{{ value | round(2) }}'
-    group_function: mean
-    where: '"entity_id" = ''bme280_bathroom_absolute_humidity'' AND time < now() - 1h AND time > now() - 2h'
+    group_function: mode
+    where: '"entity_id" = ''bme280_bathroom_absolute_humidity'' AND time > now() - 1h30m'
     measurement: '"g/m³"'
     unit_of_measurement: 'g/m³'
     field: value

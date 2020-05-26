@@ -8,22 +8,16 @@ esphome:
       - logger.log: "Done booting, running other code"
       - mqtt.publish:
           topic: towelheater/angery
-          payload: 'very angery, rawr'
-      - delay: 10s
+          payload: 'very angery, rawr 🦁'
+      - delay: 1s
       - if:
           condition:
             text_sensor.state:
               id: caffeine
               state: 'off'
           then:
-            # - mqtt.publish:
-            #     topic: towelheater/status
-            #     payload: offline
-            #     retain: true
-            - delay: 500ms
             - lambda: |-
                 ESP.deepSleep(uint64_t(60) * 1000000);
-
 
 wifi:
   ssid: !secret wifi_ssid
@@ -113,7 +107,7 @@ sensor:
           return new_value;
       }
     accuracy_decimals: 2
-    update_interval: 15s
+    update_interval: 5s
 
 globals:
   - id: towel_heater_status

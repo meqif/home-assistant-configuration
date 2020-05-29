@@ -79,7 +79,7 @@ binary_sensor:
         friendly_name: "Bed presence"
         value_template: >-
           {%- with %}
-            {% set current = (states("sensor.bed_pressure") | float) %}
+            {% set current = (states("sensor.recent_max_bed_pressure") | float) %}
             {% set floor = states("sensor.historical_min_bed_pressure") | float %}
             {% set ceiling = states("sensor.historical_max_bed_pressure") | float %}
             {% set tolerance = (ceiling - floor) / 3 %}

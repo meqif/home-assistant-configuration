@@ -20,6 +20,14 @@ queries:
     unit_of_measurement: 'g/m³'
     field: value
     database: !secret influxdb_database
+  - name: Recent Max Bed Pressure
+    value_template: '{{ value | round(2) }}'
+    group_function: max
+    where: '"entity_id" = ''bed_pressure'' AND time > now() - 5m'
+    measurement: '"V"'
+    unit_of_measurement: 'V'
+    field: value
+    database: !secret influxdb_database
   - name: Historical Max Bed Pressure
     value_template: '{{ value | round(2) }}'
     group_function: percentile

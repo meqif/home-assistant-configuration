@@ -21,16 +21,6 @@ mqtt:
   broker: !secret mqtt_broker
   topic_prefix: livingroom
 
-deep_sleep:
-  id: deep_sleep_1
-  sleep_duration: 1min
-
-switch:
-  - platform: template
-    name: "Short sleep"
-    turn_on_action:
-      - deep_sleep.enter: deep_sleep_1
-
 i2c:
   sda: D2
   scl: D1

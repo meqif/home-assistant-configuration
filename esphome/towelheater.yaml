@@ -9,6 +9,7 @@ esphome:
       - mqtt.publish:
           topic: towelheater/angery
           payload: 'very angery, rawr 🦁'
+          qos: 1
       - delay: 1s
       - if:
           condition:

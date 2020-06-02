@@ -54,6 +54,7 @@ sensor:
         (id(bme280_temperature).state + 243.5)) * id(bme280_humidity).state * mw) /
         ((273.15 + id(bme280_temperature).state) * r); // in grams/m^3
     accuracy_decimals: 2
+    unit_of_measurement: "g/m³"
 
 binary_sensor:
   - platform: gpio

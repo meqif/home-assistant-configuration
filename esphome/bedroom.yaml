@@ -18,10 +18,6 @@ api:
 
 ota:
 
-mqtt:
-  broker: !secret mqtt_broker
-  topic_prefix: bedroom
-
 i2c:
   sda: 21
   scl: 22

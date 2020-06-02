@@ -18,7 +18,7 @@ esphome:
               state: 'off'
           then:
             - lambda: |-
-                ESP.deepSleep(uint64_t(60) * 1000000);
+                ESP.deepSleep(uint64_t(120) * 1000000);
 
 wifi:
   ssid: !secret wifi_ssid
@@ -49,10 +49,6 @@ time:
                   id: caffeine
                   state: 'off'
               then:
-                # - mqtt.publish:
-                #     topic: towelheater/status
-                #     payload: offline
-                #     retain: true
                 - delay: 500ms
                 - lambda: |-
                     ESP.deepSleep(uint64_t(60) * 1000000);

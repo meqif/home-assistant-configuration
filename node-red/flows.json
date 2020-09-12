@@ -494,7 +494,7 @@
     "output_location": "",
     "output_location_type": "none",
     "mustacheAltTags": false,
-    "x": 720,
+    "x": 980,
     "y": 200,
     "wires": [
       []
@@ -1173,206 +1173,6 @@
     "wires": [
       [
         "ef734399.c6d5c8"
-      ]
-    ]
-  },
-  {
-    "id": "82ab33b2.40ec48",
-    "type": "inject",
-    "z": "b646acff.9e1af",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "0.10",
-    "payloadType": "str",
-    "x": 110,
-    "y": 360,
-    "wires": [
-      [
-        "471d0590.65a634"
-      ]
-    ]
-  },
-  {
-    "id": "8f4b1955.29c218",
-    "type": "inject",
-    "z": "b646acff.9e1af",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "0.80",
-    "payloadType": "str",
-    "x": 110,
-    "y": 640,
-    "wires": [
-      [
-        "471d0590.65a634"
-      ]
-    ]
-  },
-  {
-    "id": "3333110c.4fe0ae",
-    "type": "inject",
-    "z": "b646acff.9e1af",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "0.50",
-    "payloadType": "str",
-    "x": 110,
-    "y": 600,
-    "wires": [
-      [
-        "471d0590.65a634"
-      ]
-    ]
-  },
-  {
-    "id": "53f4ceae.e679c8",
-    "type": "inject",
-    "z": "b646acff.9e1af",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "0.25",
-    "payloadType": "str",
-    "x": 110,
-    "y": 440,
-    "wires": [
-      [
-        "471d0590.65a634"
-      ]
-    ]
-  },
-  {
-    "id": "4a13e3d3.6f2434",
-    "type": "inject",
-    "z": "b646acff.9e1af",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "0.12",
-    "payloadType": "str",
-    "x": 110,
-    "y": 400,
-    "wires": [
-      [
-        "471d0590.65a634"
-      ]
-    ]
-  },
-  {
-    "id": "14e13ea.de62441",
-    "type": "inject",
-    "z": "b646acff.9e1af",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "0.35",
-    "payloadType": "str",
-    "x": 110,
-    "y": 520,
-    "wires": [
-      [
-        "471d0590.65a634"
-      ]
-    ]
-  },
-  {
-    "id": "1e7c5507.fe8beb",
-    "type": "inject",
-    "z": "b646acff.9e1af",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "0.30",
-    "payloadType": "str",
-    "x": 110,
-    "y": 480,
-    "wires": [
-      [
-        "471d0590.65a634"
-      ]
-    ]
-  },
-  {
-    "id": "e002988a.70ef98",
-    "type": "inject",
-    "z": "b646acff.9e1af",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "0.40",
-    "payloadType": "str",
-    "x": 110,
-    "y": 560,
-    "wires": [
-      [
-        "471d0590.65a634"
       ]
     ]
   },
@@ -2682,23 +2482,6 @@
     ]
   },
   {
-    "id": "c88e4df0.009ba",
-    "type": "debug",
-    "z": "40e6f526.bf7754",
-    "name": "",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "true",
-    "targetType": "full",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 510,
-    "y": 40,
-    "wires": []
-  },
-  {
     "id": "4dee00de.6cf45",
     "type": "api-get-history",
     "z": "40e6f526.bf7754",
@@ -2765,7 +2548,6 @@
     "y": 100,
     "wires": [
       [
-        "c88e4df0.009ba",
         "36ce8a37.853726"
       ]
     ]
@@ -2926,7 +2708,7 @@
     "y": 80,
     "wires": [
       [
-        "3b0c16c4.4f5aba"
+        "6f157953.6a0018"
       ]
     ]
   },
@@ -2953,7 +2735,7 @@
     "y": 120,
     "wires": [
       [
-        "3b0c16c4.4f5aba"
+        "6f157953.6a0018"
       ]
     ]
   },
@@ -2976,7 +2758,7 @@
     "y": 200,
     "wires": [
       [
-        "a42cdc89.b6aee"
+        "cab7812a.0985a8"
       ]
     ]
   },
@@ -3003,53 +2785,7 @@
     "y": 160,
     "wires": [
       [
-        "a42cdc89.b6aee"
-      ]
-    ]
-  },
-  {
-    "id": "3b0c16c4.4f5aba",
-    "type": "delay",
-    "z": "aa1ece22.7c0ca8",
-    "name": "",
-    "pauseType": "delay",
-    "timeout": "1",
-    "timeoutUnits": "minutes",
-    "rate": "1",
-    "nbRateUnits": "1",
-    "rateUnits": "second",
-    "randomFirst": "1",
-    "randomLast": "5",
-    "randomUnits": "seconds",
-    "drop": false,
-    "x": 720,
-    "y": 80,
-    "wires": [
-      [
-        "ba2fe4b2.4881c8"
-      ]
-    ]
-  },
-  {
-    "id": "a42cdc89.b6aee",
-    "type": "delay",
-    "z": "aa1ece22.7c0ca8",
-    "name": "",
-    "pauseType": "delay",
-    "timeout": "1",
-    "timeoutUnits": "minutes",
-    "rate": "1",
-    "nbRateUnits": "1",
-    "rateUnits": "second",
-    "randomFirst": "1",
-    "randomLast": "5",
-    "randomUnits": "seconds",
-    "drop": false,
-    "x": 720,
-    "y": 200,
-    "wires": [
-      [
-        "aec1664b.0ff388"
+        "cab7812a.0985a8"
       ]
     ]
   },
@@ -3102,5 +2838,522 @@
     "x": 915,
     "y": 560,
     "wires": []
+  },
+  {
+    "id": "cab7812a.0985a8",
+    "type": "trigger",
+    "z": "aa1ece22.7c0ca8",
+    "name": "",
+    "op1": "",
+    "op2": "",
+    "op1type": "nul",
+    "op2type": "pay",
+    "duration": "1",
+    "extend": false,
+    "units": "min",
+    "reset": "",
+    "bytopic": "all",
+    "topic": "topic",
+    "outputs": 1,
+    "x": 730,
+    "y": 200,
+    "wires": [
+      [
+        "aec1664b.0ff388"
+      ]
+    ]
+  },
+  {
+    "id": "6f157953.6a0018",
+    "type": "trigger",
+    "z": "aa1ece22.7c0ca8",
+    "name": "",
+    "op1": "",
+    "op2": "",
+    "op1type": "nul",
+    "op2type": "pay",
+    "duration": "1",
+    "extend": false,
+    "units": "min",
+    "reset": "",
+    "bytopic": "all",
+    "topic": "topic",
+    "outputs": 1,
+    "x": 730,
+    "y": 80,
+    "wires": [
+      [
+        "ba2fe4b2.4881c8"
+      ]
+    ]
+  },
+  {
+    "id": "ee1cc44.ddb5338",
+    "type": "server-state-changed",
+    "z": "b646acff.9e1af",
+    "name": "Motion detected?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "entityidfilter": "binary_sensor.presence_20",
+    "entityidfiltertype": "exact",
+    "outputinitially": true,
+    "state_type": "str",
+    "haltifstate": "on",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "output_only_on_state_change": true,
+    "x": 130,
+    "y": 380,
+    "wires": [
+      [
+        "ddbef53c.510fe"
+      ],
+      [
+        "1debdac0.541f35"
+      ]
+    ]
+  },
+  {
+    "id": "ddbef53c.510fe",
+    "type": "time-switch",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "lat": "",
+    "lon": "",
+    "startTime": "08:00",
+    "endTime": "23:59",
+    "startOffset": 0,
+    "endOffset": 0,
+    "x": 330,
+    "y": 380,
+    "wires": [
+      [
+        "8ea4accb.c4d88"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "8ea4accb.c4d88",
+    "type": "api-current-state",
+    "z": "b646acff.9e1af",
+    "name": "Bedside Lamp is off?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "switch.bedroom_lamp",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 540,
+    "y": 380,
+    "wires": [
+      [
+        "7df00bde.cb86bc"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "7df00bde.cb86bc",
+    "type": "api-current-state",
+    "z": "b646acff.9e1af",
+    "name": "Bed Presence is off?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "binary_sensor.bed_presence",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 780,
+    "y": 380,
+    "wires": [
+      [
+        "e2124ea7.219db8"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "e2124ea7.219db8",
+    "type": "api-call-service",
+    "z": "b646acff.9e1af",
+    "name": "Turn on overhead light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "turn_on",
+    "entityId": "light.bedroom_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 1020,
+    "y": 380,
+    "wires": [
+      [
+        "1debdac0.541f35"
+      ]
+    ]
+  },
+  {
+    "id": "1debdac0.541f35",
+    "type": "stoptimer",
+    "z": "b646acff.9e1af",
+    "duration": "5",
+    "units": "Minute",
+    "payloadtype": "num",
+    "payloadval": "0",
+    "name": "",
+    "x": 340,
+    "y": 460,
+    "wires": [
+      [
+        "63826e75.b52438"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "63826e75.b52438",
+    "type": "api-call-service",
+    "z": "b646acff.9e1af",
+    "name": "Turn off overhead light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "turn_off",
+    "entityId": "light.bedroom_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 560,
+    "y": 460,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "62409650.3360a",
+    "type": "comment",
+    "z": "6cafe6fe.9631d8",
+    "name": "Turn on lights when movement is detected",
+    "info": "",
+    "x": 200,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "7d40d2fe.dd8624",
+    "type": "server-state-changed",
+    "z": "6cafe6fe.9631d8",
+    "name": "Motion detected?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "entityidfilter": "binary_sensor.presence_22",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "on",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "output_only_on_state_change": true,
+    "x": 130,
+    "y": 360,
+    "wires": [
+      [
+        "a8e6da7d.f23ca"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "a8e6da7d.f23ca",
+    "type": "api-current-state",
+    "z": "6cafe6fe.9631d8",
+    "name": "Dark?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "0.5",
+    "halt_if_type": "num",
+    "halt_if_compare": "lt",
+    "override_topic": false,
+    "entity_id": "sensor.living_room_brightness",
+    "state_type": "num",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 310,
+    "y": 360,
+    "wires": [
+      [
+        "c6822236.1305b8"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "c6822236.1305b8",
+    "type": "api-current-state",
+    "z": "6cafe6fe.9631d8",
+    "name": "Big Corner Light is off?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "switch.living_room_big_corner_light",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 510,
+    "y": 360,
+    "wires": [
+      [
+        "ba5d4741.de8258",
+        "2dfd9de1.d0a8e2",
+        "fa493e41.defed"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "ba5d4741.de8258",
+    "type": "api-call-service",
+    "z": "6cafe6fe.9631d8",
+    "name": "Turn on Desk Lamp",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "switch",
+    "service": "turn_on",
+    "entityId": "switch.desk_lamp",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 750,
+    "y": 360,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "2dfd9de1.d0a8e2",
+    "type": "api-call-service",
+    "z": "6cafe6fe.9631d8",
+    "name": "Turn on Big Corner Light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "switch",
+    "service": "turn_on",
+    "entityId": "switch.living_room_big_corner_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 770,
+    "y": 420,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "fa493e41.defed",
+    "type": "api-call-service",
+    "z": "6cafe6fe.9631d8",
+    "name": "Turn on Overhead Lights",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "turn_on",
+    "entityId": "light.hue_white_lamp_sala_janela, light.hue_white_lamp_sala_pc",
+    "data": "{\"brightness_pct\":100}",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 770,
+    "y": 480,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "5a8c20bc.fd7aa",
+    "type": "server-state-changed",
+    "z": "fe5fa9ba.571488",
+    "name": "Movement detected?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "entityidfilter": "binary_sensor.presence_18",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "on",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "output_only_on_state_change": true,
+    "x": 120,
+    "y": 40,
+    "wires": [
+      [
+        "b14b5c15.948aa"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "b14b5c15.948aa",
+    "type": "api-current-state",
+    "z": "fe5fa9ba.571488",
+    "name": "Light sensor state",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 1,
+    "halt_if": "",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "sensor.lightlevel_19",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 350,
+    "y": 40,
+    "wires": [
+      [
+        "7290bf6f.764c88"
+      ]
+    ]
+  },
+  {
+    "id": "7290bf6f.764c88",
+    "type": "switch",
+    "z": "fe5fa9ba.571488",
+    "name": "Dark?",
+    "property": "data.attributes.dark",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "true",
+        "vt": "jsonata"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 530,
+    "y": 40,
+    "wires": [
+      [
+        "e3123a47.c6ebe"
+      ]
+    ]
+  },
+  {
+    "id": "e3123a47.c6ebe",
+    "type": "api-current-state",
+    "z": "fe5fa9ba.571488",
+    "name": "Kitchen lights off?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "light.kitchen_light",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 710,
+    "y": 40,
+    "wires": [
+      [
+        "9ef15835.09cc68"
+      ],
+      []
+    ]
   }
 ]

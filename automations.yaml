@@ -34,20 +34,6 @@
     data:
       entity_id: light.kitchen_light
   id: d010cbde411a42c7a8fca11e9be51020
-- id: a6f67f86a5074938b921eca67d07e1ba
-  alias: Turn off towel heater after shower ends
-  trigger:
-  - entity_id: binary_sensor.shower_ended
-    platform: state
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: switch.towel_heater
-    state: 'on'
-  action:
-  - data: {}
-    entity_id: switch.towel_heater
-    service: switch.turn_off
 - id: turn_on_towel_heater
   alias: Turn on towel heater
   trigger:

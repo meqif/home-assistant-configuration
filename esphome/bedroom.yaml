@@ -23,17 +23,73 @@ i2c:
   scl: 22
   scan: True
 
+globals:
+  - id: samples
+    type: float[10]
+    restore_value: no
+  - id: sample_count
+    type: int
+    restore_value: no
+    initial_value: '0'
+
 sensor:
   - platform: adc
     pin: 34
     name: "Bed Pressure"
-    update_interval: 2s
+    update_interval: 0.1s
     attenuation: 11db
     filters:
-      - sliding_window_moving_average:
-          window_size: 3
-          send_every: 3
-      - lambda: 'return std::max(x, 0.0f);'
+      # Discard top 20% and bottom 20% values, then calculate average of the remaining
+      - lambda: >-
+          if (isnan(x)) {
+              return {};
+          }
+
+          const int max_samples = 10;
+          const int discard_samples = 2;
+
+          id(samples)[id(sample_count)++] = x;
+
+          if (id(sample_count) == max_samples) {
+              id(sample_count) = 0;
+
+              // Clear the largest two values
+              for (int j = 0; j < discard_samples; j++) {
+                  auto target_index = 0;
+                  // Find largest
+                  for (int i = 0; i < max_samples; i++) {
+                      if (id(samples)[i] >= id(samples)[target_index] && id(samples)[i] != -1.0f) {
+                          target_index = i;
+                      }
+                  }
+                  // Clear largest value
+                  id(samples)[target_index] = -1.0f;
+              }
+
+              // Clear the smallest two values
+              for (int j = 0; j < discard_samples; j++) {
+                  auto target_index = 0;
+                  // Find smallest
+                  for (int i = 0; i < max_samples; i++) {
+                      if (id(samples)[i] <= id(samples)[target_index] && id(samples)[i] != -1.0f) {
+                          target_index = i;
+                      }
+                  }
+                  // Clear largest value
+                  id(samples)[target_index] = -1.0f;
+              }
+
+              auto average = 0.0f;
+              for (int i = 0; i < max_samples; i++) {
+                  if (id(samples)[i] != -1.0f) {
+                      average += id(samples)[i];
+                  }
+              }
+              average /= static_cast<float>(max_samples - discard_samples * 2);
+              return average;
+          } else {
+              return {};
+          }
 
   - platform: bme280
     temperature:

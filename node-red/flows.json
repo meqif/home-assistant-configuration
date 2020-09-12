@@ -1,0 +1,3106 @@
+[
+  {
+    "id": "aa1ece22.7c0ca8",
+    "type": "tab",
+    "label": "Hall illumination ",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "fe5fa9ba.571488",
+    "type": "tab",
+    "label": "Kitchen",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "b646acff.9e1af",
+    "type": "tab",
+    "label": "Bedroom",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "6cafe6fe.9631d8",
+    "type": "tab",
+    "label": "Living Room",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "40e6f526.bf7754",
+    "type": "tab",
+    "label": "Bathroom",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "eaa8464f.88645",
+    "type": "tab",
+    "label": "Back home",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "a3225e7a.c5e488",
+    "type": "tab",
+    "label": "Misc",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "d3229416.f40d",
+    "type": "server",
+    "z": "",
+    "name": "Home Assistant",
+    "legacy": false,
+    "addon": false,
+    "rejectUnauthorizedCerts": true,
+    "ha_boolean": "y|yes|true|on|home|open",
+    "connectionDelay": true,
+    "cacheJson": false
+  },
+  {
+    "id": "554fafcb.a69f1",
+    "type": "api-call-service",
+    "z": "aa1ece22.7c0ca8",
+    "name": "Turn on light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": true,
+    "service_domain": "light",
+    "service": "turn_on",
+    "entityId": "light.hue_white_lamp_corredor",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 1270,
+    "y": 80,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "319e0de0.9a6d0a",
+    "type": "api-call-service",
+    "z": "aa1ece22.7c0ca8",
+    "name": "Turn off light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": true,
+    "service_domain": "light",
+    "service": "turn_off",
+    "entityId": "light.hue_white_lamp_corredor",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 1270,
+    "y": 200,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "ba2fe4b2.4881c8",
+    "type": "api-current-state",
+    "z": "aa1ece22.7c0ca8",
+    "name": "Lamp is off?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "light.hue_white_lamp_corredor",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 950,
+    "y": 80,
+    "wires": [
+      [
+        "6d7acecf.a4b0f8"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "aec1664b.0ff388",
+    "type": "api-current-state",
+    "z": "aa1ece22.7c0ca8",
+    "name": "Lamp is off?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "light.hue_white_lamp_corredor",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 950,
+    "y": 200,
+    "wires": [
+      [],
+      [
+        "ec4a63a8.a301a8"
+      ]
+    ]
+  },
+  {
+    "id": "d1503fba.719618",
+    "type": "poll-state",
+    "z": "aa1ece22.7c0ca8",
+    "name": "Hall Brightness",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "updateinterval": "10",
+    "updateIntervalUnits": "seconds",
+    "outputinitially": false,
+    "outputonchanged": false,
+    "entity_id": "sensor.raw_hall_brightness",
+    "state_type": "num",
+    "halt_if": "",
+    "halt_if_type": "num",
+    "halt_if_compare": "is",
+    "outputs": 1,
+    "x": 140,
+    "y": 140,
+    "wires": [
+      [
+        "4f921c55.f80514"
+      ]
+    ]
+  },
+  {
+    "id": "6d7acecf.a4b0f8",
+    "type": "api-current-state",
+    "z": "aa1ece22.7c0ca8",
+    "name": "Away?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "not_home",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "sensor.ricardo_presence",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 1110,
+    "y": 80,
+    "wires": [
+      [],
+      [
+        "554fafcb.a69f1"
+      ]
+    ]
+  },
+  {
+    "id": "ec4a63a8.a301a8",
+    "type": "api-current-state",
+    "z": "aa1ece22.7c0ca8",
+    "name": "Away?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "not_home",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "sensor.ricardo_presence",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 1110,
+    "y": 200,
+    "wires": [
+      [],
+      [
+        "319e0de0.9a6d0a"
+      ]
+    ]
+  },
+  {
+    "id": "3c4672e4.fd1346",
+    "type": "trigger-state",
+    "z": "eaa8464f.88645",
+    "name": "Back home?",
+    "server": "d3229416.f40d",
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "entityid": "sensor.ricardo_presence",
+    "entityidfiltertype": "exact",
+    "debugenabled": true,
+    "constraints": [
+      {
+        "id": "740svspkaxy",
+        "targetType": "this_entity",
+        "targetValue": "",
+        "propertyType": "previous_state",
+        "propertyValue": "old_state.state",
+        "comparatorType": "is",
+        "comparatorValueDatatype": "str",
+        "comparatorValue": "not_home"
+      },
+      {
+        "id": "4b0o6n14cvz",
+        "targetType": "this_entity",
+        "targetValue": "",
+        "propertyType": "current_state",
+        "propertyValue": "new_state.state",
+        "comparatorType": "is_not",
+        "comparatorValueDatatype": "str",
+        "comparatorValue": "not_home"
+      }
+    ],
+    "constraintsmustmatch": "all",
+    "outputs": 2,
+    "customoutputs": [],
+    "outputinitially": false,
+    "state_type": "str",
+    "x": 170,
+    "y": 140,
+    "wires": [
+      [
+        "d775548c.8efcc8",
+        "37df8bf9.4b505c",
+        "74451eed.666178"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "28cf4132.9e5c4e",
+    "type": "api-call-service",
+    "z": "eaa8464f.88645",
+    "name": "Turn on hall light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "turn_on",
+    "entityId": "light.hue_white_lamp_corredor",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 660,
+    "y": 420,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "a3e2c778.c3fc4",
+    "type": "server-state-changed",
+    "z": "eaa8464f.88645",
+    "name": "Movement detected in hall",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "entityidfilter": "binary_sensor.presence_21",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "habool",
+    "haltifstate": "on",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "output_only_on_state_change": true,
+    "x": 140,
+    "y": 240,
+    "wires": [
+      [
+        "6c394cb1.cb5404"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "d5a0a056.fd03b8",
+    "type": "inject",
+    "z": "eaa8464f.88645",
+    "name": "",
+    "props": [],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "x": 160,
+    "y": 320,
+    "wires": [
+      [
+        "6c394cb1.cb5404"
+      ]
+    ]
+  },
+  {
+    "id": "6c394cb1.cb5404",
+    "type": "api-current-state",
+    "z": "eaa8464f.88645",
+    "name": "Not home?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "not_home",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "sensor.ricardo_presence",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 360,
+    "y": 240,
+    "wires": [
+      [
+        "74451eed.666178",
+        "d889289f.37ba1"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "be584959.a6378",
+    "type": "comment",
+    "z": "aa1ece22.7c0ca8",
+    "name": "Lower values means brighter",
+    "info": "",
+    "x": 180,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "593a787d.a9f8d8",
+    "type": "trigger-state",
+    "z": "fe5fa9ba.571488",
+    "name": "Kitchen is dark",
+    "server": "d3229416.f40d",
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "entityid": "sensor.lightlevel_19",
+    "entityidfiltertype": "exact",
+    "debugenabled": false,
+    "constraints": [
+      {
+        "id": "87zco7eg2gh",
+        "targetType": "this_entity",
+        "targetValue": "",
+        "propertyType": "property",
+        "propertyValue": "new_state.attributes.dark",
+        "comparatorType": "is",
+        "comparatorValueDatatype": "bool",
+        "comparatorValue": "true"
+      }
+    ],
+    "constraintsmustmatch": "all",
+    "outputs": 2,
+    "customoutputs": [],
+    "outputinitially": true,
+    "state_type": "str",
+    "x": 100,
+    "y": 100,
+    "wires": [
+      [
+        "b9b1188c.a295e"
+      ],
+      [
+        "967dc656.1f845"
+      ]
+    ]
+  },
+  {
+    "id": "9ef15835.09cc68",
+    "type": "api-call-service",
+    "z": "fe5fa9ba.571488",
+    "name": "Turn on kitchen light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": true,
+    "service_domain": "light",
+    "service": "turn_on",
+    "entityId": "light.kitchen_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 720,
+    "y": 200,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "b9b1188c.a295e",
+    "type": "api-current-state",
+    "z": "fe5fa9ba.571488",
+    "name": "Home?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "not_home",
+    "halt_if_type": "str",
+    "halt_if_compare": "is_not",
+    "override_topic": false,
+    "entity_id": "sensor.ricardo_presence",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 280,
+    "y": 100,
+    "wires": [
+      [
+        "941d1999.d7709"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "941d1999.d7709",
+    "type": "api-current-state",
+    "z": "fe5fa9ba.571488",
+    "name": "Kitchen lights off?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "light.kitchen_light",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 470,
+    "y": 100,
+    "wires": [
+      [
+        "54f1a7a3.bd746"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "1f7b149.47ba4eb",
+    "type": "bigtimer",
+    "z": "fe5fa9ba.571488",
+    "outtopic": "timer",
+    "outpayload1": "ON",
+    "outpayload2": "OFF",
+    "name": "Dusk until Late night",
+    "comment": "",
+    "lat": 0,
+    "lon": 0,
+    "starttime": "5001",
+    "endtime": "1410",
+    "starttime2": 0,
+    "endtime2": 0,
+    "startoff": "10",
+    "endoff": "10",
+    "startoff2": 0,
+    "endoff2": 0,
+    "offs": 0,
+    "outtext1": "",
+    "outtext2": "",
+    "timeout": 1440,
+    "sun": true,
+    "mon": true,
+    "tue": true,
+    "wed": true,
+    "thu": true,
+    "fri": true,
+    "sat": true,
+    "jan": true,
+    "feb": true,
+    "mar": true,
+    "apr": true,
+    "may": true,
+    "jun": true,
+    "jul": true,
+    "aug": true,
+    "sep": true,
+    "oct": true,
+    "nov": true,
+    "dec": true,
+    "day1": 0,
+    "month1": 0,
+    "day2": 0,
+    "month2": 0,
+    "day3": 0,
+    "month3": 0,
+    "day4": 0,
+    "month4": 0,
+    "day5": 0,
+    "month5": 0,
+    "day6": 0,
+    "month6": 0,
+    "day7": 0,
+    "month7": 0,
+    "day8": 0,
+    "month8": 0,
+    "day9": 0,
+    "month9": 0,
+    "day10": 0,
+    "month10": 0,
+    "day11": 0,
+    "month11": 0,
+    "day12": 0,
+    "month12": 0,
+    "d1": 0,
+    "w1": 0,
+    "d2": 0,
+    "w2": 0,
+    "d3": 0,
+    "w3": 0,
+    "d4": 0,
+    "w4": 0,
+    "d5": 0,
+    "w5": 0,
+    "d6": 0,
+    "w6": 0,
+    "xday1": 0,
+    "xmonth1": 0,
+    "xday2": 0,
+    "xmonth2": 0,
+    "xday3": 0,
+    "xmonth3": 0,
+    "xday4": 0,
+    "xmonth4": 0,
+    "xday5": 0,
+    "xmonth5": 0,
+    "xday6": 0,
+    "xmonth6": 0,
+    "xd1": 0,
+    "xw1": 0,
+    "xd2": 0,
+    "xw2": 0,
+    "xd3": 0,
+    "xw3": 0,
+    "xd4": 0,
+    "xw4": 0,
+    "xd5": 0,
+    "xw5": 0,
+    "xd6": 0,
+    "xw6": 0,
+    "suspend": false,
+    "random": true,
+    "repeat": false,
+    "atstart": false,
+    "odd": false,
+    "even": false,
+    "x": 120,
+    "y": 380,
+    "wires": [
+      [
+        "9e8e2117.38d5e8"
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "id": "9e8e2117.38d5e8",
+    "type": "switch",
+    "z": "fe5fa9ba.571488",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "ON",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "OFF",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 310,
+    "y": 380,
+    "wires": [
+      [
+        "86f290c4.633f28"
+      ],
+      [
+        "fbc4e4f2.6ce338"
+      ]
+    ]
+  },
+  {
+    "id": "ae5d8e70.624c1",
+    "type": "api-call-service",
+    "z": "fe5fa9ba.571488",
+    "name": "Turn on kitchen light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": true,
+    "service_domain": "light",
+    "service": "turn_on",
+    "entityId": "light.kitchen_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 720,
+    "y": 340,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "111fa6a8.8c3151",
+    "type": "api-call-service",
+    "z": "fe5fa9ba.571488",
+    "name": "Turn off kitchen light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": true,
+    "service_domain": "light",
+    "service": "turn_off",
+    "entityId": "light.kitchen_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 720,
+    "y": 420,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "86f290c4.633f28",
+    "type": "api-current-state",
+    "z": "fe5fa9ba.571488",
+    "name": "Vacation mode?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "true",
+    "halt_if_type": "bool",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "entity_id": "input_boolean.extended_away",
+    "state_type": "habool",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 500,
+    "y": 340,
+    "wires": [
+      [
+        "ae5d8e70.624c1"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "fbc4e4f2.6ce338",
+    "type": "api-current-state",
+    "z": "fe5fa9ba.571488",
+    "name": "Vacation mode?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "true",
+    "halt_if_type": "bool",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "entity_id": "input_boolean.extended_away",
+    "state_type": "habool",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 500,
+    "y": 420,
+    "wires": [
+      [
+        "111fa6a8.8c3151"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "d775548c.8efcc8",
+    "type": "api-call-service",
+    "z": "eaa8464f.88645",
+    "name": "Set vacation mode off",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "input_boolean",
+    "service": "turn_off",
+    "entityId": "input_boolean.extended_away",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 410,
+    "y": 40,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "c2ec343a.fd4f28",
+    "type": "delay",
+    "z": "fe5fa9ba.571488",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "5",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "x": 500,
+    "y": 200,
+    "wires": [
+      [
+        "9ef15835.09cc68"
+      ]
+    ]
+  },
+  {
+    "id": "967dc656.1f845",
+    "type": "change",
+    "z": "fe5fa9ba.571488",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "reset",
+        "pt": "msg",
+        "to": "true",
+        "tot": "bool"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 300,
+    "y": 200,
+    "wires": [
+      [
+        "c2ec343a.fd4f28"
+      ]
+    ]
+  },
+  {
+    "id": "54f1a7a3.bd746",
+    "type": "time-switch",
+    "z": "fe5fa9ba.571488",
+    "name": "Daytime?",
+    "lat": "",
+    "lon": "",
+    "startTime": "08:00",
+    "endTime": "23:59",
+    "startOffset": 0,
+    "endOffset": 0,
+    "x": 660,
+    "y": 100,
+    "wires": [
+      [
+        "c2ec343a.fd4f28"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "37df8bf9.4b505c",
+    "type": "template",
+    "z": "eaa8464f.88645",
+    "name": "Presence detected",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "Presence detected",
+    "output": "str",
+    "x": 400,
+    "y": 100,
+    "wires": [
+      [
+        "99e7ed6c.0e0438"
+      ]
+    ]
+  },
+  {
+    "id": "99e7ed6c.0e0438",
+    "type": "link out",
+    "z": "eaa8464f.88645",
+    "name": "",
+    "links": [
+      "6890d2ea.895df4",
+      "af9c0aaa.e17a3"
+    ],
+    "x": 545,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "d889289f.37ba1",
+    "type": "template",
+    "z": "eaa8464f.88645",
+    "name": "Message",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "Motion detected in hall when not home!",
+    "output": "str",
+    "x": 560,
+    "y": 240,
+    "wires": [
+      [
+        "3995c801.a4a8b8"
+      ]
+    ]
+  },
+  {
+    "id": "3995c801.a4a8b8",
+    "type": "link out",
+    "z": "eaa8464f.88645",
+    "name": "",
+    "links": [
+      "6890d2ea.895df4",
+      "af9c0aaa.e17a3"
+    ],
+    "x": 655,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "2fb22431.8c6f64",
+    "type": "server-state-changed",
+    "z": "b646acff.9e1af",
+    "name": "Bed Pressure",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "entityidfilter": "sensor.bed_pressure",
+    "entityidfiltertype": "exact",
+    "outputinitially": true,
+    "state_type": "str",
+    "haltifstate": "",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "outputs": 1,
+    "output_only_on_state_change": true,
+    "x": 90,
+    "y": 80,
+    "wires": [
+      [
+        "471d0590.65a634"
+      ]
+    ]
+  },
+  {
+    "id": "471d0590.65a634",
+    "type": "change",
+    "z": "b646acff.9e1af",
+    "name": "convert string to number",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "$number(payload)\t",
+        "tot": "jsonata"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 290,
+    "y": 80,
+    "wires": [
+      [
+        "32152404.70a604"
+      ]
+    ]
+  },
+  {
+    "id": "6ce2e513.ba1734",
+    "type": "switch",
+    "z": "b646acff.9e1af",
+    "name": "Threshold check",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "lte",
+        "v": "0.05",
+        "vt": "num"
+      },
+      {
+        "t": "gte",
+        "v": "0.1",
+        "vt": "num"
+      }
+    ],
+    "checkall": "false",
+    "repair": false,
+    "outputs": 2,
+    "x": 660,
+    "y": 80,
+    "wires": [
+      [
+        "d8dcbd5a.aa0d08"
+      ],
+      [
+        "c27e8f24.7b56"
+      ]
+    ]
+  },
+  {
+    "id": "4602ea23.c1843c",
+    "type": "ha-entity",
+    "z": "b646acff.9e1af",
+    "name": "Bed Presence (Node-RED)",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "outputs": 1,
+    "entityType": "binary_sensor",
+    "config": [
+      {
+        "property": "name",
+        "value": "Bed Presence"
+      },
+      {
+        "property": "device_class",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      },
+      {
+        "property": "unit_of_measurement",
+        "value": ""
+      }
+    ],
+    "state": "payload",
+    "stateType": "msg",
+    "attributes": [],
+    "resend": true,
+    "outputLocation": "payload",
+    "outputLocationType": "msg",
+    "inputOverride": "allow",
+    "x": 1320,
+    "y": 80,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "c27e8f24.7b56",
+    "type": "change",
+    "z": "b646acff.9e1af",
+    "name": "Occupied",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "true",
+        "tot": "bool"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 840,
+    "y": 240,
+    "wires": [
+      [
+        "2dc456a2.1c4a8a",
+        "11f5d5c1.85cc6a"
+      ]
+    ]
+  },
+  {
+    "id": "d8dcbd5a.aa0d08",
+    "type": "change",
+    "z": "b646acff.9e1af",
+    "name": "Free",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "false",
+        "tot": "bool"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 850,
+    "y": 80,
+    "wires": [
+      [
+        "63d744db.f4fd14",
+        "cbc7b9ba.25e13"
+      ]
+    ]
+  },
+  {
+    "id": "32152404.70a604",
+    "type": "rbe",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "func": "deadbandEq",
+    "gap": "0.05",
+    "start": "",
+    "inout": "in",
+    "property": "payload",
+    "x": 490,
+    "y": 80,
+    "wires": [
+      [
+        "ef734399.c6d5c8"
+      ]
+    ]
+  },
+  {
+    "id": "82ab33b2.40ec48",
+    "type": "inject",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "0.10",
+    "payloadType": "str",
+    "x": 110,
+    "y": 360,
+    "wires": [
+      [
+        "471d0590.65a634"
+      ]
+    ]
+  },
+  {
+    "id": "8f4b1955.29c218",
+    "type": "inject",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "0.80",
+    "payloadType": "str",
+    "x": 110,
+    "y": 640,
+    "wires": [
+      [
+        "471d0590.65a634"
+      ]
+    ]
+  },
+  {
+    "id": "3333110c.4fe0ae",
+    "type": "inject",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "0.50",
+    "payloadType": "str",
+    "x": 110,
+    "y": 600,
+    "wires": [
+      [
+        "471d0590.65a634"
+      ]
+    ]
+  },
+  {
+    "id": "53f4ceae.e679c8",
+    "type": "inject",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "0.25",
+    "payloadType": "str",
+    "x": 110,
+    "y": 440,
+    "wires": [
+      [
+        "471d0590.65a634"
+      ]
+    ]
+  },
+  {
+    "id": "4a13e3d3.6f2434",
+    "type": "inject",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "0.12",
+    "payloadType": "str",
+    "x": 110,
+    "y": 400,
+    "wires": [
+      [
+        "471d0590.65a634"
+      ]
+    ]
+  },
+  {
+    "id": "14e13ea.de62441",
+    "type": "inject",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "0.35",
+    "payloadType": "str",
+    "x": 110,
+    "y": 520,
+    "wires": [
+      [
+        "471d0590.65a634"
+      ]
+    ]
+  },
+  {
+    "id": "1e7c5507.fe8beb",
+    "type": "inject",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "0.30",
+    "payloadType": "str",
+    "x": 110,
+    "y": 480,
+    "wires": [
+      [
+        "471d0590.65a634"
+      ]
+    ]
+  },
+  {
+    "id": "e002988a.70ef98",
+    "type": "inject",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "0.40",
+    "payloadType": "str",
+    "x": 110,
+    "y": 560,
+    "wires": [
+      [
+        "471d0590.65a634"
+      ]
+    ]
+  },
+  {
+    "id": "2dc456a2.1c4a8a",
+    "type": "change",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "reset",
+        "pt": "msg",
+        "to": "true",
+        "tot": "bool"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 1020,
+    "y": 120,
+    "wires": [
+      [
+        "cbc7b9ba.25e13"
+      ]
+    ]
+  },
+  {
+    "id": "63d744db.f4fd14",
+    "type": "change",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "reset",
+        "pt": "msg",
+        "to": "true",
+        "tot": "bool"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 1020,
+    "y": 280,
+    "wires": [
+      [
+        "11f5d5c1.85cc6a"
+      ]
+    ]
+  },
+  {
+    "id": "cbc7b9ba.25e13",
+    "type": "trigger",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "op1": "",
+    "op2": "",
+    "op1type": "nul",
+    "op2type": "pay",
+    "duration": "1",
+    "extend": false,
+    "units": "min",
+    "reset": "",
+    "bytopic": "all",
+    "topic": "topic",
+    "outputs": 1,
+    "x": 1010,
+    "y": 80,
+    "wires": [
+      [
+        "4602ea23.c1843c"
+      ]
+    ]
+  },
+  {
+    "id": "11f5d5c1.85cc6a",
+    "type": "trigger",
+    "z": "b646acff.9e1af",
+    "name": "",
+    "op1": "",
+    "op2": "",
+    "op1type": "nul",
+    "op2type": "pay",
+    "duration": "1",
+    "extend": false,
+    "units": "min",
+    "reset": "",
+    "bytopic": "all",
+    "topic": "topic",
+    "outputs": 1,
+    "x": 1010,
+    "y": 240,
+    "wires": [
+      [
+        "4602ea23.c1843c"
+      ]
+    ]
+  },
+  {
+    "id": "2da5f8d1.f6c48",
+    "type": "comment",
+    "z": "b646acff.9e1af",
+    "name": "Ignore gradual creeping up/down",
+    "info": "",
+    "x": 550,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "710cc0b5.44ddc",
+    "type": "comment",
+    "z": "b646acff.9e1af",
+    "name": "Debounce spurious spikes",
+    "info": "",
+    "x": 910,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "4f921c55.f80514",
+    "type": "switch",
+    "z": "aa1ece22.7c0ca8",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "gte",
+        "v": "13000",
+        "vt": "num"
+      },
+      {
+        "t": "lte",
+        "v": "6000",
+        "vt": "str"
+      }
+    ],
+    "checkall": "false",
+    "repair": false,
+    "outputs": 2,
+    "x": 310,
+    "y": 140,
+    "wires": [
+      [
+        "6ed24975.8b717",
+        "81bc61c8.ee6ad"
+      ],
+      [
+        "de95dbd5.c711e",
+        "994bdc0f.fff838"
+      ]
+    ]
+  },
+  {
+    "id": "12ae74f9.146d93",
+    "type": "link out",
+    "z": "a3225e7a.c5e488",
+    "name": "",
+    "links": [
+      "6890d2ea.895df4",
+      "af9c0aaa.e17a3"
+    ],
+    "x": 715,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "378c04f.8ccd1fc",
+    "type": "server-state-changed",
+    "z": "a3225e7a.c5e488",
+    "name": "Battery devices under 30%",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "entityidfilter": ".+_battery.*",
+    "entityidfiltertype": "regex",
+    "outputinitially": true,
+    "state_type": "num",
+    "haltifstate": "30",
+    "halt_if_type": "num",
+    "halt_if_compare": "lte",
+    "outputs": 2,
+    "output_only_on_state_change": true,
+    "x": 150,
+    "y": 200,
+    "wires": [
+      [
+        "2db7f9ca.f56fee"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "205aef98.6238b",
+    "type": "template",
+    "z": "a3225e7a.c5e488",
+    "name": "",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "The device {{data.new_state.attributes.friendly_name}} ({{data.entity_id}}) has {{data.new_state.state}}{{data.new_state.attributes.unit_of_measurement}} battery!",
+    "output": "str",
+    "x": 600,
+    "y": 200,
+    "wires": [
+      [
+        "12ae74f9.146d93"
+      ]
+    ]
+  },
+  {
+    "id": "af9c0aaa.e17a3",
+    "type": "link in",
+    "z": "a3225e7a.c5e488",
+    "name": "Notify devices",
+    "links": [
+      "99e7ed6c.0e0438",
+      "3995c801.a4a8b8",
+      "ae810390.c573f8",
+      "b13d6050.2cbf3",
+      "12ae74f9.146d93",
+      "37d028ea.46b5a"
+    ],
+    "x": 55,
+    "y": 80,
+    "wires": [
+      [
+        "dd8cbf41.70b51",
+        "d6413312.b198c"
+      ]
+    ]
+  },
+  {
+    "id": "d6413312.b198c",
+    "type": "api-call-service",
+    "z": "a3225e7a.c5e488",
+    "name": "Notify Phone",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "notify",
+    "service": "mobile_app_pixel",
+    "entityId": "",
+    "data": "{\"title\":\"Home Assistant\",\"message\":payload}",
+    "dataType": "jsonata",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 190,
+    "y": 40,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "dd8cbf41.70b51",
+    "type": "api-call-service",
+    "z": "a3225e7a.c5e488",
+    "name": "Notify iPad",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "notify",
+    "service": "mobile_app_ricardos_ipad",
+    "entityId": "",
+    "data": "{\"title\":\"Home Assistant\",\"message\": payload }",
+    "dataType": "jsonata",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 190,
+    "y": 120,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "dc1692e6.5792d",
+    "type": "function",
+    "z": "6cafe6fe.9631d8",
+    "name": "Discomfort Index",
+    "func": "if (msg.payload.length != 2) {\n    node.error(\"Received unexpected amount of elements in payload\");\n    return;\n}\n\nconst temperaturePayload = msg.payload.find(function(element, index, array) {\n    return element.attributes.unit_of_measurement == \"°C\";\n});\nconst temperature = parseFloat(temperaturePayload.state);\n\nconst humidityPayload = msg.payload.find(function(element, index, array) {\n    return element.attributes.unit_of_measurement == \"%\";\n});\nconst humidity = parseFloat(humidityPayload.state);\n\nconst discomfortIndex = temperature - 0.55 * (1 - 0.01 * humidity) * (temperature - 14.5);\nvar description;\n\nif (discomfortIndex < 21) {\n    description = \"No discomfort\";\n} else if (discomfortIndex < 25) {\n    description = \"Less than half population feels discomfort\";\n} else if (discomfortIndex < 28) {\n    description = \"More than half population feels discomfort\";\n} else if (discomfortIndex < 30) {\n    description = \"Most population feels discomfort and deterioration of psychophysical conditions\";\n} else if (discomfortIndex < 32) {\n    description = \"The whole population feels an heavy discomfort\";\n} else {\n    description = \"Sanitary emergency due to the the very strong discomfort which may cause heatstrokes\";\n}\n\nreturn { payload: discomfortIndex, description: description };",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "x": 610,
+    "y": 100,
+    "wires": [
+      [
+        "14bc950a.d54673"
+      ]
+    ]
+  },
+  {
+    "id": "ec60f551.7ed99",
+    "type": "ha-get-entities",
+    "z": "6cafe6fe.9631d8",
+    "server": "d3229416.f40d",
+    "name": "Get temperature and humidity",
+    "rules": [
+      {
+        "property": "entity_id",
+        "logic": "includes",
+        "value": "sensor.living_room_temperature,sensor.living_room_humidity",
+        "valueType": "str"
+      }
+    ],
+    "output_type": "array",
+    "output_empty_results": false,
+    "output_location_type": "msg",
+    "output_location": "payload",
+    "output_results_count": 1,
+    "x": 350,
+    "y": 100,
+    "wires": [
+      [
+        "dc1692e6.5792d"
+      ]
+    ]
+  },
+  {
+    "id": "807146cf.371458",
+    "type": "inject",
+    "z": "6cafe6fe.9631d8",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 100,
+    "wires": [
+      [
+        "ec60f551.7ed99"
+      ]
+    ]
+  },
+  {
+    "id": "67d6f222.451fac",
+    "type": "comment",
+    "z": "6cafe6fe.9631d8",
+    "name": "Ventilation based on Discomfort Index",
+    "info": "",
+    "x": 190,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "38653382.7f7184",
+    "type": "api-current-state",
+    "z": "6cafe6fe.9631d8",
+    "name": "Home?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "not_home",
+    "halt_if_type": "str",
+    "halt_if_compare": "is_not",
+    "override_topic": false,
+    "entity_id": "sensor.ricardo_presence",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 460,
+    "y": 220,
+    "wires": [
+      [
+        "b46c3998.d6b02"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "7e19d14e.532c68",
+    "type": "bigtimer",
+    "z": "a3225e7a.c5e488",
+    "outtopic": "",
+    "outpayload1": "ON",
+    "outpayload2": "OFF",
+    "name": "Schedule",
+    "comment": "",
+    "lat": 0,
+    "lon": 0,
+    "starttime": "600",
+    "endtime": "10001",
+    "starttime2": 0,
+    "endtime2": 0,
+    "startoff": 0,
+    "endoff": 0,
+    "startoff2": 0,
+    "endoff2": 0,
+    "offs": 0,
+    "outtext1": "",
+    "outtext2": "",
+    "timeout": 1440,
+    "sun": true,
+    "mon": true,
+    "tue": true,
+    "wed": true,
+    "thu": true,
+    "fri": true,
+    "sat": true,
+    "jan": true,
+    "feb": true,
+    "mar": true,
+    "apr": true,
+    "may": true,
+    "jun": true,
+    "jul": true,
+    "aug": true,
+    "sep": true,
+    "oct": true,
+    "nov": true,
+    "dec": true,
+    "day1": 0,
+    "month1": 0,
+    "day2": 0,
+    "month2": 0,
+    "day3": 0,
+    "month3": 0,
+    "day4": 0,
+    "month4": 0,
+    "day5": 0,
+    "month5": 0,
+    "day6": 0,
+    "month6": 0,
+    "day7": 0,
+    "month7": 0,
+    "day8": 0,
+    "month8": 0,
+    "day9": 0,
+    "month9": 0,
+    "day10": 0,
+    "month10": 0,
+    "day11": 0,
+    "month11": 0,
+    "day12": 0,
+    "month12": 0,
+    "d1": 0,
+    "w1": 0,
+    "d2": 0,
+    "w2": 0,
+    "d3": 0,
+    "w3": 0,
+    "d4": 0,
+    "w4": 0,
+    "d5": 0,
+    "w5": 0,
+    "d6": 0,
+    "w6": 0,
+    "xday1": 0,
+    "xmonth1": 0,
+    "xday2": 0,
+    "xmonth2": 0,
+    "xday3": 0,
+    "xmonth3": 0,
+    "xday4": 0,
+    "xmonth4": 0,
+    "xday5": 0,
+    "xmonth5": 0,
+    "xday6": 0,
+    "xmonth6": 0,
+    "xd1": 0,
+    "xw1": 0,
+    "xd2": 0,
+    "xw2": 0,
+    "xd3": 0,
+    "xw3": 0,
+    "xd4": 0,
+    "xw4": 0,
+    "xd5": 0,
+    "xw5": 0,
+    "xd6": 0,
+    "xw6": 0,
+    "suspend": false,
+    "random": false,
+    "repeat": false,
+    "atstart": false,
+    "odd": false,
+    "even": true,
+    "x": 100,
+    "y": 360,
+    "wires": [
+      [
+        "747e4f2.34c2c3"
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "id": "ae88ab43.9c5cd",
+    "type": "comment",
+    "z": "a3225e7a.c5e488",
+    "name": "Vacuum Home",
+    "info": "",
+    "x": 120,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "747e4f2.34c2c3",
+    "type": "api-current-state",
+    "z": "a3225e7a.c5e488",
+    "name": "Home?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "not_home",
+    "halt_if_type": "str",
+    "halt_if_compare": "is_not",
+    "override_topic": false,
+    "entity_id": "sensor.ricardo_presence",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 260,
+    "y": 360,
+    "wires": [
+      [
+        "5002d53d.3064a4"
+      ],
+      [
+        "5002d53d.3064a4"
+      ]
+    ]
+  },
+  {
+    "id": "3418901b.2c4e98",
+    "type": "api-call-service",
+    "z": "a3225e7a.c5e488",
+    "name": "Vacuum (Eco)",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "neato",
+    "service": "custom_cleaning",
+    "entityId": "vacuum.neato",
+    "data": "{\"mode\":1,\"navigation\":2,\"category\":4}",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 660,
+    "y": 460,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "5002d53d.3064a4",
+    "type": "api-call-service",
+    "z": "a3225e7a.c5e488",
+    "name": "Notify Phone",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "notify",
+    "service": "mobile_app_pixel",
+    "entityId": "",
+    "data": "{\t   \"title\":\"Home Assistant\",\t   \"message\":\"Should I turn on the vacuum?\",\t   \"data\": {\t       \"tag\":\"vacuum-notification\",\t       \"actions\": [\t           {\t               \"action\":\"vacuum\",\t               \"title\":\"Turn On\"\t           }\t       ]\t   }\t}",
+    "dataType": "jsonata",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 450,
+    "y": 360,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "ebc74f10.1cb0f",
+    "type": "server-events",
+    "z": "a3225e7a.c5e488",
+    "name": "mobile_app_notification_action",
+    "server": "d3229416.f40d",
+    "event_type": "mobile_app_notification_action",
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "waitForRunning": true,
+    "x": 170,
+    "y": 460,
+    "wires": [
+      [
+        "5f8fd381.65100c"
+      ]
+    ]
+  },
+  {
+    "id": "5f8fd381.65100c",
+    "type": "switch",
+    "z": "a3225e7a.c5e488",
+    "name": "Vacuum notification?",
+    "property": "payload.event.tag",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "vacuum-notification",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 440,
+    "y": 460,
+    "wires": [
+      [
+        "3418901b.2c4e98"
+      ]
+    ]
+  },
+  {
+    "id": "14bc950a.d54673",
+    "type": "ha-entity",
+    "z": "6cafe6fe.9631d8",
+    "name": "Living Room Discomfort Index",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "outputs": 1,
+    "entityType": "sensor",
+    "config": [
+      {
+        "property": "name",
+        "value": "Living Room Discomfort Index"
+      },
+      {
+        "property": "device_class",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      },
+      {
+        "property": "unit_of_measurement",
+        "value": "DI"
+      }
+    ],
+    "state": "payload",
+    "stateType": "msg",
+    "attributes": [
+      {
+        "property": "description",
+        "value": "description",
+        "valueType": "msg"
+      }
+    ],
+    "resend": true,
+    "outputLocation": "payload",
+    "outputLocationType": "msg",
+    "inputOverride": "allow",
+    "x": 870,
+    "y": 100,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "f9be8959.7f775",
+    "type": "bigtimer",
+    "z": "a3225e7a.c5e488",
+    "outtopic": "",
+    "outpayload1": "ON",
+    "outpayload2": "OFF",
+    "name": "Schedule",
+    "comment": "",
+    "lat": 0,
+    "lon": 0,
+    "starttime": "540",
+    "endtime": "10001",
+    "starttime2": 0,
+    "endtime2": 0,
+    "startoff": 0,
+    "endoff": 0,
+    "startoff2": 0,
+    "endoff2": 0,
+    "offs": 0,
+    "outtext1": "",
+    "outtext2": "",
+    "timeout": 1440,
+    "sun": true,
+    "mon": true,
+    "tue": true,
+    "wed": true,
+    "thu": true,
+    "fri": true,
+    "sat": true,
+    "jan": true,
+    "feb": true,
+    "mar": true,
+    "apr": true,
+    "may": true,
+    "jun": true,
+    "jul": true,
+    "aug": true,
+    "sep": true,
+    "oct": true,
+    "nov": true,
+    "dec": true,
+    "day1": 0,
+    "month1": 0,
+    "day2": 0,
+    "month2": 0,
+    "day3": 0,
+    "month3": 0,
+    "day4": 0,
+    "month4": 0,
+    "day5": 0,
+    "month5": 0,
+    "day6": 0,
+    "month6": 0,
+    "day7": 0,
+    "month7": 0,
+    "day8": 0,
+    "month8": 0,
+    "day9": 0,
+    "month9": 0,
+    "day10": 0,
+    "month10": 0,
+    "day11": 0,
+    "month11": 0,
+    "day12": 0,
+    "month12": 0,
+    "d1": 0,
+    "w1": 0,
+    "d2": 0,
+    "w2": 0,
+    "d3": 0,
+    "w3": 0,
+    "d4": 0,
+    "w4": 0,
+    "d5": 0,
+    "w5": 0,
+    "d6": 0,
+    "w6": 0,
+    "xday1": 0,
+    "xmonth1": 0,
+    "xday2": 0,
+    "xmonth2": 0,
+    "xday3": 0,
+    "xmonth3": 0,
+    "xday4": 0,
+    "xmonth4": 0,
+    "xday5": 0,
+    "xmonth5": 0,
+    "xday6": 0,
+    "xmonth6": 0,
+    "xd1": 0,
+    "xw1": 0,
+    "xd2": 0,
+    "xw2": 0,
+    "xd3": 0,
+    "xw3": 0,
+    "xd4": 0,
+    "xw4": 0,
+    "xd5": 0,
+    "xw5": 0,
+    "xd6": 0,
+    "xw6": 0,
+    "suspend": false,
+    "random": false,
+    "repeat": false,
+    "atstart": false,
+    "odd": false,
+    "even": true,
+    "x": 100,
+    "y": 560,
+    "wires": [
+      [
+        "ddf12ce7.1db018"
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "id": "fe716ecd.a31b28",
+    "type": "api-current-state",
+    "z": "a3225e7a.c5e488",
+    "name": "Home?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "not_home",
+    "halt_if_type": "str",
+    "halt_if_compare": "is_not",
+    "override_topic": false,
+    "entity_id": "sensor.ricardo_presence",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 400,
+    "y": 560,
+    "wires": [
+      [
+        "df9f9f34.e9ac4"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "ddf12ce7.1db018",
+    "type": "api-current-state",
+    "z": "a3225e7a.c5e488",
+    "name": "Workday?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "true",
+    "halt_if_type": "bool",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "binary_sensor.workday_sensor",
+    "state_type": "habool",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 250,
+    "y": 560,
+    "wires": [
+      [
+        "fe716ecd.a31b28"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "df9f9f34.e9ac4",
+    "type": "api-current-state",
+    "z": "a3225e7a.c5e488",
+    "name": "Work commute",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "20",
+    "halt_if_type": "num",
+    "halt_if_compare": "lte",
+    "override_topic": false,
+    "entity_id": "sensor.work_commute",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 570,
+    "y": 560,
+    "wires": [
+      [
+        "2a541b55.affaec"
+      ],
+      [
+        "ca2dae9f.4fcd18"
+      ]
+    ]
+  },
+  {
+    "id": "2db7f9ca.f56fee",
+    "type": "delay",
+    "z": "a3225e7a.c5e488",
+    "name": "",
+    "pauseType": "queue",
+    "timeout": "30",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "30",
+    "rateUnits": "minute",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": true,
+    "x": 400,
+    "y": 200,
+    "wires": [
+      [
+        "205aef98.6238b"
+      ]
+    ]
+  },
+  {
+    "id": "16065073.9cdbf8",
+    "type": "time-switch",
+    "z": "6cafe6fe.9631d8",
+    "name": "",
+    "lat": "",
+    "lon": "",
+    "startTime": "08:00",
+    "endTime": "23:00",
+    "startOffset": 0,
+    "endOffset": 0,
+    "x": 290,
+    "y": 220,
+    "wires": [
+      [
+        "38653382.7f7184"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "b9b14d76.116128",
+    "type": "switch",
+    "z": "6cafe6fe.9631d8",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "gt",
+        "v": "23",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 830,
+    "y": 220,
+    "wires": [
+      [
+        "805d0332.d5447"
+      ]
+    ]
+  },
+  {
+    "id": "dd7be80.b0f9318",
+    "type": "api-call-service",
+    "z": "6cafe6fe.9631d8",
+    "name": "Turn on Air Purifier",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "switch",
+    "service": "turn_on",
+    "entityId": "switch.innr_on_off_light_1",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 1230,
+    "y": 220,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "805d0332.d5447",
+    "type": "api-current-state",
+    "z": "6cafe6fe.9631d8",
+    "name": "Air Purifier is off?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "switch.innr_on_off_light_1",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 1010,
+    "y": 220,
+    "wires": [
+      [
+        "dd7be80.b0f9318"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "802d78f0.68153",
+    "type": "inject",
+    "z": "6cafe6fe.9631d8",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 220,
+    "wires": [
+      [
+        "16065073.9cdbf8"
+      ]
+    ]
+  },
+  {
+    "id": "8fd73b1a.5df01",
+    "type": "comment",
+    "z": "6cafe6fe.9631d8",
+    "name": "Calculate Discomfort Index",
+    "info": "",
+    "x": 150,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "b46c3998.d6b02",
+    "type": "api-current-state",
+    "z": "6cafe6fe.9631d8",
+    "name": "Discomfort Index",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 1,
+    "halt_if": "",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "sensor.living_room_discomfort_index",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 650,
+    "y": 220,
+    "wires": [
+      [
+        "b9b14d76.116128"
+      ]
+    ]
+  },
+  {
+    "id": "32d9fa1f.4dc136",
+    "type": "api-current-state",
+    "z": "eaa8464f.88645",
+    "name": "Kitchen Light Sensor",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 1,
+    "halt_if": "",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "sensor.lightlevel_19",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 280,
+    "y": 600,
+    "wires": [
+      [
+        "b8a200c9.1aa098"
+      ]
+    ]
+  },
+  {
+    "id": "78f87624.8635a8",
+    "type": "api-current-state",
+    "z": "eaa8464f.88645",
+    "name": "Living Room is dark?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "0.1",
+    "halt_if_type": "num",
+    "halt_if_compare": "lt",
+    "override_topic": false,
+    "entity_id": "sensor.living_room_brightness",
+    "state_type": "num",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 280,
+    "y": 480,
+    "wires": [
+      [
+        "1d76588.335fea8",
+        "a1f6949.a94a968"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "38cadbec.a4ae14",
+    "type": "api-current-state",
+    "z": "eaa8464f.88645",
+    "name": "Hall is dark?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "12000",
+    "halt_if_type": "num",
+    "halt_if_compare": "gte",
+    "override_topic": false,
+    "entity_id": "sensor.raw_hall_brightness",
+    "state_type": "num",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 250,
+    "y": 420,
+    "wires": [
+      [
+        "28cf4132.9e5c4e"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "b8a200c9.1aa098",
+    "type": "switch",
+    "z": "eaa8464f.88645",
+    "name": "Dark?",
+    "property": "data.attributes.dark",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "true",
+        "vt": "jsonata"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 470,
+    "y": 600,
+    "wires": [
+      [
+        "932437b6.e93338"
+      ]
+    ]
+  },
+  {
+    "id": "932437b6.e93338",
+    "type": "api-call-service",
+    "z": "eaa8464f.88645",
+    "name": "Turn on kitchen light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "turn_on",
+    "entityId": "light.kitchen_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 680,
+    "y": 600,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "1d76588.335fea8",
+    "type": "api-call-service",
+    "z": "eaa8464f.88645",
+    "name": "Turn on living room lights",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "turn_on",
+    "entityId": "light.living_room",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 690,
+    "y": 480,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "a1f6949.a94a968",
+    "type": "api-call-service",
+    "z": "eaa8464f.88645",
+    "name": "Turn on other living room lights",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "switch",
+    "service": "turn_on",
+    "entityId": "switch.desk_lamp, switch.living_room_big_corner_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 710,
+    "y": 540,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "74451eed.666178",
+    "type": "link out",
+    "z": "eaa8464f.88645",
+    "name": "",
+    "links": [
+      "ccc950ed.00a5f8"
+    ],
+    "x": 555,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "ccc950ed.00a5f8",
+    "type": "link in",
+    "z": "eaa8464f.88645",
+    "name": "Back home routine",
+    "links": [
+      "74451eed.666178"
+    ],
+    "x": 55,
+    "y": 520,
+    "wires": [
+      [
+        "38cadbec.a4ae14",
+        "78f87624.8635a8",
+        "32d9fa1f.4dc136"
+      ]
+    ]
+  },
+  {
+    "id": "c88e4df0.009ba",
+    "type": "debug",
+    "z": "40e6f526.bf7754",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 510,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "4dee00de.6cf45",
+    "type": "api-get-history",
+    "z": "40e6f526.bf7754",
+    "name": "Historical Bathroom Absolute Humidity",
+    "server": "d3229416.f40d",
+    "startdate": "",
+    "enddate": "",
+    "entityid": "sensor.last_bathroom_absolute_humidity",
+    "entityidtype": "is",
+    "useRelativeTime": true,
+    "relativeTime": "15 minutes",
+    "flatten": true,
+    "output_type": "array",
+    "output_location_type": "msg",
+    "output_location": "payload",
+    "x": 230,
+    "y": 100,
+    "wires": [
+      [
+        "ecc1962e.4040c"
+      ]
+    ]
+  },
+  {
+    "id": "c5f20960.da51d8",
+    "type": "inject",
+    "z": "40e6f526.bf7754",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 150,
+    "y": 40,
+    "wires": [
+      [
+        "4dee00de.6cf45"
+      ]
+    ]
+  },
+  {
+    "id": "ecc1962e.4040c",
+    "type": "function",
+    "z": "40e6f526.bf7754",
+    "name": "",
+    "func": "var result = [];\n\nfor (var i = 0; i < msg.payload.length - 1; i++) {\n    result.push(parseFloat(msg.payload[i + 1].state) - parseFloat(msg.payload[i].state));\n}\n\nvar sum = 0;\nfor (var j = 0; j < result.length; j++) {\n    sum += result[j];\n}\n\nreturn { payload: result, sum: sum };",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "x": 480,
+    "y": 100,
+    "wires": [
+      [
+        "c88e4df0.009ba",
+        "36ce8a37.853726"
+      ]
+    ]
+  },
+  {
+    "id": "36ce8a37.853726",
+    "type": "switch",
+    "z": "40e6f526.bf7754",
+    "name": "Noticeable rise?",
+    "property": "sum",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "gte",
+        "v": "0.5",
+        "vt": "num"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 660,
+    "y": 100,
+    "wires": [
+      [
+        "a5626a29.b0ea7"
+      ]
+    ]
+  },
+  {
+    "id": "a5626a29.b0ea7",
+    "type": "api-current-state",
+    "z": "40e6f526.bf7754",
+    "name": "Home?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "not_home",
+    "halt_if_type": "str",
+    "halt_if_compare": "is_not",
+    "override_topic": false,
+    "entity_id": "sensor.ricardo_presence",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 840,
+    "y": 100,
+    "wires": [
+      [
+        "a61782.30af988"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "a61782.30af988",
+    "type": "api-current-state",
+    "z": "40e6f526.bf7754",
+    "name": "Towel Heater on?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "on",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "switch.towel_heater",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 1030,
+    "y": 100,
+    "wires": [
+      [
+        "ed9f0f46.1818a8"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "ed9f0f46.1818a8",
+    "type": "api-call-service",
+    "z": "40e6f526.bf7754",
+    "name": "Turn towel heater off",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "switch",
+    "service": "turn_off",
+    "entityId": "switch.towel_heater",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 1260,
+    "y": 100,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "ef734399.c6d5c8",
+    "type": "switch",
+    "z": "b646acff.9e1af",
+    "name": "Threshold check",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "0",
+        "vt": "num"
+      },
+      {
+        "t": "gt",
+        "v": "0",
+        "vt": "num"
+      }
+    ],
+    "checkall": "false",
+    "repair": false,
+    "outputs": 2,
+    "x": 660,
+    "y": 140,
+    "wires": [
+      [
+        "d8dcbd5a.aa0d08"
+      ],
+      [
+        "c27e8f24.7b56"
+      ]
+    ]
+  },
+  {
+    "id": "6ed24975.8b717",
+    "type": "delay",
+    "z": "aa1ece22.7c0ca8",
+    "name": "",
+    "pauseType": "rate",
+    "timeout": "1",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "minute",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": true,
+    "x": 520,
+    "y": 80,
+    "wires": [
+      [
+        "3b0c16c4.4f5aba"
+      ]
+    ]
+  },
+  {
+    "id": "de95dbd5.c711e",
+    "type": "change",
+    "z": "aa1ece22.7c0ca8",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "reset",
+        "pt": "msg",
+        "to": "true",
+        "tot": "bool"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 740,
+    "y": 120,
+    "wires": [
+      [
+        "3b0c16c4.4f5aba"
+      ]
+    ]
+  },
+  {
+    "id": "994bdc0f.fff838",
+    "type": "delay",
+    "z": "aa1ece22.7c0ca8",
+    "name": "",
+    "pauseType": "rate",
+    "timeout": "1",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "minute",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": true,
+    "x": 520,
+    "y": 200,
+    "wires": [
+      [
+        "a42cdc89.b6aee"
+      ]
+    ]
+  },
+  {
+    "id": "81bc61c8.ee6ad",
+    "type": "change",
+    "z": "aa1ece22.7c0ca8",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "reset",
+        "pt": "msg",
+        "to": "true",
+        "tot": "bool"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 740,
+    "y": 160,
+    "wires": [
+      [
+        "a42cdc89.b6aee"
+      ]
+    ]
+  },
+  {
+    "id": "3b0c16c4.4f5aba",
+    "type": "delay",
+    "z": "aa1ece22.7c0ca8",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "1",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "x": 720,
+    "y": 80,
+    "wires": [
+      [
+        "ba2fe4b2.4881c8"
+      ]
+    ]
+  },
+  {
+    "id": "a42cdc89.b6aee",
+    "type": "delay",
+    "z": "aa1ece22.7c0ca8",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "1",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "x": 720,
+    "y": 200,
+    "wires": [
+      [
+        "aec1664b.0ff388"
+      ]
+    ]
+  },
+  {
+    "id": "2a541b55.affaec",
+    "type": "template",
+    "z": "a3225e7a.c5e488",
+    "name": "",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "😎 Today's commute to the office is expected to take {{payload}} minutes.",
+    "output": "str",
+    "x": 780,
+    "y": 520,
+    "wires": [
+      [
+        "37d028ea.46b5a"
+      ]
+    ]
+  },
+  {
+    "id": "ca2dae9f.4fcd18",
+    "type": "template",
+    "z": "a3225e7a.c5e488",
+    "name": "",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "😱 Today's commute to the office is expected to take {{payload}} minutes!",
+    "output": "str",
+    "x": 780,
+    "y": 600,
+    "wires": [
+      [
+        "37d028ea.46b5a"
+      ]
+    ]
+  },
+  {
+    "id": "37d028ea.46b5a",
+    "type": "link out",
+    "z": "a3225e7a.c5e488",
+    "name": "",
+    "links": [
+      "af9c0aaa.e17a3"
+    ],
+    "x": 915,
+    "y": 560,
+    "wires": []
+  }
+]

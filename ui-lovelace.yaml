@@ -367,18 +367,35 @@ views:
             name: Presence
           - entity: binary_sensor.shower_ended
             name: Shower Ended
-      - type: custom:mini-graph-card
-        line_color: '#3498db'
-        show:
-          extrema: true
-          fill: false
-          labels: true
-        animate: true
-        hours_to_show: 1
-        points_per_hour: 30
-        hour24: true
-        name: Humidity
-        entities:
-          - sensor.bathroom_relative_humidity
+      - type: vertical-stack
+        in_card: true
+        cards:
+          - type: custom:mini-graph-card
+            line_color: '#3498db'
+            show:
+              extrema: true
+              fill: false
+              labels: true
+            animate: true
+            hours_to_show: 1
+            points_per_hour: 30
+            hour24: true
+            name: Humidity
+            entities:
+              - sensor.bathroom_relative_humidity
+          - type: custom:mini-graph-card
+            line_color: '#3498db'
+            show:
+              extrema: true
+              fill: false
+              labels: true
+              state: false
+            animate: true
+            hours_to_show: 1
+            points_per_hour: 30
+            hour24: true
+            name: Absolute Humidity
+            entities:
+              - sensor.bme280_bathroom_absolute_humidity
       - type: entity-button
         entity: switch.towel_heater

@@ -78,27 +78,6 @@
                                 4002: 'switch.bedroom_lamp'} %}
         {{ event_mapping[trigger.event.data.event|int] }}
   id: 835ab46162ce45b1a0c613af59609bb5
-- id: turn_off_lights_when_off_to_work
-  alias: Turn off lights when off to work
-  trigger:
-  - platform: state
-    entity_id: sensor.ricardo_presence
-    to: not_home
-    for: '00:05:00'
-  condition:
-  - condition: time
-    after: '08:00'
-    before: '18:00'
-  action:
-  - service: light.turn_off
-    data:
-      entity_id: all
-  - service: switch.turn_off
-    data:
-      entity_id:
-      - group.all_living_room_devices
-      - switch.smartplug_quarto
-      - switch.bedroom_lamp
 - alias: Bedroom Light Switch
   initial_state: 'on'
   trigger:

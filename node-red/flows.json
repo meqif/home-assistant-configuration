@@ -3444,5 +3444,142 @@
     "wires": [
       []
     ]
+  },
+  {
+    "id": "26bc8d3b.0a3fea",
+    "type": "server-state-changed",
+    "z": "a3225e7a.c5e488",
+    "name": "Away?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "entityidfilter": "sensor.ricardo_presence",
+    "entityidfiltertype": "exact",
+    "outputinitially": true,
+    "state_type": "str",
+    "haltifstate": "not_home",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "output_only_on_state_change": true,
+    "x": 90,
+    "y": 700,
+    "wires": [
+      [
+        "9b2b4d6d.70c2a8"
+      ],
+      [
+        "9b2b4d6d.70c2a8"
+      ]
+    ]
+  },
+  {
+    "id": "8c94ab2f.ce7ed8",
+    "type": "api-current-state",
+    "z": "a3225e7a.c5e488",
+    "name": "Phone is not unavailable?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "unavailable",
+    "halt_if_type": "str",
+    "halt_if_compare": "is_not",
+    "override_topic": false,
+    "entity_id": "device_tracker.ricardo_s_google_pixel",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 470,
+    "y": 700,
+    "wires": [
+      [
+        "f01fd4e7.258238",
+        "a5a55129.333c78"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "9b2b4d6d.70c2a8",
+    "type": "trigger",
+    "z": "a3225e7a.c5e488",
+    "name": "",
+    "op1": "",
+    "op2": "",
+    "op1type": "nul",
+    "op2type": "pay",
+    "duration": "5",
+    "extend": false,
+    "units": "min",
+    "reset": "home",
+    "bytopic": "all",
+    "topic": "topic",
+    "outputs": 1,
+    "x": 250,
+    "y": 700,
+    "wires": [
+      [
+        "8c94ab2f.ce7ed8"
+      ]
+    ]
+  },
+  {
+    "id": "f01fd4e7.258238",
+    "type": "api-call-service",
+    "z": "a3225e7a.c5e488",
+    "name": "Turn off all lights",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "turn_off",
+    "entityId": "all",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 720,
+    "y": 700,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "a5a55129.333c78",
+    "type": "api-call-service",
+    "z": "a3225e7a.c5e488",
+    "name": "Turn off all switches",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "switch",
+    "service": "turn_off",
+    "entityId": "group.all_living_room_devices, switch.smartplug_quarto, switch.bedroom_lamp, switch.innr_on_off_light_1",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 740,
+    "y": 760,
+    "wires": [
+      []
+    ]
   }
 ]

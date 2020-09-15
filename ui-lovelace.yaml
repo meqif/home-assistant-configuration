@@ -100,6 +100,8 @@ views:
             hour24: true
             points_per_hour: 12
             hours_to_show: 3
+            lower_bound: ~15
+            upper_bound: ~30
             name: Room Temperature
             align_icon: left
             align_header: left
@@ -245,6 +247,8 @@ views:
           hours_to_show: 6
           points_per_hour: 4
           hour24: true
+          lower_bound: ~15
+          upper_bound: ~30
           name: Temperature
           entities:
             - sensor.living_room_temperature
@@ -302,6 +306,8 @@ views:
           hours_to_show: 6
           points_per_hour: 4
           hour24: true
+          lower_bound: ~15
+          upper_bound: ~30
           name: Temperature
           entities:
             - sensor.bedroom_temperature

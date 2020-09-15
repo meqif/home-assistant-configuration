@@ -34,19 +34,6 @@
     data:
       entity_id: light.kitchen_light
   id: d010cbde411a42c7a8fca11e9be51020
-- id: turn_on_towel_heater
-  alias: Turn on towel heater
-  trigger:
-  - at: '19:30:00'
-    platform: time
-  condition:
-  - condition: state
-    entity_id: input_boolean.extended_away
-    state: 'off'
-  action:
-  - data: {}
-    entity_id: switch.towel_heater
-    service: shell_command.turn_on_towelheater
 - alias: Living Room Light Switch
   initial_state: 'on'
   trigger:

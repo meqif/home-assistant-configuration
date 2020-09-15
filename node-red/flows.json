@@ -3364,5 +3364,85 @@
     "wires": [
       []
     ]
+  },
+  {
+    "id": "c26c7203.7fce48",
+    "type": "inject",
+    "z": "40e6f526.bf7754",
+    "name": "Every day at 19:30",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "30 19 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 150,
+    "y": 180,
+    "wires": [
+      [
+        "54c8ebed.399fbc"
+      ]
+    ]
+  },
+  {
+    "id": "54c8ebed.399fbc",
+    "type": "api-current-state",
+    "z": "40e6f526.bf7754",
+    "name": "Vacations?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "on",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "input_boolean.extended_away",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 350,
+    "y": 180,
+    "wires": [
+      [],
+      [
+        "7e4f4eff.29cd78"
+      ]
+    ]
+  },
+  {
+    "id": "7e4f4eff.29cd78",
+    "type": "api-call-service",
+    "z": "40e6f526.bf7754",
+    "name": "Turn towel heater on",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "shell_command",
+    "service": "turn_on_towelheater",
+    "entityId": "",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 560,
+    "y": 180,
+    "wires": [
+      []
+    ]
   }
 ]

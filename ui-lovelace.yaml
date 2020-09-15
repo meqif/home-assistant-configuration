@@ -363,8 +363,8 @@ views:
             name: Temperature
           - entity: sensor.bathroom_relative_humidity
             name: Humidity
-          - entity: sensor.bathroom_pressure
-            name: Pressure
+          - entity: binary_sensor.bathroom_presence
+            name: Presence
           - entity: binary_sensor.shower_ended
             name: Shower Ended
       - type: custom:mini-graph-card

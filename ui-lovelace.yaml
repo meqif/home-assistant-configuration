@@ -185,6 +185,11 @@ views:
             - switch.desk_lamp
             - type: divider
             - switch.smartplug_sala
+            - entity: switch.innr_on_off_light_1
+              secondary_info:
+                entity: sensor.innr_on_off_light_1_power
+                prefix: "Current power usage: "
+                postfix: " W"
             - type: divider
             - type: buttons
               entities:

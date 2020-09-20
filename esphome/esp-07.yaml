@@ -16,18 +16,3 @@ logger:
 api:
 
 ota:
-
-deep_sleep:
-  id: esp07_deep_sleep_1h
-  sleep_duration: '1h'
-
-switch:
-  - platform: template
-    name: "ESP-07 sleep (1h)"
-    turn_on_action:
-      - deep_sleep.enter: esp07_deep_sleep_1h
-
-binary_sensor:
-  - platform: gpio
-    pin: D5
-    name: "Push button"

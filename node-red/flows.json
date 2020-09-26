@@ -49,6 +49,13 @@
     "info": ""
   },
   {
+    "id": "bc9f8658.46864",
+    "type": "tab",
+    "label": "Remotes",
+    "disabled": false,
+    "info": ""
+  },
+  {
     "id": "d3229416.f40d",
     "type": "server",
     "z": "",
@@ -896,9 +903,7 @@
     "x": 660,
     "y": 100,
     "wires": [
-      [
-        "c2ec343a.fd4f28"
-      ],
+      [],
       []
     ]
   },
@@ -1024,7 +1029,7 @@
     "y": 80,
     "wires": [
       [
-        "32152404.70a604"
+        "ef734399.c6d5c8"
       ]
     ]
   },
@@ -1168,8 +1173,8 @@
     "start": "",
     "inout": "in",
     "property": "payload",
-    "x": 490,
-    "y": 80,
+    "x": 470,
+    "y": 160,
     "wires": [
       [
         "ef734399.c6d5c8"
@@ -3238,7 +3243,8 @@
     "y": 560,
     "wires": [
       [
-        "ddf12ce7.1db018"
+        "ddf12ce7.1db018",
+        "b4f3a678.89dce"
       ]
     ]
   },
@@ -3473,7 +3479,7 @@
     "outputs": 2,
     "output_only_on_state_change": true,
     "x": 90,
-    "y": 700,
+    "y": 760,
     "wires": [
       [
         "9b2b4d6d.70c2a8"
@@ -3503,7 +3509,7 @@
     "override_data": "msg",
     "blockInputOverrides": false,
     "x": 470,
-    "y": 700,
+    "y": 760,
     "wires": [
       [
         "f01fd4e7.258238",
@@ -3529,7 +3535,7 @@
     "topic": "topic",
     "outputs": 1,
     "x": 250,
-    "y": 700,
+    "y": 760,
     "wires": [
       [
         "8c94ab2f.ce7ed8"
@@ -3554,7 +3560,7 @@
     "output_location_type": "none",
     "mustacheAltTags": false,
     "x": 720,
-    "y": 700,
+    "y": 760,
     "wires": [
       []
     ]
@@ -3577,9 +3583,946 @@
     "output_location_type": "none",
     "mustacheAltTags": false,
     "x": 740,
-    "y": 760,
+    "y": 820,
     "wires": [
       []
+    ]
+  },
+  {
+    "id": "b4f3a678.89dce",
+    "type": "function",
+    "z": "a3225e7a.c5e488",
+    "name": "20th?",
+    "func": "const today = new Date();\n\nif (today.getDate() == 20) {\n    return {payload: today.toJSON()};\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "x": 330,
+    "y": 660,
+    "wires": [
+      [
+        "f6627637.83448"
+      ]
+    ]
+  },
+  {
+    "id": "f6627637.83448",
+    "type": "template",
+    "z": "a3225e7a.c5e488",
+    "name": "",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "Don't forget to send in the utilities readings!",
+    "output": "str",
+    "x": 860,
+    "y": 660,
+    "wires": [
+      [
+        "37d028ea.46b5a"
+      ]
+    ]
+  },
+  {
+    "id": "3e0d6bf2.941934",
+    "type": "comment",
+    "z": "a3225e7a.c5e488",
+    "name": "Reminder to send in utilities readings",
+    "info": "",
+    "x": 190,
+    "y": 620,
+    "wires": []
+  },
+  {
+    "id": "450b4cee.4ff8bc",
+    "type": "server-events",
+    "z": "bc9f8658.46864",
+    "name": "Deconz Events",
+    "server": "d3229416.f40d",
+    "event_type": "deconz_event",
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "waitForRunning": true,
+    "x": 120,
+    "y": 120,
+    "wires": [
+      [
+        "726ae9b6.9fc2e8",
+        "f724910f.50c498"
+      ]
+    ]
+  },
+  {
+    "id": "726ae9b6.9fc2e8",
+    "type": "switch",
+    "z": "bc9f8658.46864",
+    "name": "Device Id?",
+    "property": "payload.event.id",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "living_room_switch",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "dimmer_switch_living_room",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "dimmer_switch",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "bedroom_switch",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "kitchen_switch",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 5,
+    "x": 310,
+    "y": 120,
+    "wires": [
+      [
+        "8d1b7aec.34112"
+      ],
+      [
+        "dc054d16.efbff"
+      ],
+      [
+        "2f29c0c6.ac74c8"
+      ],
+      [
+        "4c8b6e0f.19d52"
+      ],
+      [
+        "188b9b7c.73bfc5"
+      ]
+    ]
+  },
+  {
+    "id": "8d1b7aec.34112",
+    "type": "switch",
+    "z": "bc9f8658.46864",
+    "name": "Bathroom Wall Switch",
+    "property": "payload.event.event",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1002",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "2002",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "2004",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "3002",
+        "vt": "str"
+      }
+    ],
+    "checkall": "false",
+    "repair": false,
+    "outputs": 4,
+    "x": 520,
+    "y": 120,
+    "wires": [
+      [
+        "359b0964.bfa9e6"
+      ],
+      [
+        "74834657.f194f8"
+      ],
+      [
+        "143bacd5.69720b"
+      ],
+      [
+        "359b0964.bfa9e6",
+        "74834657.f194f8"
+      ]
+    ]
+  },
+  {
+    "id": "bc896bc2.d532b8",
+    "type": "api-call-service",
+    "z": "bc9f8658.46864",
+    "name": "Toggle living room lights",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "toggle",
+    "entityId": "group.living_room_lights",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 830,
+    "y": 40,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "aef0ae4c.484c7",
+    "type": "api-call-service",
+    "z": "bc9f8658.46864",
+    "name": "Living Room Corner",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "script",
+    "service": "turn_on",
+    "entityId": "script.living_room_corner",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 820,
+    "y": 100,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "143bacd5.69720b",
+    "type": "api-call-service",
+    "z": "bc9f8658.46864",
+    "name": "Toggle Desk Lamp",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "switch",
+    "service": "toggle",
+    "entityId": "switch.desk_lamp",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 810,
+    "y": 160,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "9a10a18.b4de36",
+    "type": "api-call-service",
+    "z": "bc9f8658.46864",
+    "name": "Toggle Relax Scene",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "switch",
+    "service": "toggle",
+    "entityId": "switch.relax_scene",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 810,
+    "y": 220,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "f724910f.50c498",
+    "type": "debug",
+    "z": "bc9f8658.46864",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 190,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "2f29c0c6.ac74c8",
+    "type": "switch",
+    "z": "bc9f8658.46864",
+    "name": "Bedroom Dimmer Switch",
+    "property": "payload.event.event",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1002",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "2002",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "3002",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "4002",
+        "vt": "str"
+      }
+    ],
+    "checkall": "false",
+    "repair": false,
+    "outputs": 4,
+    "x": 530,
+    "y": 460,
+    "wires": [
+      [
+        "6ec7c34.f47ccbc"
+      ],
+      [],
+      [
+        "4eeb3ff.cbd224"
+      ],
+      [
+        "f6ca42e2.a1fe98"
+      ]
+    ]
+  },
+  {
+    "id": "6ec7c34.f47ccbc",
+    "type": "api-call-service",
+    "z": "bc9f8658.46864",
+    "name": "Toggle bedroom overhead light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "toggle",
+    "entityId": "light.bedroom_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 850,
+    "y": 380,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "4eeb3ff.cbd224",
+    "type": "api-call-service",
+    "z": "bc9f8658.46864",
+    "name": "Toggle bedroom fan/heater",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "switch",
+    "service": "toggle",
+    "entityId": "switch.smartplug_quarto",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 840,
+    "y": 500,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "f6ca42e2.a1fe98",
+    "type": "api-call-service",
+    "z": "bc9f8658.46864",
+    "name": "Toggle bedside lamp",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "switch",
+    "service": "toggle",
+    "entityId": "switch.bedroom_lamp",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 820,
+    "y": 560,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "188b9b7c.73bfc5",
+    "type": "switch",
+    "z": "bc9f8658.46864",
+    "name": "Kitchen Wall Switch",
+    "property": "payload.event.event",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1002",
+        "vt": "num"
+      }
+    ],
+    "checkall": "false",
+    "repair": false,
+    "outputs": 1,
+    "x": 520,
+    "y": 640,
+    "wires": [
+      [
+        "7bfacc55.3c40c4"
+      ]
+    ]
+  },
+  {
+    "id": "7bfacc55.3c40c4",
+    "type": "api-call-service",
+    "z": "bc9f8658.46864",
+    "name": "Toggle kitchen overhead light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "toggle",
+    "entityId": "light.kitchen_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 840,
+    "y": 640,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "4c8b6e0f.19d52",
+    "type": "switch",
+    "z": "bc9f8658.46864",
+    "name": "Bedroom Wall Switch",
+    "property": "payload.event.event",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1001",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "1002",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "1004",
+        "vt": "num"
+      }
+    ],
+    "checkall": "false",
+    "repair": false,
+    "outputs": 3,
+    "x": 520,
+    "y": 540,
+    "wires": [
+      [
+        "4eeb3ff.cbd224"
+      ],
+      [
+        "6ec7c34.f47ccbc"
+      ],
+      [
+        "f6ca42e2.a1fe98"
+      ]
+    ]
+  },
+  {
+    "id": "dc054d16.efbff",
+    "type": "switch",
+    "z": "bc9f8658.46864",
+    "name": "Living Room Dimmer Switch",
+    "property": "payload.event.event",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1002",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "2002",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "3002",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "4002",
+        "vt": "str"
+      }
+    ],
+    "checkall": "false",
+    "repair": false,
+    "outputs": 4,
+    "x": 540,
+    "y": 300,
+    "wires": [
+      [
+        "bc896bc2.d532b8"
+      ],
+      [
+        "497deec.2eefc1"
+      ],
+      [],
+      [
+        "7bfacc55.3c40c4"
+      ]
+    ]
+  },
+  {
+    "id": "497deec.2eefc1",
+    "type": "api-call-service",
+    "z": "bc9f8658.46864",
+    "name": "Toggle hall overhead lights",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "toggle",
+    "entityId": "group.hall_lights",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 840,
+    "y": 280,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "a8733f9f.ba431",
+    "type": "server-state-changed",
+    "z": "40e6f526.bf7754",
+    "name": "Movement detected?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "exposeToHomeAssistant": false,
+    "haConfig": [
+      {
+        "property": "name",
+        "value": ""
+      },
+      {
+        "property": "icon",
+        "value": ""
+      }
+    ],
+    "entityidfilter": "binary_sensor.bathroom_presence",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "on",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "output_only_on_state_change": true,
+    "x": 160,
+    "y": 260,
+    "wires": [
+      [
+        "276750a9.d15e9"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "e2bc473d.61dcb8",
+    "type": "api-call-service",
+    "z": "40e6f526.bf7754",
+    "name": "Turn on bathroom lights",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "turn_on",
+    "entityId": "light.bathroom_mirror_light, light.bathroom_overhead_light",
+    "data": "{\"kelvin\":4000}",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 850,
+    "y": 260,
+    "wires": [
+      [
+        "ea8511f0.fe1dc8"
+      ]
+    ]
+  },
+  {
+    "id": "af01aea6.453078",
+    "type": "api-call-service",
+    "z": "40e6f526.bf7754",
+    "name": "Turn off bathroom lights",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "turn_off",
+    "entityId": "light.bathroom_mirror_light, light.bathroom_overhead_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 850,
+    "y": 380,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "276750a9.d15e9",
+    "type": "api-current-state",
+    "z": "40e6f526.bf7754",
+    "name": "Bathroom lights off?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "light.bathroom_mirror_light",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 400,
+    "y": 260,
+    "wires": [
+      [
+        "9ea273b4.25b1f"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "9ea273b4.25b1f",
+    "type": "time-switch",
+    "z": "40e6f526.bf7754",
+    "name": "",
+    "lat": "",
+    "lon": "",
+    "startTime": "07:30",
+    "endTime": "23:00",
+    "startOffset": 0,
+    "endOffset": 0,
+    "x": 610,
+    "y": 260,
+    "wires": [
+      [
+        "e2bc473d.61dcb8"
+      ],
+      [
+        "3711457e.c17f62"
+      ]
+    ]
+  },
+  {
+    "id": "3711457e.c17f62",
+    "type": "api-call-service",
+    "z": "40e6f526.bf7754",
+    "name": "Turn on bathroom mirror light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "turn_on",
+    "entityId": "light.bathroom_mirror_light",
+    "data": "{\"kelvin\":4000}",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 860,
+    "y": 320,
+    "wires": [
+      [
+        "ea8511f0.fe1dc8"
+      ]
+    ]
+  },
+  {
+    "id": "359b0964.bfa9e6",
+    "type": "api-call-service",
+    "z": "bc9f8658.46864",
+    "name": "Toggle bathroom mirror light",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "toggle",
+    "entityId": "light.bathroom_mirror_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 1120,
+    "y": 40,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "74834657.f194f8",
+    "type": "api-call-service",
+    "z": "bc9f8658.46864",
+    "name": "Toggle living room lights",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "debugenabled": false,
+    "service_domain": "light",
+    "service": "toggle",
+    "entityId": "light.bathroom_overhead_light",
+    "data": "",
+    "dataType": "json",
+    "mergecontext": "",
+    "output_location": "",
+    "output_location_type": "none",
+    "mustacheAltTags": false,
+    "x": 1110,
+    "y": 100,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "8229df91.d955e",
+    "type": "api-get-history",
+    "z": "40e6f526.bf7754",
+    "name": "",
+    "server": "d3229416.f40d",
+    "startdate": "",
+    "enddate": "",
+    "entityid": "binary_sensor.bathroom_presence",
+    "entityidtype": "is",
+    "useRelativeTime": true,
+    "relativeTime": "5 minutes",
+    "flatten": true,
+    "output_type": "array",
+    "output_location_type": "msg",
+    "output_location": "payload",
+    "x": 380,
+    "y": 440,
+    "wires": [
+      [
+        "e7c5e029.40004",
+        "e6d4bf72.178ac8"
+      ]
+    ]
+  },
+  {
+    "id": "e7c5e029.40004",
+    "type": "debug",
+    "z": "40e6f526.bf7754",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 590,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "ad427731.fc6868",
+    "type": "trigger",
+    "z": "40e6f526.bf7754",
+    "name": "",
+    "op1": "1",
+    "op2": "0",
+    "op1type": "str",
+    "op2type": "str",
+    "duration": "-1",
+    "extend": false,
+    "units": "min",
+    "reset": "",
+    "bytopic": "all",
+    "topic": "topic",
+    "outputs": 1,
+    "x": 200,
+    "y": 440,
+    "wires": [
+      [
+        "8229df91.d955e"
+      ]
+    ]
+  },
+  {
+    "id": "e6d4bf72.178ac8",
+    "type": "function",
+    "z": "40e6f526.bf7754",
+    "name": "Any on?",
+    "func": "var any = false;\n\nfor (var i = 0; i < msg.payload.length; i++) {\n    any = any || msg.payload[i].state == \"on\";\n}\n\nif (any) {\n    return [{payload: true}, null];\n} else {\n    return [null, {payload: false}]\n}",
+    "outputs": 2,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "x": 590,
+    "y": 560,
+    "wires": [
+      [
+        "e7c5e029.40004"
+      ],
+      [
+        "e7c5e029.40004",
+        "cf2c2897.3cbbf8"
+      ]
+    ]
+  },
+  {
+    "id": "cf2c2897.3cbbf8",
+    "type": "change",
+    "z": "40e6f526.bf7754",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "reset",
+        "pt": "msg",
+        "to": "true",
+        "tot": "bool"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 780,
+    "y": 560,
+    "wires": [
+      [
+        "ad427731.fc6868",
+        "af01aea6.453078"
+      ]
+    ]
+  },
+  {
+    "id": "f4cef6d.cf2e488",
+    "type": "inject",
+    "z": "40e6f526.bf7754",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 230,
+    "y": 560,
+    "wires": [
+      [
+        "8229df91.d955e"
+      ]
+    ]
+  },
+  {
+    "id": "ea8511f0.fe1dc8",
+    "type": "delay",
+    "z": "40e6f526.bf7754",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "30",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "x": 1100,
+    "y": 300,
+    "wires": [
+      [
+        "ad427731.fc6868"
+      ]
     ]
   }
 ]

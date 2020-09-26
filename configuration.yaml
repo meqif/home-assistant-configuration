@@ -149,3 +149,4 @@ hacs:
 
 shell_command:
   git_pull: git pull --autostash --rebase origin master
+  turn_on_towelheater: mosquitto_pub -t 'towelheater/switch/towel_heater/command' -m 'ON' -D PUBLISH message-expiry-interval 300 -r -h nanopct4.lab.badmood.club

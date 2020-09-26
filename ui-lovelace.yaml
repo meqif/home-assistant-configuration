@@ -365,8 +365,6 @@ views:
             name: Humidity
           - entity: binary_sensor.bathroom_presence
             name: Presence
-          - entity: binary_sensor.shower_ended
-            name: Shower Ended
       - type: vertical-stack
         in_card: true
         cards:

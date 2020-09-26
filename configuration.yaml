@@ -73,17 +73,6 @@ binary_sensor:
   - platform: workday
     country: PTE
 
-  - platform: template
-    sensors:
-      shower_ended:
-        friendly_name: "Shower ended"
-        value_template: >-
-          {%-if states('sensor.last_bathroom_absolute_humidity') == "unknown" or states('sensor.historical_bathroom_absolute_humidity') == "unknown" %}
-          unknown
-          {%- else %}
-          {{ (states('sensor.last_bathroom_absolute_humidity') | float) / (states('sensor.historical_bathroom_absolute_humidity') | float) > 1.10 }}
-          {% endif %}
-
 mqtt:
   broker: !secret mqtt_broker
   client_id: "home-assistant"

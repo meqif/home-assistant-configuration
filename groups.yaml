@@ -55,6 +55,13 @@ kitchen:
   entities:
     - light.kitchen_light
 
+bathroom_lights:
+  icon: mdi:light
+  name: Bathroom Lights
+  entities:
+    - light.bathroom_overhead_light
+    - light.bathroom_mirror_light
+
 all_living_room_devices:
   name: All Living Room Devices
   entities:
@@ -64,6 +71,7 @@ all_living_room_devices:
     - switch.living_room_big_corner_light
     - switch.desk_lamp
     - switch.smartplug_sala
+    - switch.innr_on_off_light_1
 
 all_lights:
   icon: mdi:lightbulb
@@ -75,6 +83,8 @@ all_lights:
     - switch.bedroom_lamp
     - switch.living_room_corner_light
     - switch.living_room_big_corner_light
+    - light.bathroom_overhead_light
+    - light.bathroom_mirror_light
 
 all_power_switches:
   icon: mdi:power-socket-eu

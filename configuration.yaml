@@ -12,6 +12,8 @@ homeassistant:
   time_zone: Europe/Lisbon
   # Customization file
   customize: !include customize.yaml
+  internal_url: !secret http_base_url
+  external_url: !secret http_base_url
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
@@ -38,7 +40,6 @@ influxdb:
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
-  base_url: !secret http_base_url
   use_x_forwarded_for: true
   # Trust the Docker container host
   trusted_proxies: !secret http_trusted_proxies

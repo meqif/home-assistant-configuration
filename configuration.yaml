@@ -70,10 +70,6 @@ lovelace:
       type: module
 
 binary_sensor:
-  - platform: meteoalarm
-    country: 'PT'
-    province: 'SETÚBAL'
-
   - platform: workday
     country: PTE
 

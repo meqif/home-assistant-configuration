@@ -3673,7 +3673,7 @@
     "rules": [
       {
         "t": "eq",
-        "v": "living_room_switch",
+        "v": "bathroom_switch",
         "vt": "str"
       },
       {

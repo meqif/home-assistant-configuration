@@ -91,7 +91,6 @@ input_boolean:
     initial: false
   extended_away:
     name: "Extended Away"
-    initial: false
     icon: mdi:beach
 
 switch:

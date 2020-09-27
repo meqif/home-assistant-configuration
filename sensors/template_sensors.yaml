@@ -9,15 +9,3 @@ sensors:
       {% else %}
         {{ states('device_tracker.ricardo_s_google_pixel') }}
       {% endif %}
-  hall_brightness:
-    friendly_name: "Hall Brightness"
-    value_template: >-
-      {%- with state = states("sensor.raw_hall_brightness") %}
-      {%- if state == "unknown" or state == "unavailable" %}{{ state }}{%- else %}{{ state | float }}{% endif %}
-      {%- endwith %}
-    availability_template: '{{ states("sensor.raw_hall_brightness") != "unavailable" }}'
-    icon_template: 'mdi:brightness-5'
-    unit_of_measurement: 'Ω'
-    attribute_templates:
-      dark: >-
-        {{ (states('sensor.raw_hall_brightness') | float > 6000) | string | lower }}

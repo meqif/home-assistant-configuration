@@ -143,7 +143,7 @@ views:
         entities:
           - light.hue_white_lamp_corredor
           - type: divider
-          - sensor.hall_brightness
+          - sensor.raw_hall_brightness
           - binary_sensor.presence_21
       - type: entities
         title: Kitchen

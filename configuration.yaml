@@ -116,7 +116,7 @@ switch:
               entity_id: scene.regular_lights
 
   - platform: mqtt
-    icon: 'mdi:car-defrost-rear'
+    icon: 'mdi:radiator'
     name: 'Towel Heater'
     state_topic: 'towelheater/switch/towel_heater/state'
     command_topic: 'towelheater/switch/towel_heater/command'

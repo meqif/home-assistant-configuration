@@ -22,7 +22,7 @@ default_config:
 # introduction:
 
 logger:
-  default: info
+  default: warning
   logs:
     homeassistant.components.esphome: warning
     WazeRouteCalculator.WazeRouteCalculator: warning

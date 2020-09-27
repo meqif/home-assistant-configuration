@@ -38,7 +38,10 @@ views:
         - type: custom:banner-card
           heading: "\U0001F6C1 Bathroom"
           link: /lovelace/bathroom
+          row_size: 4
           entities:
+            - entity: light.bathroom
+              name: Lights
             - entity: switch.towel_heater
               name: Towel Heater
             - entity: sensor.bathroom_temperature
@@ -357,6 +360,11 @@ views:
     id: bathroom
     title: Bathroom
     cards:
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - light.bathroom_overhead_light
+          - light.bathroom_mirror_light
       - type: glance
         entities:
           - entity: sensor.bathroom_temperature

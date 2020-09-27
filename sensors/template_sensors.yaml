@@ -4,9 +4,7 @@ sensors:
   ricardo_presence:
     friendly_name: "Ricardo's Presence"
     value_template: >-
-      {% if is_state('binary_sensor.bed_presence', 'on') %}
-        bedroom
-      {% elif not is_state('sensor.room_presence', 'not_home') %}
+      {% if not is_state('sensor.room_presence', 'not_home') %}
         {{ states('sensor.room_presence') }}
       {% else %}
         {{ states('device_tracker.ricardo_s_google_pixel') }}

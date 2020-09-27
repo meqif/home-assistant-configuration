@@ -3761,9 +3761,7 @@
       [
         "74834657.f194f8"
       ],
-      [
-        "143bacd5.69720b"
-      ],
+      [],
       [
         "359b0964.bfa9e6",
         "74834657.f194f8"
@@ -3788,76 +3786,7 @@
     "output_location_type": "none",
     "mustacheAltTags": false,
     "x": 830,
-    "y": 40,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "aef0ae4c.484c7",
-    "type": "api-call-service",
-    "z": "bc9f8658.46864",
-    "name": "Living Room Corner",
-    "server": "d3229416.f40d",
-    "version": 1,
-    "debugenabled": false,
-    "service_domain": "script",
-    "service": "turn_on",
-    "entityId": "script.living_room_corner",
-    "data": "",
-    "dataType": "json",
-    "mergecontext": "",
-    "output_location": "",
-    "output_location_type": "none",
-    "mustacheAltTags": false,
-    "x": 820,
-    "y": 100,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "143bacd5.69720b",
-    "type": "api-call-service",
-    "z": "bc9f8658.46864",
-    "name": "Toggle Desk Lamp",
-    "server": "d3229416.f40d",
-    "version": 1,
-    "debugenabled": false,
-    "service_domain": "switch",
-    "service": "toggle",
-    "entityId": "switch.desk_lamp",
-    "data": "",
-    "dataType": "json",
-    "mergecontext": "",
-    "output_location": "",
-    "output_location_type": "none",
-    "mustacheAltTags": false,
-    "x": 810,
-    "y": 160,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "9a10a18.b4de36",
-    "type": "api-call-service",
-    "z": "bc9f8658.46864",
-    "name": "Toggle Relax Scene",
-    "server": "d3229416.f40d",
-    "version": 1,
-    "debugenabled": false,
-    "service_domain": "switch",
-    "service": "toggle",
-    "entityId": "switch.relax_scene",
-    "data": "",
-    "dataType": "json",
-    "mergecontext": "",
-    "output_location": "",
-    "output_location_type": "none",
-    "mustacheAltTags": false,
-    "x": 810,
-    "y": 220,
+    "y": 240,
     "wires": [
       []
     ]
@@ -3911,7 +3840,7 @@
     "repair": false,
     "outputs": 4,
     "x": 530,
-    "y": 460,
+    "y": 400,
     "wires": [
       [
         "6ec7c34.f47ccbc"
@@ -3966,7 +3895,7 @@
     "output_location_type": "none",
     "mustacheAltTags": false,
     "x": 840,
-    "y": 500,
+    "y": 440,
     "wires": [
       []
     ]
@@ -3989,7 +3918,7 @@
     "output_location_type": "none",
     "mustacheAltTags": false,
     "x": 820,
-    "y": 560,
+    "y": 500,
     "wires": [
       []
     ]
@@ -4012,7 +3941,7 @@
     "repair": false,
     "outputs": 1,
     "x": 520,
-    "y": 640,
+    "y": 580,
     "wires": [
       [
         "7bfacc55.3c40c4"
@@ -4037,7 +3966,7 @@
     "output_location_type": "none",
     "mustacheAltTags": false,
     "x": 840,
-    "y": 640,
+    "y": 580,
     "wires": [
       []
     ]
@@ -4070,7 +3999,7 @@
     "repair": false,
     "outputs": 3,
     "x": 520,
-    "y": 540,
+    "y": 460,
     "wires": [
       [
         "4eeb3ff.cbd224"
@@ -4116,7 +4045,7 @@
     "repair": false,
     "outputs": 4,
     "x": 540,
-    "y": 300,
+    "y": 280,
     "wires": [
       [
         "bc896bc2.d532b8"
@@ -4148,7 +4077,7 @@
     "output_location_type": "none",
     "mustacheAltTags": false,
     "x": 840,
-    "y": 280,
+    "y": 300,
     "wires": [
       []
     ]
@@ -4206,8 +4135,8 @@
     "output_location": "",
     "output_location_type": "none",
     "mustacheAltTags": false,
-    "x": 850,
-    "y": 260,
+    "x": 910,
+    "y": 240,
     "wires": [
       [
         "ea8511f0.fe1dc8"
@@ -4231,7 +4160,7 @@
     "output_location": "",
     "output_location_type": "none",
     "mustacheAltTags": false,
-    "x": 850,
+    "x": 1130,
     "y": 380,
     "wires": [
       []
@@ -4304,8 +4233,8 @@
     "output_location": "",
     "output_location_type": "none",
     "mustacheAltTags": false,
-    "x": 860,
-    "y": 320,
+    "x": 920,
+    "y": 300,
     "wires": [
       [
         "ea8511f0.fe1dc8"
@@ -4329,8 +4258,8 @@
     "output_location": "",
     "output_location_type": "none",
     "mustacheAltTags": false,
-    "x": 1120,
-    "y": 40,
+    "x": 840,
+    "y": 80,
     "wires": [
       []
     ]
@@ -4339,7 +4268,7 @@
     "id": "74834657.f194f8",
     "type": "api-call-service",
     "z": "bc9f8658.46864",
-    "name": "Toggle living room lights",
+    "name": "Toggle bathroom overhead light",
     "server": "d3229416.f40d",
     "version": 1,
     "debugenabled": false,
@@ -4352,8 +4281,8 @@
     "output_location": "",
     "output_location_type": "none",
     "mustacheAltTags": false,
-    "x": 1110,
-    "y": 100,
+    "x": 850,
+    "y": 160,
     "wires": [
       []
     ]
@@ -4374,30 +4303,13 @@
     "output_type": "array",
     "output_location_type": "msg",
     "output_location": "payload",
-    "x": 380,
-    "y": 440,
+    "x": 340,
+    "y": 380,
     "wires": [
       [
-        "e7c5e029.40004",
         "e6d4bf72.178ac8"
       ]
     ]
-  },
-  {
-    "id": "e7c5e029.40004",
-    "type": "debug",
-    "z": "40e6f526.bf7754",
-    "name": "",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 590,
-    "y": 440,
-    "wires": []
   },
   {
     "id": "ad427731.fc6868",
@@ -4415,8 +4327,8 @@
     "bytopic": "all",
     "topic": "topic",
     "outputs": 1,
-    "x": 200,
-    "y": 440,
+    "x": 160,
+    "y": 380,
     "wires": [
       [
         "8229df91.d955e"
@@ -4433,14 +4345,11 @@
     "noerr": 0,
     "initialize": "",
     "finalize": "",
-    "x": 590,
-    "y": 560,
+    "x": 500,
+    "y": 380,
     "wires": [
+      [],
       [
-        "e7c5e029.40004"
-      ],
-      [
-        "e7c5e029.40004",
         "cf2c2897.3cbbf8"
       ]
     ]
@@ -4464,41 +4373,12 @@
     "from": "",
     "to": "",
     "reg": false,
-    "x": 780,
-    "y": 560,
+    "x": 660,
+    "y": 380,
     "wires": [
       [
         "ad427731.fc6868",
-        "af01aea6.453078"
-      ]
-    ]
-  },
-  {
-    "id": "f4cef6d.cf2e488",
-    "type": "inject",
-    "z": "40e6f526.bf7754",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 230,
-    "y": 560,
-    "wires": [
-      [
-        "8229df91.d955e"
+        "aba39964.968e1"
       ]
     ]
   },
@@ -4517,12 +4397,40 @@
     "randomLast": "5",
     "randomUnits": "seconds",
     "drop": false,
-    "x": 1100,
-    "y": 300,
+    "x": 1160,
+    "y": 280,
     "wires": [
       [
         "ad427731.fc6868"
       ]
+    ]
+  },
+  {
+    "id": "aba39964.968e1",
+    "type": "api-current-state",
+    "z": "40e6f526.bf7754",
+    "name": "Bathroom lights on?",
+    "server": "d3229416.f40d",
+    "version": 1,
+    "outputs": 2,
+    "halt_if": "on",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": false,
+    "entity_id": "light.bathroom_mirror_light",
+    "state_type": "str",
+    "state_location": "payload",
+    "override_payload": "msg",
+    "entity_location": "data",
+    "override_data": "msg",
+    "blockInputOverrides": false,
+    "x": 880,
+    "y": 380,
+    "wires": [
+      [
+        "af01aea6.453078"
+      ],
+      []
     ]
   }
 ]

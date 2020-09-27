@@ -140,3 +140,13 @@ hacs:
 shell_command:
   git_pull: git pull --autostash --rebase origin master
   turn_on_towelheater: mosquitto_pub -t 'towelheater/switch/towel_heater/command' -m 'ON' -D PUBLISH message-expiry-interval 300 -r -h nanopct4.lab.badmood.club
+
+panel_iframe:
+  node_red:
+    title: "Node-RED"
+    url: "https://node-red.lab.badmood.club"
+    icon: mdi:sitemap
+  covid19_pt:
+    title: "Covid-19"
+    url: "https://esriportugal.maps.arcgis.com/apps/opsdashboard/index.html?fbclid=IwAR19_OTt4DTF-k8v01ATg_aTxQ26DlaieKdVDmsd9Zp4pVffpoh-p_CR9s8#/acf023da9a0b4f9dbb2332c13f635829"
+    icon: mdi:biohazard

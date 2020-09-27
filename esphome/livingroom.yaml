@@ -2,6 +2,8 @@ esphome:
   name: livingroom
   platform: ESP8266
   board: d1_mini
+  includes:
+    - 'uart_read_line_sensor.h'
 
 wifi:
   ssid: !secret wifi_ssid
@@ -56,20 +58,16 @@ sensor:
     accuracy_decimals: 2
     unit_of_measurement: "g/m³"
 
-binary_sensor:
-  - platform: gpio
-    pin: D5
-    name: "Push button"
+uart:
+  id: uart_bus
+  rx_pin: D5
+  baud_rate: 9600
 
-output:
-  - platform: esp8266_pwm
-    id: onboard_led
-    pin:
-      number: D4
-      inverted: true
-
-light:
-  - platform: monochromatic
-    name: "Onboard LED"
-    output: onboard_led
-    id: led_1
+text_sensor:
+  - platform: custom
+    lambda: |-
+      auto my_custom_sensor = new UartReadLineSensor(id(uart_bus));
+      App.register_component(my_custom_sensor);
+      return {my_custom_sensor};
+    text_sensors:
+      id: "uart_readline"

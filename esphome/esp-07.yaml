@@ -16,3 +16,15 @@ logger:
 api:
 
 ota:
+
+uart:
+  id: uart_bus
+  tx_pin: D5
+  baud_rate: 9600
+
+interval:
+  - interval: 1s
+    then:
+      - uart.write:
+          id: uart_bus
+          data: "{\"bananas\": true}\r\n"

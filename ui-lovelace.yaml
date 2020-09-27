@@ -57,11 +57,6 @@ views:
         entities:
           - sensor.work_commute
           - sensor.home_commute
-      - type: picture-entity
-        entity: vacuum.neato
-        show_name: false
-        show_state: false
-        camera_image: camera.neato_cleaning_map
       - type: 'custom:vacuum-card'
         entity: vacuum.neato
         image: '/local/images/neato-botvac-d5.svg'

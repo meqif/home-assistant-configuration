@@ -68,6 +68,8 @@ lovelace:
       type: module
     - url: /hacsfiles/vacuum-card/vacuum-card.js
       type: module
+    - url: /hacsfiles/lovelace-canary/canary.js
+      type: module
 
 binary_sensor:
   - platform: workday

@@ -1488,7 +1488,7 @@
     "y": 100,
     "wires": [
       [
-        "14bc950a.d54673"
+        "c6d6dbc6.aec72"
       ]
     ]
   },
@@ -1765,7 +1765,7 @@
     "outputLocation": "payload",
     "outputLocationType": "msg",
     "inputOverride": "allow",
-    "x": 870,
+    "x": 1090,
     "y": 100,
     "wires": [
       []
@@ -1904,13 +1904,13 @@
     "id": "b9b14d76.116128",
     "type": "switch",
     "z": "6cafe6fe.9631d8",
-    "name": "",
+    "name": ">= 24",
     "property": "payload",
     "propertyType": "msg",
     "rules": [
       {
-        "t": "gt",
-        "v": "23",
+        "t": "gte",
+        "v": "24",
         "vt": "str"
       }
     ],
@@ -4431,6 +4431,24 @@
         "af01aea6.453078"
       ],
       []
+    ]
+  },
+  {
+    "id": "c6d6dbc6.aec72",
+    "type": "function",
+    "z": "6cafe6fe.9631d8",
+    "name": "Round to 1 decimal",
+    "func": "return {payload: Math.round(msg.payload * 10) / 10};",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "x": 830,
+    "y": 100,
+    "wires": [
+      [
+        "14bc950a.d54673"
+      ]
     ]
   }
 ]

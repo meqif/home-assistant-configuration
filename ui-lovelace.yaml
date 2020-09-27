@@ -240,6 +240,14 @@ views:
               entity_id: scene.regular_lights
       - type: vertical-stack
         cards:
+        - type: gauge
+          entity: sensor.living_room_discomfort_index
+          min: 21
+          max: 32
+          severity:
+            - green: 21
+            - yellow: 24
+            - red: 27
         - type: custom:mini-graph-card
           line_color: '#f1c40f'
           show:
